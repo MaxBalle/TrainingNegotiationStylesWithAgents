@@ -7,7 +7,7 @@ def generate_issues_divisive(num: int, decimals: int) -> list[int]:
 
     for x in range(num - 1):
         biggest = - heapq.heappop(values)
-        new = random.randint(1, biggest)
+        new = int(round(random.triangular(0.5, biggest + 0.4999)))
         heapq.heappush(values, - new)
         heapq.heappush(values, - (biggest - new))
 
@@ -54,15 +54,18 @@ def build_negotiation(issues: list[int]) -> tuple[list[tuple[any, list]], list[t
         res_b.append((issue_utility_b.pop(), values[1]))
     return res_a, res_b
 
-#print(generate_values(5,2))
-'''countLow, countHigh = [0,0,0,0,0], [0,0,0,0,0]
-for i in range(10000):
-    values = generate_values(5,2)
-    for j in range(5):
-        if values[0][j] == 1:
-            countLow[j] += 1
-        if values[1][j] == 1:
-            countHigh[j] += 1
+#Tests:
 
-#print(f"Low {countLow}")
-#print(f"High {countHigh}")'''
+# print(generate_values(5,2))
+# print(generate_issues_divisive(5,2))
+# countLow, countHigh = [0,0,0,0,0], [0,0,0,0,0]
+# for i in range(10000):
+#     values = generate_values(5,2)
+#     for j in range(5):
+#         if values[0][j] == 1:
+#             countLow[j] += 1
+#         if values[1][j] == 1:
+#             countHigh[j] += 1
+#
+# print(f"Low {countLow}")
+# print(f"High {countHigh}")
