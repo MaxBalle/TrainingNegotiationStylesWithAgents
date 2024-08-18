@@ -1,24 +1,25 @@
 import matplotlib.pyplot as plt
 import itertools
+from negotiationGenerator.scenario import Scenario
 
-def evaluate(negotiation: tuple[list[tuple[int, list]], list[tuple[int, list]]], logging=False, plotting=False) -> bool:
+def evaluate(scenario: Scenario, logging=False, plotting=False) -> bool:
     if logging:
-        print(f"Negotiation:")
-        print(f"A: {negotiation[0]}")
-        print(f"B: {negotiation[1]}")
+        print(f"\nNegotiation scenario:")
+        print(f"A: {scenario.a}")
+        print(f"B: {scenario.b}")
 
     #All possible solutions
-    utility_pairs = []
+    utility_pairs: list[tuple] = []
 
     ranges = []
-    for issue in negotiation[0]:
+    for issue in scenario.a:
         ranges.append(range(0,len(issue[1])))
 
     for point in itertools.product(*ranges):
         utility_a, utility_b = 0, 0
         for i in range(0,len(point)):
-            utility_a += negotiation[0][i][0] * negotiation[0][i][1][point[i]]
-            utility_b += negotiation[1][i][0] * negotiation[1][i][1][point[i]]
+            utility_a += scenario.a[i][0] * scenario.a[i][1][point[i]]
+            utility_b += scenario.b[i][0] * scenario.b[i][1][point[i]]
         utility_pairs.append((utility_a, utility_b))
 
     distributive_utilities_a, distributive_utilities_b = [], []
@@ -79,7 +80,7 @@ def evaluate(negotiation: tuple[list[tuple[int, list]], list[tuple[int, list]]],
         area += (curr_point[0] - new_point[0]) * (curr_point[1] + 0.5 * (new_point[1]-curr_point[1]))
         curr_point = new_point
     area -= (1-optimal_utilities_a[len(optimal_utilities_a)-1]) * (optimal_utilities_b[0] + 0.5 * (1-optimal_utilities_b[0]))
-    relative_area = area / (0.5 * (1-optimal_utilities_a[len(optimal_utilities_a)-1]) * (1-optimal_utilities_b[0]))
+    relative_area = area / pareto_extremes_distance
 
     #Recommendation
     recommendation = "Usable"
@@ -87,7 +88,7 @@ def evaluate(negotiation: tuple[list[tuple[int, list]], list[tuple[int, list]]],
     if pareto_extremes_distance < 0.5:
         recommendation = "Unusable (Pareto front to narrow)"
         recommended = False
-    elif relative_area < 0.2:
+    elif relative_area < 0.04:
         recommendation = "Unusable (Pareto front to flat)"
         recommended = False
     elif abs(fairest_pareto_outcome[0] - fairest_pareto_outcome[1]) > 0.2:
@@ -99,7 +100,7 @@ def evaluate(negotiation: tuple[list[tuple[int, list]], list[tuple[int, list]]],
         print(f"Highest possible joint utility: {sum(max_joint_utility)}")
         print(f"Fairest outcome {fairest_pareto_outcome} with difference {abs(fairest_pareto_outcome[0]-fairest_pareto_outcome[1])}")
         print(f"Distance between pareto extremes: {pareto_extremes_distance}")
-        print(f"Curvature indicator {relative_area}") #Relation of area between pareto front and dashed reference line and the remaining upper right triangle
+        print(f"Curvature indicator {relative_area}") #Relation of area between pareto front and dashed reference line and the length of the line
         print(f"Recommendation: {recommendation}")
 
     return recommended

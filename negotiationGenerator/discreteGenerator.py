@@ -1,9 +1,10 @@
 import random
 import heapq
 from negotiationGenerator import discreteEvaluator
+from negotiationGenerator.scenario import Scenario
 
-
-def generate_issues_divisive(num: int, decimals: int) -> list[int]:
+#Divisive approach to generate the importance of a given number of issues for one side of the negotiation
+def generate_importance(num: int, decimals: int) -> list[float]:
     max_value = pow(10, decimals)
     values = [-max_value]
 
@@ -20,8 +21,10 @@ def generate_issues_divisive(num: int, decimals: int) -> list[int]:
 
     return values
 
-def generate_values(num: int, decimals=-1) -> tuple[list[int], list[int]]:
-    sigma = 0.05
+#Generates the preferences of both parties for one issue
+#Each set of preferences has one 1 randomly chosen from a triangular distribution that is biased to the opposing side than the opponents distribution
+#The remaining values are randomly generated with a normal variation around a mean decreasing by the relative distance to the value with preference 1
+def generate_preference(num: int, decimals: int = -1, sigma: float = 0.05) -> tuple[list[float], list[float]]:
 
     values_low, values_high = [], []
     perfect_low = int(random.triangular(0,num, 0)) #Special case, could be implemented faster if needed
@@ -30,16 +33,20 @@ def generate_values(num: int, decimals=-1) -> tuple[list[int], list[int]]:
         if x == perfect_low:
             values_low.append(1)
         else:
-            new_val = -1
-            while new_val < 0 or new_val > 1:
+            new_val = 2.0
+            while new_val > 1:
                 new_val = random.normalvariate(1 - abs(perfect_low - x) / (num - 1), sigma)
+            if new_val < 0:
+                new_val = 0
             values_low.append(new_val)
         if x == perfect_high:
             values_high.append(1)
         else:
-            new_val = -1
-            while new_val < 0 or new_val > 1:
+            new_val = 2.0
+            while new_val > 1:
                 new_val = random.normalvariate(1 - abs(perfect_high - x) / (num - 1), sigma)
+            if new_val < 0:
+                new_val = 0
             values_high.append(new_val)
     if decimals >= 0:
         for x in range(num):
@@ -47,33 +54,21 @@ def generate_values(num: int, decimals=-1) -> tuple[list[int], list[int]]:
             values_high[x] = round(values_high[x], decimals)
     return values_low, values_high
 
-def build_raw_negotiation(issues: list[int]) -> tuple[list[tuple[int, list]], list[tuple[int, list]]]:
-    issue_utility_a, issue_utility_b = generate_issues_divisive(len(issues), 2), generate_issues_divisive(len(issues), 2)
+#Builds a negotiation scenario (that might be flawed)
+#This function takes a list of integers and returns a Scenario with an issue for each int and for each issue as many options as the value of the int
+def build_raw_negotiation_scenario(issues: list[int]) -> Scenario:
+    importance_a, importance_b = generate_importance(len(issues), 2), generate_importance(len(issues), 2)
     res_a, res_b = [], []
     for issue in issues:
-        values = generate_values(issue, 2)
-        res_a.append((issue_utility_a.pop(), values[0]))
-        res_b.append((issue_utility_b.pop(), values[1]))
-    return res_a, res_b
+        preferences = generate_preference(issue, decimals=2)
+        res_a.append((importance_a.pop(), preferences[0]))
+        res_b.append((importance_b.pop(), preferences[1]))
+    return Scenario(res_a, res_b)
 
-def build_negotiation(issues: list[int]) -> tuple[list[tuple[int, list]], list[tuple[int, list]]]:
-    negotiation = build_raw_negotiation(issues)
+#Builds negotiation scenarios until a suitable one (as per discreteEvaluator.py) is found
+#This function takes a list of integers and returns a Scenario with an issue for each int and for each issue as many options as the value of the int
+def build_negotiation_scenario(issues: list[int]) -> Scenario:
+    negotiation: Scenario = build_raw_negotiation_scenario(issues)
     while not discreteEvaluator.evaluate(negotiation, logging=True, plotting=True):
-        negotiation = build_raw_negotiation(issues)
+        negotiation = build_raw_negotiation_scenario(issues)
     return negotiation
-
-#Tests:
-
-# print(generate_values(5,2))
-# print(generate_issues_divisive(5,2))
-# countLow, countHigh = [0,0,0,0,0], [0,0,0,0,0]
-# for i in range(10000):
-#     values = generate_values(5,2)
-#     for j in range(5):
-#         if values[0][j] == 1:
-#             countLow[j] += 1
-#         if values[1][j] == 1:
-#             countHigh[j] += 1
-#
-# print(f"Low {countLow}")
-# print(f"High {countHigh}")

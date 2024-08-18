@@ -1,3 +1,3 @@
-from negotiationGenerator.discreteGenerator import build_negotiation
+from negotiationGenerator.discreteGenerator import build_negotiation_scenario
 
-build_negotiation([5,5,5,5,5])
+build_negotiation_scenario([5, 5, 5, 5, 5])
