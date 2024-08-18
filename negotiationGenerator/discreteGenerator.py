@@ -1,5 +1,7 @@
 import random
 import heapq
+from negotiationGenerator import discreteEvaluator
+
 
 def generate_issues_divisive(num: int, decimals: int) -> list[int]:
     max_value = pow(10, decimals)
@@ -45,7 +47,7 @@ def generate_values(num: int, decimals=-1) -> tuple[list[int], list[int]]:
             values_high[x] = round(values_high[x], decimals)
     return values_low, values_high
 
-def build_negotiation(issues: list[int]) -> tuple[list[tuple[any, list]], list[tuple[any, list]]]:
+def build_raw_negotiation(issues: list[int]) -> tuple[list[tuple[int, list]], list[tuple[int, list]]]:
     issue_utility_a, issue_utility_b = generate_issues_divisive(len(issues), 2), generate_issues_divisive(len(issues), 2)
     res_a, res_b = [], []
     for issue in issues:
@@ -53,6 +55,12 @@ def build_negotiation(issues: list[int]) -> tuple[list[tuple[any, list]], list[t
         res_a.append((issue_utility_a.pop(), values[0]))
         res_b.append((issue_utility_b.pop(), values[1]))
     return res_a, res_b
+
+def build_negotiation(issues: list[int]) -> tuple[list[tuple[int, list]], list[tuple[int, list]]]:
+    negotiation = build_raw_negotiation(issues)
+    while not discreteEvaluator.evaluate(negotiation, logging=True, plotting=True):
+        negotiation = build_raw_negotiation(issues)
+    return negotiation
 
 #Tests:
 
