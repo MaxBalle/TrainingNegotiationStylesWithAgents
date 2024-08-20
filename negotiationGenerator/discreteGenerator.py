@@ -67,8 +67,8 @@ def build_raw_negotiation_scenario(issues: list[int]) -> Scenario:
 
 #Builds negotiation scenarios until a suitable one (as per discreteEvaluator.py) is found
 #This function takes a list of integers and returns a Scenario with an issue for each int and for each issue as many options as the value of the int
-def build_negotiation_scenario(issues: list[int]) -> Scenario:
+def build_negotiation_scenario(issues: list[int], logging=False, plotting=False) -> Scenario:
     negotiation: Scenario = build_raw_negotiation_scenario(issues)
-    while not discreteEvaluator.evaluate(negotiation, logging=True, plotting=True):
+    while not discreteEvaluator.evaluate(negotiation, logging=logging, plotting=plotting):
         negotiation = build_raw_negotiation_scenario(issues)
     return negotiation
