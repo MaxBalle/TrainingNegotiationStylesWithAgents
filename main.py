@@ -12,7 +12,6 @@ from keras import layers, Sequential
 
 population_size = 10 #Has to be even
 issues = [5, 5, 5, 5, 5]
-end_threshold = 0.8 #Threshold for when an output neuron indication accept / decline is considered active
 time_cap = 100 #Max number of send messages / moment of timeout
 
 def init_population(size: int) -> list:
@@ -21,7 +20,7 @@ def init_population(size: int) -> list:
         model = Sequential()
         model.add(layers.Dense(50, name='In'))
         model.add(layers.GRU(50, name='Recurrent Middle', stateful=True))
-        model.add(layers.Dense(27, name='Out', activation='sigmoid')) #First two are accept and decline, rest are values for a counteroffer
+        model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
         population.append(model)
     return population
 
@@ -61,9 +60,10 @@ def negotiate(agent_a: Sequential, agent_b: Sequential, negotiation_scenario: Sc
     offer = tf.constant([[[*offer_one_hot, *offer_utilities_a]]])
     while ongoing and time <= time_cap:
         time += 1
-        ret_b = agent_b(offer)
-        if ret_b[0][0].numpy() > end_threshold or ret_b[0][1].numpy() > end_threshold: # B ends negotiation
-            if ret_b[0][0].numpy() > ret_b[0][1].numpy():
+        ret_b = agent_b(offer) # Agent B processes offer
+        continue_negotiation = ret_b[0][0].numpy() >= ret_b[0][1].numpy() and ret_b[0][0].numpy() >= ret_b[0][2].numpy() # B wants to continue negotiating if the first output (continue) is bigger than second and third (accept and decline)
+        if not continue_negotiation: # B ends negotiation
+            if ret_b[0][1].numpy() > ret_b[0][2].numpy(): # Accept bigger than decline
                 # B accepts last offer from a
                 outcome = 1
                 result_utility_a, result_utility_b = calculate_utility(offer_one_hot, offer_utilities_a, offer_utilities_b)
@@ -74,12 +74,13 @@ def negotiate(agent_a: Sequential, agent_b: Sequential, negotiation_scenario: Sc
                 ongoing = False
         else:
             # Build the offer by B to A
-            offer_one_hot = encode_as_one_hot(ret_b[0][2:].numpy())
+            offer_one_hot = encode_as_one_hot(ret_b[0][3:].numpy())
             offer = tf.constant([[[*offer_one_hot, *offer_utilities_b]]])
             time += 1
-            ret_a = agent_a(offer)
-            if ret_a[0][0].numpy() > end_threshold or ret_a[0][1].numpy() > end_threshold: # A ends negotiation
-                if ret_a[0][0].numpy() > ret_a[0][1].numpy():
+            ret_a = agent_a(offer) # Agent A processes offer
+            continue_negotiation = ret_a[0][0].numpy() >= ret_a[0][1].numpy() and ret_a[0][0].numpy() >= ret_a[0][2].numpy()  # A wants to continue negotiating if the first output (continue) is bigger than second and third (accept and decline)
+            if not continue_negotiation: # A ends negotiation
+                if ret_a[0][1].numpy() > ret_a[0][2].numpy(): # Accept bigger than decline
                     # A accepts last offer from b
                     outcome = 1
                     result_utility_a, result_utility_b = calculate_utility(offer_one_hot, offer_utilities_a, offer_utilities_b)
@@ -90,7 +91,7 @@ def negotiate(agent_a: Sequential, agent_b: Sequential, negotiation_scenario: Sc
                     ongoing = False
             else:
                 # Build new offer by A to B
-                offer_one_hot = encode_as_one_hot(ret_a[0][2:].numpy())
+                offer_one_hot = encode_as_one_hot(ret_a[0][3:].numpy())
                 offer = tf.constant([[[*offer_one_hot, *offer_utilities_a]]])
     agent_a.layers[1].reset_states()
     agent_b.layers[1].reset_states()
