@@ -1,5 +1,6 @@
 from negotiationGenerator.scenario import Scenario
 from negotiationGenerator.discreteGenerator import build_negotiation_scenario
+import fitness
 
 import random
 from multiprocessing import Pool
@@ -48,15 +49,12 @@ def negotiate(agent_a: Sequential, agent_b: Sequential, negotiation_scenario: Sc
     ongoing = True
     #Starting side(agent_1) starts with an offer of max utility (alternative could be generating this as well but that would be an uncommon input and might hinder performance)
     offer_one_hot = []
-    offer_utilities_a = []
-    for issue in negotiation_scenario.a:
+
+    for issue in negotiation_scenario.a.get_issues():
         for option in issue[1]:
             offer_one_hot.append(1.0 if option == 1 else 0.0)
-            offer_utilities_a.append(option * issue[0])
-    offer_utilities_b = []
-    for issue in negotiation_scenario.b:
-        for option in issue[1]:
-            offer_utilities_b.append(option * issue[0])
+    offer_utilities_a = negotiation_scenario.a.get_utility_array()
+    offer_utilities_b = negotiation_scenario.b.get_utility_array()
     offer = tf.constant([[[*offer_one_hot, *offer_utilities_a]]])
     while ongoing and time <= time_cap:
         time += 1
@@ -97,12 +95,6 @@ def negotiate(agent_a: Sequential, agent_b: Sequential, negotiation_scenario: Sc
     agent_b.layers[1].reset_states()
     return outcome, result_utility_a, result_utility_b, time
 
-def collaborating_fitness(outcome: tuple[int, float, float, int], negotiation_scenario) -> float:
-    result, utility_a, utility_b, time = outcome
-    joint_utility = utility_a + utility_b
-    return joint_utility #TODO insert realistic function
-
-
 def find_fitness(agent_1: Sequential, agent_2: Sequential, negotiation_scenario: Scenario, fitness_function_1, fitness_function_2) -> tuple[float, float]:
     #Negotiate in both constellations to decrease influence of unfair negotiations
     outcome_1_2 = negotiate(agent_1, agent_2, negotiation_scenario)
@@ -124,7 +116,7 @@ if __name__ == "__main__":
         random.shuffle(collaborating_population)
         negotiations: list[tuple] = []
         for i in range(0,population_size, 2):
-            negotiations.append((collaborating_population[i], collaborating_population[i+1], scenario, collaborating_fitness, collaborating_fitness))
+            negotiations.append((collaborating_population[i], collaborating_population[i+1], scenario, fitness.collaborating, fitness.collaborating))
         print(negotiations)
         with Pool() as p:
             results = p.starmap(find_fitness, negotiations)
