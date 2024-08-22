@@ -7,7 +7,7 @@ import random
 from multiprocessing import Pool
 
 from keras.src.models.cloning import clone_model
-#import tensorflow as tf
+import tensorflow as tf
 from keras import layers, Sequential
 #from tensorflow.python.keras import Sequential
 #import keras
@@ -19,6 +19,7 @@ max_generation = 1 #Number of generations to simulate / last generation
 population_size = 20 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 2 #Number of survivors per generation
 recombination_split = [2, 6, 10] #Top x to group and reproduce (2 -> 2), also has to be even
+mutation_stddev = 0.03
 
 def init_population(size: int) -> list[Sequential]:
     population: list[Sequential] = []
@@ -63,7 +64,11 @@ def reproduce(parent_1: Sequential, parent_2: Sequential) -> tuple[Sequential, S
     child_2.set_weights(genome_child_2)
     return child_1, child_2
 
+#Adds gaussian noise to all weights
 def mutate(agent: Sequential) -> Sequential:
+    for layer in agent.layers:
+        for weight in layer.trainable_weights:
+            weight.assign_add(tf.random.normal(tf.shape(weight), 0, mutation_stddev))
     return agent
 
 if __name__ == "__main__":
