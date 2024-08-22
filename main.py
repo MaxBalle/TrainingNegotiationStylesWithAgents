@@ -11,9 +11,12 @@ from keras import layers, Sequential
 #import keras
 #import numpy as np
 
-population_size = 10 #Has to be even
 issues = [5, 5, 5, 5, 5]
 time_cap = 100 #Max number of send messages / moment of timeout
+max_generation = 1 #Number of generations to simulate / last generation
+population_size = 20 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
+survivor_count = 2 #Number of survivors per generation
+recombination_split = [2, 6, 10] #Top x to group and reproduce (2 -> 2), also has to be even
 
 def init_population(size: int) -> list:
     population: list[Sequential] = []
@@ -99,30 +102,50 @@ def find_fitness(agent_1: Sequential, agent_2: Sequential, negotiation_scenario:
     #Negotiate in both constellations to decrease influence of unfair negotiations
     outcome_1_2 = negotiate(agent_1, agent_2, negotiation_scenario)
     outcome_2_1 = negotiate(agent_2, agent_1, negotiation_scenario)
-    fitness_1 = (fitness_function_1(outcome_1_2, negotiation_scenario) + fitness_function_1(outcome_2_1, negotiation_scenario)) / 2
-    fitness_2 = (fitness_function_2(outcome_1_2, negotiation_scenario) + fitness_function_2(outcome_2_1, negotiation_scenario)) / 2
+    fitness_1 = fitness_function_1(outcome_1_2, negotiation_scenario.a) + fitness_function_1(outcome_2_1, negotiation_scenario.b)
+    fitness_2 = fitness_function_2(outcome_1_2, negotiation_scenario.a) + fitness_function_2(outcome_2_1, negotiation_scenario.b)
     return fitness_1, fitness_2
 
+def reproduce(parent_1: Sequential, parent_2: Sequential) -> tuple[Sequential, Sequential]:
+    return parent_1, parent_2
+
+def mutate(agent: Sequential) -> Sequential:
+    return agent
+
 if __name__ == "__main__":
-    done = False
     # competing_population = init_population(population_size)
     # accommodating_population = init_population(population_size)
     # avoiding_population = init_population(population_size)
     collaborating_population = init_population(population_size)
     # compromising_population = init_population(population_size)
-    while not done:
+    generation = 1
+    while generation <= max_generation:
         scenario: Scenario = build_negotiation_scenario(issues)
         #Negotiation simulation
         random.shuffle(collaborating_population)
         negotiations: list[tuple] = []
         for i in range(0,population_size, 2):
             negotiations.append((collaborating_population[i], collaborating_population[i+1], scenario, fitness.collaborating, fitness.collaborating))
-        print(negotiations)
+        print(f"Negotiations: {negotiations}")
         with Pool() as p:
             results = p.starmap(find_fitness, negotiations)
-        print(results)
+        print(f"Results: {results}")
         #Selection
-        #Recombination
-        #Mutation
-        #Check if done
-        done = True
+        agent_fitness_pairs = list(zip(collaborating_population,[fitness for pair in results for fitness in pair]))
+        print(f"Agent-Fitness pairs: {agent_fitness_pairs}")
+        agent_fitness_pairs.sort(key=lambda x: x[1])
+        print(f"Agent-Fitness pairs sorted: {agent_fitness_pairs}")
+        collaborating_population.clear()
+        collaborating_population.extend(pair[0] for pair in agent_fitness_pairs[-survivor_count:]) #Fittest survive into next generation
+        print(f"Collaborating survivors: {collaborating_population}")
+        #Recombination and mutation
+        for group_size in recombination_split:
+            pool = [pair[0] for pair in agent_fitness_pairs[-group_size:]]
+            random.shuffle(pool)
+            children = []
+            for i in range(0, group_size, 2):
+                children.extend(reproduce(pool[i], pool[i+1]))
+            for child in children:
+                collaborating_population.append(mutate(child))
+        print(f"Collaborating population: {collaborating_population}")
+        generation += 1
