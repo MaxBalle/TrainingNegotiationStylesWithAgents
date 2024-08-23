@@ -5,21 +5,21 @@ from negotiationGenerator.scenario import Scenario
 def evaluate(scenario: Scenario, logging=False, plotting=False) -> bool:
     if logging:
         print(f"\nNegotiation scenario:")
-        print(f"A: {scenario.a}")
-        print(f"B: {scenario.b}")
+        print(f"A: {scenario.a.get_issues()}")
+        print(f"B: {scenario.b.get_issues()}")
 
     #All possible solutions
     utility_pairs: list[tuple] = []
 
     ranges = []
-    for issue in scenario.a:
+    for issue in scenario.a.get_issues():
         ranges.append(range(0,len(issue[1])))
 
     for point in itertools.product(*ranges):
         utility_a, utility_b = 0, 0
         for i in range(0,len(point)):
-            utility_a += scenario.a[i][0] * scenario.a[i][1][point[i]]
-            utility_b += scenario.b[i][0] * scenario.b[i][1][point[i]]
+            utility_a += scenario.a.get_issue(i)[0] * scenario.a.get_issue(i)[1][point[i]]
+            utility_b += scenario.b.get_issue(i)[0] * scenario.b.get_issue(i)[1][point[i]]
         utility_pairs.append((utility_a, utility_b))
 
     distributive_utilities_a, distributive_utilities_b = [], []
