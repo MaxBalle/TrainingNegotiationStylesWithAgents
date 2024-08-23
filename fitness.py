@@ -4,7 +4,7 @@ def accommodating(outcome: tuple[int, float, float, int], negotiation_scenario_p
     return __calc_fairness(outcome, time_weight=0.5, partner_utility_weight=1, joint_utility_weight=0.5)
 
 def collaborating(outcome: tuple[int, float, float, int], negotiation_scenario_perspective: ScenarioPerspective) -> float:
-    return __calc_fairness(outcome, time_weight=0.25, own_utility_weight=1, partner_utility_weight=1, joint_utility_weight=1, fairness_weight=1) #Fairness maybe 0.75
+    return __calc_fairness(outcome, time_weight=0.1, own_utility_weight=1, partner_utility_weight=1, joint_utility_weight=1, fairness_weight=1) #Fairness maybe 0.75
 
 def compromising(outcome: tuple[int, float, float, int], negotiation_scenario_perspective: ScenarioPerspective) -> float:
     return __calc_fairness(outcome, time_weight=0.5, own_utility_weight=0.5, partner_utility_weight=0.5, joint_utility_weight=0.5, fairness_weight=1)
