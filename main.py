@@ -130,4 +130,7 @@ if __name__ == "__main__":
             populations[population_name] = new_population
         print(f"Generation training time: {time.time() - generation_start_time}")
         generation += 1
-    print(f"\nTotal time: {time.time() - start_time}")
+    print(f"\nTotal training time: {time.time() - start_time}")
+    #Save the best models
+    for population_name in populations:
+        populations[population_name][survivor_count - 1].model.save(f"models/{population_name}.keras")
