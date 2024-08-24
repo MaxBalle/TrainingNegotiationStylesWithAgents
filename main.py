@@ -89,11 +89,21 @@ if __name__ == "__main__":
         #Negotiation simulation
         for population_name in populations:
             random.shuffle(populations[population_name])
-        #Intra-style negotiations
         negotiations: list[tuple[Agent, Agent, Scenario]] = []
+        #Intra-style negotiations
         for population_name in populations:
             for i in range(0,population_size, 2):
                 negotiations.append((populations[population_name][i], populations[population_name][i+1], scenario))
+        #Inter-style negotiations
+        for population_name in populations:
+            active = False
+            for population_name_2 in populations:
+                if active:
+                    for i in range(population_size):
+                        negotiations.append((populations[population_name][i], populations[population_name_2][i], scenario))
+                elif population_name_2 == population_name:
+                    active = True
+        #Simulate negotiations
         with Pool() as p:
             negotiation_results = p.starmap(cross_negotiate, negotiations)
         for negotiation, result in zip(negotiations, negotiation_results):
