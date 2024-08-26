@@ -1,5 +1,5 @@
 from negotiationGenerator.scenario import ScenarioPerspective
-from main import time_cap
+from negotiation import time_cap
 
 #These are fitness functions for agents of different TKI negotiation styles. They can only be compared within a style, not across!
 
