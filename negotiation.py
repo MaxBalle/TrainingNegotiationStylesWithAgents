@@ -1,3 +1,5 @@
+from typing import List
+
 from agent import Agent
 from negotiationGenerator.scenario import Scenario
 
@@ -10,15 +12,25 @@ from multiprocessing import Pool
 
 time_cap = 100 #Max number of send messages / moment of timeout
 
-def encode_as_one_hot(li: list[float]) -> list[float]:
-    max_index = 0
-    max_value = 0
-    for index in range(len(li)):
-        if li[index] > max_value:
-            max_index = index
-    res = [0] * len(li)
-    res[max_index] = 1
-    return res
+#Returns one-hot-encoding as a flat list or grouped into issues
+def encode_as_one_hot(li: list[float], shape: list[int], flat = True) -> list:
+    one_hot = []
+    start_index = 0
+    for issue_length in shape:
+        max_index = 0
+        max_value = 0
+        for index in range(start_index, start_index + issue_length):
+            if li[index] > max_value:
+                max_index = index
+                max_value = li[index]
+        res = [0] * issue_length
+        res[max_index - start_index] = 1
+        if flat:
+            one_hot.extend(res)
+        else:
+            one_hot.append(res)
+        start_index += issue_length
+    return one_hot
 
 def calculate_utility(result_one_hot, offer_utilities_a, offer_utilities_b) -> tuple[float, float]:
     utility_a = 0.0
@@ -57,7 +69,7 @@ def negotiate(agent_a: Agent, agent_b: Agent, negotiation_scenario: Scenario) ->
                 ongoing = False
         else:
             # Build the offer by B to A
-            offer_one_hot = encode_as_one_hot(ret_b[0][3:].numpy())
+            offer_one_hot = encode_as_one_hot(ret_b[0][3:].numpy(), negotiation_scenario.issue_shape)
             offer = tf.constant([[[*offer_one_hot, *offer_utilities_b]]])
             time += 1
             ret_a = agent_a.model(offer) # Agent A processes offer
@@ -74,7 +86,7 @@ def negotiate(agent_a: Agent, agent_b: Agent, negotiation_scenario: Scenario) ->
                     ongoing = False
             else:
                 # Build new offer by A to B
-                offer_one_hot = encode_as_one_hot(ret_a[0][3:].numpy())
+                offer_one_hot = encode_as_one_hot(ret_a[0][3:].numpy(), negotiation_scenario.issue_shape)
                 offer = tf.constant([[[*offer_one_hot, *offer_utilities_a]]])
     agent_a.model.layers[1].reset_states()
     agent_b.model.layers[1].reset_states()

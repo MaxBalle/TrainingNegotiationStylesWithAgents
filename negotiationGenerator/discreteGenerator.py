@@ -63,7 +63,7 @@ def build_raw_negotiation_scenario(issues: list[int]) -> Scenario:
         preferences = generate_preference(issue, decimals=2)
         res_a.append((importance_a.pop(), preferences[0]))
         res_b.append((importance_b.pop(), preferences[1]))
-    return Scenario(ScenarioPerspective(res_a), ScenarioPerspective(res_b))
+    return Scenario(issues, ScenarioPerspective(res_a), ScenarioPerspective(res_b))
 
 #Builds negotiation scenarios until a suitable one (as per discreteEvaluator.py) is found
 #This function takes a list of integers and returns a Scenario with an issue for each int and for each issue as many options as the value of the int

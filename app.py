@@ -52,11 +52,10 @@ async def handler(websocket):
                 continue_negotiation = ret[0][0].numpy() >= ret[0][1].numpy() and ret[0][0].numpy() >= ret[0][2].numpy()
                 if continue_negotiation:
                     values = []
-                    ret_one_hot = encode_as_one_hot(scenario.a.get_utility_array())
+                    ret_one_hot = encode_as_one_hot(ret[0][3:].numpy(), scenario.issue_shape, flat=False)
                     print(ret_one_hot)
-                    issue_length = 5
-                    for i in range(0, len(ret_one_hot), issue_length):
-                        values.append(ret_one_hot[i:i+issue_length].index(1))
+                    for issue in ret_one_hot:
+                        values.append(issue.index(1))
                     print(f"Values {values}")
                     await websocket.send(json.dumps({
                         "message_type": "offer",
