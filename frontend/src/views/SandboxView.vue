@@ -64,7 +64,11 @@ const start_negotiation = () => {
   websocket = new WebSocket(url);
   websocket.onmessage = websocket_message_event_handler;
   websocket.onopen = () => {
-    websocket.send(model.value);
+    websocket.send(JSON.stringify({
+      message_type: "init",
+      mode: "sandbox",
+      model: model.value
+    }));
   }
   websocket.onerror = (error) => {
     console.log(error)
@@ -76,14 +80,14 @@ const start_negotiation = () => {
 const send_offer = () => {
   loading.value = true;
   websocket.send(JSON.stringify({
-    type: "offer",
+    message_type: "offer",
     values: current_offer_choices.value
   }));
   offer_stack.value.unshift({
     author: "self",
     values: current_offer_choices.value
   });
-  current_offer_choices.value = [null, null, null, null, null]
+  current_offer_choices.value = [null, null, null, null, null];
 }
 
 const write_counteroffer = () => {
@@ -92,7 +96,7 @@ const write_counteroffer = () => {
     values: current_opponent_offer.value
   });
   current_opponent_offer.value = null;
-  state.value = 'writing_new_offer'
+  state.value = 'writing_new_offer';
 }
 
 const accept = () => {
@@ -100,10 +104,13 @@ const accept = () => {
     author: "opponent",
     values: current_opponent_offer.value
   });
-  websocket.send(JSON.stringify({type: 'accept'}))
-  state.value = 'concluded'
-  conclusion.value = 'accepted_by_self'
-  websocket.close()
+  websocket.send(JSON.stringify({
+    message_type: "end",
+    outcome: "accepted"
+  }));
+  state.value = 'concluded';
+  conclusion.value = 'accepted_by_self';
+  websocket.close();
 }
 
 const reject = () => {
@@ -111,10 +118,13 @@ const reject = () => {
     author: "opponent",
     values: current_opponent_offer.value
   });
-  websocket.send(JSON.stringify({type: 'reject'}))
-  state.value = 'concluded'
-  conclusion.value = 'rejected_by_self'
-  websocket.close()
+  websocket.send(JSON.stringify({
+    message_type: "end",
+    outcome: "rejected"
+  }));
+  state.value = 'concluded';
+  conclusion.value = 'rejected_by_self';
+  websocket.close();
 }
 
 const clean = () => {
