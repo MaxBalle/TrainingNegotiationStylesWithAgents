@@ -13,9 +13,9 @@ const router = createRouter({
       name: 'sandbox',
       component: () => import('../views/SandboxView.vue')
     }, {
-      path: '/categorization',
-      name: 'categorization',
-      component: () => import('../views/CategorizationView.vue')
+      path: '/identification',
+      name: 'identification',
+      component: () => import('../views/IdentificationView.vue')
     }, {
       path: '/turing',
       name: 'turing',

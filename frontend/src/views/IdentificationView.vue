@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <h1>Categorization</h1>
+  <h1>Identification</h1>
 </template>
 
 <style scoped>

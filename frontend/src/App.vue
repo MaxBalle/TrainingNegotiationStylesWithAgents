@@ -13,9 +13,9 @@ const menu_items = ref([
     icon: 'pi pi-comments',
     route: '/sandbox'
   },{
-    label: 'Categorization',
+    label: 'Identification',
     icon: 'pi pi-clipboard',
-    route: '/categorization'
+    route: '/identification'
   },{
     label: 'Turing',
     icon: 'pi pi-clipboard',
