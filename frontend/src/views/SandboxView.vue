@@ -1,9 +1,12 @@
 <script setup>
+import { ref } from 'vue';
 import Card from 'primevue/card';
 import SelectButton from 'primevue/selectbutton';
 import Button from 'primevue/button';
 import ProgressSpinner from 'primevue/progressspinner';
-import { ref } from 'vue';
+import { useToast } from "primevue/usetoast";
+import Toast from 'primevue/toast';
+const toast = useToast();
 
 const model = ref('collaborating');
 const options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
@@ -63,6 +66,11 @@ const start_negotiation = () => {
   websocket.onopen = () => {
     websocket.send(model.value);
   }
+  websocket.onerror = (error) => {
+    console.log(error)
+    toast.add({severity: "error", summary: 'Websocket error', detail: 'Problem with the connection to server for hosting the negotiations and models', life: 3000 })
+    loading.value = false;
+  }
 };
 
 const send_offer = () => {
@@ -88,6 +96,10 @@ const write_counteroffer = () => {
 }
 
 const accept = () => {
+  offer_stack.value.unshift({
+    author: "opponent",
+    values: current_opponent_offer.value
+  });
   websocket.send(JSON.stringify({type: 'accept'}))
   state.value = 'concluded'
   conclusion.value = 'accepted_by_self'
@@ -95,6 +107,10 @@ const accept = () => {
 }
 
 const reject = () => {
+  offer_stack.value.unshift({
+    author: "opponent",
+    values: current_opponent_offer.value
+  });
   websocket.send(JSON.stringify({type: 'reject'}))
   state.value = 'concluded'
   conclusion.value = 'rejected_by_self'
@@ -123,10 +139,11 @@ const new_model = () => {
 
 <template>
   <div class="sandbox">
+    <Toast/>
     <Card id="choose_model_card" v-if="state === 'choosing_model'">
       <template #title>Choose the TKI-style of your opponent</template>
       <template #content>
-        <SelectButton v-model="model" :options="options" aria-labelledby="basic"/>
+        <SelectButton v-model="model" :options="options" aria-labelledby="basic" :allow-empty="false"/>
       </template>
       <template #footer>
         <Button label="Start Negotiation" :loading="loading" @click="start_negotiation"/>
@@ -139,28 +156,33 @@ const new_model = () => {
           {{issues}}
         </template>
       </Card>
-      <Card v-if="loading">
+      <Card v-if="loading" style="width: fit-content">
         <template #content>
           <ProgressSpinner/>
         </template>
       </Card>
       <div v-else>
-        <Card v-if="state === 'viewing_opponent_offer'">
+        <Card v-if="state === 'viewing_opponent_offer'" style="width: fit-content">
           <template #title>Newest opponent offer</template>
           <template #content>
-            Offer: {{current_opponent_offer}}
+            <div v-for="(issue, index) in issues">
+              <label>Issue {{index}}</label>
+              <SelectButton v-model="current_opponent_offer[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"/>
+            </div>
           </template>
           <template #footer>
-            <Button label="Accept" @click="accept"/>
-            <Button label="Reject" @click="reject"/>
-            <Button label="Write Counteroffer" @click="write_counteroffer"/>
+            <div class="button-row">
+              <Button label="Accept" @click="accept"/>
+              <Button label="Reject" @click="reject"/>
+              <Button label="Write Counteroffer" @click="write_counteroffer"/>
+            </div>
           </template>
         </Card>
-        <Card v-if="state === 'writing_new_offer'">
+        <Card v-if="state === 'writing_new_offer'" style="width: fit-content; margin-left: auto">
           <template #title>Write your offer</template>
           <template #content>
             <div v-for="(issue, index) in issues">
-              <p>Issue {{index}} with importance {{issue[0]}}</p>
+              <label>Issue {{index}} with importance {{issue[0]}}</label>
               <SelectButton v-model="current_offer_choices[index]" :options="issue_options" optionValue="val" optionLabel="label"/>
             </div>
           </template>
@@ -172,16 +194,23 @@ const new_model = () => {
           <template #title>Negotiation concluded</template>
           <template #content>End: {{conclusion}}</template>
           <template #footer>
-            <Button label="Restart" @click="restart"/>
-            <Button label="New model" @click="new_model"/>
+            <div class="button-row">
+              <Button label="Restart" @click="restart"/>
+              <Button label="New model" @click="new_model"/>
+            </div>
+
           </template>
         </Card>
       </div>
       <div>
-        <Card v-for="(offer, index) in offer_stack">
-          <template #title>Offer Nr. {{offer_stack.length - index}} (Author: {{offer.author}})</template>
+        <Card :style="'width: fit-content'+[offer.author === 'self' ? '; margin-left: auto' : '']" v-for="(offer, index) in offer_stack">
+          <template #title>Offer Nr. {{offer_stack.length - index}}</template>
+          <template #subtitle>coming from {{offer.author === 'self' ? 'yourself' : 'your opponent'}}</template>
           <template #content>
-            {{offer.values}}
+            <div v-for="(issue, index) in issues">
+              <label>Issue {{index}}</label>
+              <SelectButton v-model="offer.values[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"/>
+            </div>
           </template>
         </Card>
       </div>
