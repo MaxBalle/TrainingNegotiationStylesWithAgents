@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-
 import Negotiation from "@/components/Negotiation.vue";
+
 import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
 import Card from "primevue/card";
@@ -9,7 +9,7 @@ import Card from "primevue/card";
 const loading = ref(false);
 const choosing_model = ref(true);
 const model = ref('collaborating');
-const options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
+const tki_options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
 
 const negotiation_component = ref();
 
@@ -47,7 +47,7 @@ const choose_new_model = () => {
   <Card v-if="choosing_model">
     <template #title>Choose the TKI-style of your opponent</template>
     <template #content>
-      <SelectButton v-model="model" :options="options" aria-labelledby="basic" :allow-empty="false"/>
+      <SelectButton v-model="model" :options="tki_options" aria-labelledby="basic" :allow-empty="false"/>
     </template>
     <template #footer>
       <Button label="Start Negotiation" :loading="loading" @click="start_negotiation"/>

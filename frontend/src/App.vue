@@ -55,4 +55,8 @@ const dialog_visible = ref(false);
   margin-right: 1rem;
   cursor: pointer;
 }
+
+.p-menubar .router-link-exact-active {
+  color: var(--p-primary-color);
+}
 </style>

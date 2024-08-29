@@ -13,6 +13,10 @@
   --p-togglebutton-checked-color: var(--p-primary-contrast-color);
 }
 
+.p-togglebutton.p-togglebutton-checked {
+  --p-togglebutton-disabled-color: var(--p-primary-contrast-color);
+}
+
 .p-card {
   margin-top: 1rem;
 }
