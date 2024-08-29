@@ -76,6 +76,10 @@ const websocket_message_event_handler = (event) => {
       loading.value = false;
       conclude("opponent", "reject")
       break;
+    case "error":
+      console.log(message)
+      toast.add({severity: "error", summary: 'Websocket error', detail: 'Server send error: '+message.error, life: 3000 });
+      break;
   }
 }
 
@@ -188,7 +192,7 @@ defineExpose({
           </div>
         </template>
         <template #footer>
-          <Button label="Send offer" @click="send_offer"/>
+          <Button label="Send offer" @click="send_offer" :disabled="current_offer_choices.some((oc) => oc == null) || current_offer_choices.length !== issues.length"/>
         </template>
       </Card>
       <Card v-if="state === 'concluded'" :style="'width: fit-content'+[conclusion.ending_party === 'self' ? '; margin-left: auto' : '']">

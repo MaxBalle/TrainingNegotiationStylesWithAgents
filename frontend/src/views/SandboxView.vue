@@ -6,9 +6,11 @@ import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
 import Card from "primevue/card";
 
+defineEmits(['show-info-dialog']);
+
 const loading = ref(false);
 const choosing_model = ref(true);
-const model = ref('collaborating');
+const model = ref();
 const tki_options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
 
 const negotiation_component = ref();
@@ -47,10 +49,10 @@ const choose_new_model = () => {
   <Card v-if="choosing_model">
     <template #title>Choose the TKI-style of your opponent</template>
     <template #content>
-      <SelectButton v-model="model" :options="tki_options" aria-labelledby="basic" :allow-empty="false"/>
+      <SelectButton v-model="model" :options="tki_options" aria-labelledby="basic" />
     </template>
     <template #footer>
-      <Button label="Start Negotiation" :loading="loading" @click="start_negotiation"/>
+      <Button label="Start Negotiation" :loading="loading" @click="start_negotiation" :disabled="model == null"/>
     </template>
   </Card>
   <Card v-if="negotiation_complete">

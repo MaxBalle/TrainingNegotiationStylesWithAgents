@@ -6,6 +6,8 @@ import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
 import Card from "primevue/card";
 
+defineEmits(['show-info-dialog']);
+
 const loading = ref(false);
 const show_start_card = ref(true);
 const judgment = ref();
@@ -61,11 +63,11 @@ const restart_turing = () => {
     <Card v-if="!judgment_send">
       <template #title>Judgment</template>
       <template #content>
-        What do you think?
+        <p>What do you think?</p>
         <SelectButton v-model="judgment" :options="['Person', 'AI']" aria-labelledby="basic" :allow-empty="false"/>
       </template>
       <template #footer>
-        <Button label="Send" @click="send_judgment"/>
+        <Button label="Send" @click="send_judgment" :disabled="judgment == null"/>
       </template>
     </Card>
     <Card v-else>
