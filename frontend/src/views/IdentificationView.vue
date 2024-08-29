@@ -50,8 +50,8 @@ const restart_identification = () => {
   <Card v-if="show_start_card">
     <template #title>Can you identify what TKI-style you negotiate with?</template>
     <template #content>
-      For the research, please enter some information about yourself:
-      If this is your first negotiation, please check out the information before you get started.
+      <p>For the research, please enter some information about yourself:</p>
+      <p>If this is your first negotiation, please check out the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> before you get started.</p>
     </template>
     <template #footer>
       <Button label="Start Negotiation" :loading="loading" @click="start_negotiation"/>

@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import {ref} from "vue";
 import Menubar from 'primevue/menubar';
+import Dialog from 'primevue/dialog';
 
 const menu_items = ref([
   {
@@ -22,6 +23,9 @@ const menu_items = ref([
     route: '/turing'
   },
 ]);
+
+const dialog_visible = ref(false);
+
 </script>
 
 <template>
@@ -33,12 +37,22 @@ const menu_items = ref([
           <span class="ml-2">{{ item.label }}</span>
         </RouterLink>
       </template>
+      <template #end>
+        <i class="pi pi-info-circle menubar_clickable_icon" @click="dialog_visible = true"/>
+      </template>
     </Menubar>
   </header>
-
-  <RouterView />
+  <Dialog v-model:visible="dialog_visible" modal dismissableMask header="Negotiation Information" :style="{ width: '25rem' }">
+    <p>Explanatory text here.</p>
+  </Dialog>
+  <RouterView
+      @show-info-dialog="dialog_visible = true"
+  />
 </template>
 
 <style scoped>
-
+.menubar_clickable_icon {
+  margin-right: 1rem;
+  cursor: pointer;
+}
 </style>

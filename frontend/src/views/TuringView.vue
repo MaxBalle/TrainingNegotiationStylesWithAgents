@@ -50,7 +50,7 @@ const restart_turing = () => {
     <template #subtitle>Can you tell if you negotiate against a person or an AI-model?</template>
     <template #content>
       <p>For the research, please enter some information about yourself:</p>
-      <p>If this is your first negotiation, please check out the information before you get started.</p>
+      <p>If this is your first negotiation, please check out the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> before you get started.</p>
       <p>You may have to wait until someone else joins the Test</p>
     </template>
     <template #footer>
