@@ -24,3 +24,10 @@ class Scenario:
         self.issue_shape = issue_shape
         self.a = a
         self.b = b
+
+    def get_perspective(self, role):
+        if role == 'a':
+            return self.a
+        elif role == 'b':
+            return self.b
+        return None
