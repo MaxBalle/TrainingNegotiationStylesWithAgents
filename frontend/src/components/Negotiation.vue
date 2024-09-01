@@ -1,10 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import {computed, ref} from 'vue';
 
 import Card from 'primevue/card';
 import SelectButton from 'primevue/selectbutton';
 import Button from 'primevue/button';
 import ProgressSpinner from 'primevue/progressspinner';
+import Knob from 'primevue/knob';
 
 import { useToast } from "primevue/usetoast";
 import Toast from 'primevue/toast';
@@ -28,8 +29,23 @@ const issue_options = ref([
 ])
 
 const issues = ref();
+const calcUtility = (choices) => {
+  if (typeof choices == 'undefined') {
+    return 0;
+  }
+  let total = 0;
+  for (let i = 0; i < choices.length; i++) {
+    if (choices[i] != null) {
+      total += issues.value[i][0] * issues.value[i][1][choices[i]];
+    }
+  }
+  return total;
+}
+
 const current_offer_choices = ref([null, null, null, null, null])
+const current_offer_utility = computed(() => calcUtility(current_offer_choices.value))
 const current_opponent_offer = ref()
+const current_opponent_offer_utility = ref()
 const offer_stack = ref([])
 const conclusion = ref()
 
@@ -67,7 +83,8 @@ const websocket_message_event_handler = (event) => {
       emit('negotiation-start');
       break;
     case "offer":
-      current_opponent_offer.value = message.values
+      current_opponent_offer.value = message.values;
+      current_opponent_offer_utility.value = calcUtility(current_opponent_offer.value);
       loading.value = false;
       state.value = "viewing_opponent_offer";
       break;
@@ -90,7 +107,8 @@ const send_offer = () => {
   }));
   offer_stack.value.unshift({
     author: "self",
-    values: current_offer_choices.value
+    values: current_offer_choices.value,
+    utility: calcUtility(current_offer_choices.value)
   });
   current_offer_choices.value = [null, null, null, null, null];
 }
@@ -98,9 +116,11 @@ const send_offer = () => {
 const write_counteroffer = () => {
   offer_stack.value.unshift({
     author: "opponent",
-    values: current_opponent_offer.value
+    values: current_opponent_offer.value,
+    utility: current_opponent_offer_utility.value
   });
   current_opponent_offer.value = null;
+  current_opponent_offer_utility.value = null;
   state.value = "writing_new_offer";
 }
 
@@ -112,7 +132,8 @@ const conclude = (author, outcome) => {
   if(author === "self") {
     offer_stack.value.unshift({
       author: "opponent",
-      values: current_opponent_offer.value
+      values: current_opponent_offer.value,
+      utility: current_opponent_offer_utility.value
     });
     websocket.send(JSON.stringify({
       message_type: "end",
@@ -136,6 +157,7 @@ const close = () => {
   issues.value = null;
   current_offer_choices.value = [null, null, null, null, null];
   current_opponent_offer.value = null;
+  current_opponent_offer_utility.value = null;
   offer_stack.value = [];
   conclusion.value = null;
   websocket.close();
@@ -148,6 +170,8 @@ defineExpose({
   close,
   send_judgment
 });
+
+const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
 
 </script>
 
@@ -167,9 +191,14 @@ defineExpose({
     </Card>
     <div v-else>
       <Card v-if="state === 'viewing_opponent_offer'" style="width: fit-content">
-        <template #title>Newest opponent offer</template>
+        <template #title>
+          <div>
+            <p>Newest opponent offer</p>
+            <Knob v-model="current_opponent_offer_utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text"/>
+          </div>
+        </template>
         <template #content>
-          <div v-for="(issue, index) in issues">
+          <div class="issue_row" v-for="(issue, index) in issues">
             <label>Issue {{index}}</label>
             <SelectButton v-model="current_opponent_offer[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"/>
           </div>
@@ -183,11 +212,17 @@ defineExpose({
         </template>
       </Card>
       <Card v-if="state === 'writing_new_offer'" style="width: fit-content; margin-left: auto">
-        <template #title>Write your offer</template>
+        <template #title>
+          <div>
+            <p>Write your offer</p>
+            <Knob v-model="current_offer_utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text" />
+          </div>
+        </template>
         <template #content>
-          <div v-for="(issue, index) in issues">
+          <div class="issue_row" v-for="(issue, index) in issues">
             <label>Issue {{index}} with importance {{issue[0]}}</label>
             <SelectButton v-model="current_offer_choices[index]" :options="issue_options" optionValue="val" optionLabel="label"/>
+            <Knob v-model="issue[1][current_offer_choices[index]]" :max="1" readonly :size="50" :valueTemplate="format_knob_text"/>
           </div>
         </template>
         <template #footer>
@@ -201,10 +236,15 @@ defineExpose({
     </div>
     <div>
       <Card :style="'width: fit-content'+[offer.author === 'self' ? '; margin-left: auto' : '']" v-for="(offer, index) in offer_stack">
-        <template #title>Offer Nr. {{offer_stack.length - index}}</template>
+        <template #title>
+          <div>
+            <p>Offer Nr. {{offer_stack.length - index}}</p>
+            <Knob v-model="offer.utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text" />
+          </div>
+        </template>
         <template #subtitle>coming from {{offer.author === 'self' ? 'yourself' : 'your opponent'}}</template>
         <template #content>
-          <div v-for="(issue, index) in issues">
+          <div class="issue_row" v-for="(issue, index) in issues">
             <label>Issue {{index}}</label>
             <SelectButton v-model="offer.values[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"/>
           </div>
@@ -215,5 +255,27 @@ defineExpose({
 </template>
 
 <style scoped>
+
+.issue_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.issue_row label {
+  flex-grow: 1;
+}
+
+.p-card-title div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.p-card-title p {
+  font-weight: var(--p-card-title-font-weight);
+}
 
 </style>
