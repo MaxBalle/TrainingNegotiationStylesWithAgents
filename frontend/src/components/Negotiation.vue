@@ -1,6 +1,8 @@
 <script setup>
 import {computed, ref} from 'vue';
 
+import UtilityInformation from "@/components/UtilityInformation.vue";
+
 import Card from 'primevue/card';
 import SelectButton from 'primevue/selectbutton';
 import Button from 'primevue/button';
@@ -50,6 +52,8 @@ const offer_stack = ref([])
 const conclusion = ref()
 
 const visible = ref(false);
+
+const utilityInformationComponent = ref();
 
 const start = (model) => {
   state.value = "init";
@@ -161,6 +165,7 @@ const close = () => {
   offer_stack.value = [];
   conclusion.value = null;
   websocket.close();
+  utilityInformationComponent.value.showDetails = true;
 }
 
 defineExpose({
@@ -178,12 +183,7 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
 <template>
   <div v-if="visible">
     <Toast/>
-    <Card>
-      <template #title>Utility information</template>
-      <template #content>
-        {{issues}}
-      </template>
-    </Card>
+    <UtilityInformation ref="utilityInformationComponent" :issues="issues"/>
     <Card v-if="loading" style="width: fit-content">
       <template #content>
         <ProgressSpinner/>
