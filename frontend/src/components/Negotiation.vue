@@ -55,12 +55,15 @@ const start = (model) => {
 };
 
 const websocket_message_event_handler = (event) => {
-  const message = JSON.parse(event.data)
+  const message = JSON.parse(event.data);
+  console.log(message);
   switch (message.message_type) {
-    case "perspective":
+    case "init":
       issues.value = message.issues;
-      loading.value = false;
-      state.value = "writing_new_offer";
+      if (message.start) {
+        loading.value = false;
+        state.value = "writing_new_offer";
+      }
       emit('negotiation-start');
       break;
     case "offer":
@@ -68,13 +71,9 @@ const websocket_message_event_handler = (event) => {
       loading.value = false;
       state.value = "viewing_opponent_offer";
       break;
-    case "accept":
+    case "end":
       loading.value = false;
-      conclude("opponent", "accept")
-      break;
-    case "reject":
-      loading.value = false;
-      conclude("opponent", "reject")
+      conclude("opponent", message.outcome)
       break;
     case "error":
       console.log(message)

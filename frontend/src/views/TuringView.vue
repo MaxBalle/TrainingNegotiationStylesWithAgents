@@ -29,6 +29,7 @@ const negotiation_start = () => {
 }
 
 const negotiation_end = () => {
+  judgment_send.value = false;
   negotiation_complete.value = true;
 }
 
@@ -37,6 +38,7 @@ const send_judgment = () => {
   negotiation_component.value.close();
   negotiation_component.value.visible = false;
   judgment_send.value = true;
+  judgment.value = null;
 }
 
 const restart_turing = () => {
