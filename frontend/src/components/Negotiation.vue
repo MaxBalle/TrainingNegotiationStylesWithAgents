@@ -44,6 +44,10 @@ const calcUtility = (choices) => {
   return total;
 }
 
+const timeout = ref()
+const counter = ref()
+let interval
+
 const current_offer_choices = ref([null, null, null, null, null])
 const current_offer_utility = computed(() => calcUtility(current_offer_choices.value))
 const current_opponent_offer = ref()
@@ -72,6 +76,7 @@ const start = (model) => {
     toast.add({severity: "error", summary: 'Websocket error', detail: 'Problem with the connection to server for hosting the negotiations and models', life: 3000 })
     loading.value = false;
   }
+  counter.value = null;
 };
 
 const websocket_message_event_handler = (event) => {
@@ -84,6 +89,7 @@ const websocket_message_event_handler = (event) => {
         loading.value = false;
         state.value = "writing_new_offer";
       }
+      timeout.value = message.timeout;
       emit('negotiation-start');
       break;
     case "offer":
@@ -91,6 +97,16 @@ const websocket_message_event_handler = (event) => {
       current_opponent_offer_utility.value = calcUtility(current_opponent_offer.value);
       loading.value = false;
       state.value = "viewing_opponent_offer";
+      counter.value = timeout.value;
+      if (timeout.value != null) {
+        interval = setInterval(() => {
+          counter.value--;
+          if (counter.value === 0) {
+            counter.value = null;
+            conclude("self", "accept");
+          }
+        }, 1000);
+      }
       break;
     case "end":
       loading.value = false;
@@ -104,6 +120,7 @@ const websocket_message_event_handler = (event) => {
 }
 
 const send_offer = () => {
+  clearInterval(interval);
   loading.value = true;
   websocket.send(JSON.stringify({
     message_type: "offer",
@@ -129,6 +146,7 @@ const write_counteroffer = () => {
 }
 
 const conclude = (author, outcome) => {
+  clearInterval(interval);
   conclusion.value = {
     outcome: outcome,
     ending_party: author
@@ -210,6 +228,10 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
             <Button label="Reject" @click="conclude('self','reject')"/>
             <Button label="Write Counteroffer" @click="write_counteroffer"/>
           </div>
+          <div v-if="counter != null" style="display: flex; flex-direction: row; align-items: center; gap: 10px; margin-top: 10px">
+            <label>Time left:</label>
+            <Knob v-model="counter" :max="timeout" :size="50" v-tooltip="'You have to send your offer in this time or i will end automatically'"/>
+          </div>
         </template>
       </Card>
       <Card v-if="state === 'writing_new_offer'" style="width: fit-content; margin-left: auto">
@@ -227,7 +249,13 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
           </div>
         </template>
         <template #footer>
-          <Button label="Send offer" @click="send_offer" :disabled="current_offer_choices.some((oc) => oc == null) || current_offer_choices.length !== issues.length"/>
+          <div style="display: flex; flex-direction: row; align-items: center; gap: 20px">
+            <Button label="Send offer" @click="send_offer" :disabled="current_offer_choices.some((oc) => oc == null) || current_offer_choices.length !== issues.length"/>
+            <div v-if="counter != null" style="display: flex; flex-direction: row; align-items: center; gap: 10px">
+              <label>Time left:</label>
+              <Knob v-model="counter" :max="timeout" :size="50" v-tooltip="'You have to send your offer in this time or i will end automatically'"/>
+            </div>
+          </div>
         </template>
       </Card>
       <Card v-if="state === 'concluded'" :style="'width: fit-content'+[conclusion.ending_party === 'self' ? '; margin-left: auto' : '']">
