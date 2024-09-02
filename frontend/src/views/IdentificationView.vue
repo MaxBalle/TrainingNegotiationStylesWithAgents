@@ -31,6 +31,7 @@ const negotiation_start = () => {
 
 const negotiation_end = () => {
   negotiation_complete.value = true;
+  judgment_send.value = false;
 }
 
 const send_judgment = () => {
@@ -38,6 +39,7 @@ const send_judgment = () => {
   negotiation_component.value.close();
   negotiation_component.value.visible = false;
   judgment_send.value = true;
+  judgment.value = null;
 }
 
 const restart_identification = () => {
