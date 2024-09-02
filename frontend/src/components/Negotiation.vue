@@ -194,13 +194,14 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
         <template #title>
           <div>
             <p>Newest opponent offer</p>
-            <Knob v-model="current_opponent_offer_utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text"/>
+            <Knob v-model="current_opponent_offer_utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text" v-tooltip="'This offers utility to you'"/>
           </div>
         </template>
         <template #content>
           <div class="issue_row" v-for="(issue, index) in issues">
             <label>Issue {{index}}</label>
-            <SelectButton v-model="current_opponent_offer[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"/>
+            <SelectButton v-model="current_opponent_offer[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"
+                          v-tooltip="'Your preference for ' + issue_options[current_opponent_offer[index]].label + ' is ' + issue[1][current_opponent_offer[index]]"/>
           </div>
         </template>
         <template #footer>
@@ -215,14 +216,14 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
         <template #title>
           <div>
             <p>Write your offer</p>
-            <Knob v-model="current_offer_utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text" />
+            <Knob v-model="current_offer_utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text" v-tooltip="'The total utility of the offer'"/>
           </div>
         </template>
         <template #content>
           <div class="issue_row" v-for="(issue, index) in issues">
             <label>Issue {{index}} with importance {{issue[0]}}</label>
             <SelectButton v-model="current_offer_choices[index]" :options="issue_options" optionValue="val" optionLabel="label"/>
-            <Knob v-model="issue[1][current_offer_choices[index]]" :max="1" readonly :size="50" :valueTemplate="format_knob_text"/>
+            <Knob v-model="issue[1][current_offer_choices[index]]" :max="1" readonly :size="50" :valueTemplate="format_knob_text" v-tooltip="'Your preference for the chosen value'"/>
           </div>
         </template>
         <template #footer>
@@ -239,14 +240,16 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
         <template #title>
           <div>
             <p>Offer Nr. {{offer_stack.length - index}}</p>
-            <Knob v-model="offer.utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text" />
+            <Knob v-model="offer.utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text"
+                  v-tooltip="'This offers utility to you'"/>
           </div>
         </template>
         <template #subtitle>coming from {{offer.author === 'self' ? 'yourself' : 'your opponent'}}</template>
         <template #content>
           <div class="issue_row" v-for="(issue, index) in issues">
             <label>Issue {{index}}</label>
-            <SelectButton v-model="offer.values[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"/>
+            <SelectButton v-model="offer.values[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"
+                          v-tooltip="'Your preference for ' + issue_options[offer.values[index]].label + ' is ' + issue[1][offer.values[index]]"/>
           </div>
         </template>
       </Card>
