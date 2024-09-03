@@ -183,9 +183,17 @@ async def handler(websocket):
             judgment_message = json.loads(judgment_message_json)
             judgment = judgment_message["judgment"]
             print(f"Client judged model as {judgment}, truth is {model_name}")
+            await websocket.send(json.dumps({
+                "message_type": "disclosure",
+                "model": model_name
+            }))
         elif mode == "turing":
             opponent_type, judgment = await handle_turing(websocket)
             print(f"Client judged model as {judgment}, truth is {opponent_type}")
+            await websocket.send(json.dumps({
+                "message_type": "disclosure",
+                "opponent": opponent_type
+            }))
         else:
             await websocket.send(json.dumps({
                 "message_type": "error",
