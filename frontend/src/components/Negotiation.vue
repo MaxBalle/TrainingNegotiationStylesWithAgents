@@ -59,7 +59,7 @@ const visible = ref(false);
 
 const utilityInformationComponent = ref();
 
-const start = (model) => {
+const start = (model, survey_data) => {
   state.value = "init";
   loading.value = true;
   websocket = new WebSocket(url);
@@ -68,7 +68,8 @@ const start = (model) => {
     websocket.send(JSON.stringify({
       message_type: "init",
       mode: props.mode,
-      model: model
+      model: model,
+      personal_information: survey_data
     }));
   }
   websocket.onerror = (error) => {

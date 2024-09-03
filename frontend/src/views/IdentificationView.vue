@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from 'vue';
+import {ref} from 'vue';
 import Negotiation from "@/components/Negotiation.vue";
+import Survey from "@/components/Survey.vue";
 
 import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
@@ -10,6 +11,7 @@ defineEmits(['show-info-dialog']);
 
 const loading = ref(false);
 const show_start_card = ref(true);
+const survey = ref()
 const tki_options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
 const judgment = ref();
 const judgment_send = ref(false);
@@ -20,7 +22,7 @@ const negotiation_complete = ref(false);
 
 const start_negotiation = () => {
   loading.value = true;
-  negotiation_component.value.start("random");
+  negotiation_component.value.start("random", survey.value.data);
 }
 
 const negotiation_start = () => {
@@ -55,10 +57,11 @@ const restart_identification = () => {
     <template #title>Can you identify what TKI-style you negotiate with?</template>
     <template #content>
       <p>For the research, please enter some information about yourself:</p>
+      <Survey ref="survey"/>
       <p>If this is your first negotiation, please check out the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> before you get started.</p>
     </template>
     <template #footer>
-      <Button label="Start Negotiation" :loading="loading" @click="start_negotiation"/>
+      <Button label="Start Negotiation" :loading="loading" @click="start_negotiation" :disabled="survey == null ? true : (Object.values(survey.data).includes(null) || Object.values(survey.data).includes(''))"/>
     </template>
   </Card>
   <div v-if="negotiation_complete">
