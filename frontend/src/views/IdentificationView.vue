@@ -49,7 +49,6 @@ const restart_identification = () => {
 }
 
 const handle_disclosure = (truth) => {
-  console.log(truth)
   negotiation_component.value.close();
   negotiation_component.value.visible = false;
   judgment_send.value = true;

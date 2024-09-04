@@ -82,7 +82,6 @@ const start = (model, survey_data) => {
 
 const websocket_message_event_handler = (event) => {
   const message = JSON.parse(event.data);
-  console.log(message);
   switch (message.message_type) {
     case "init":
       issues.value = message.issues;
@@ -120,7 +119,7 @@ const websocket_message_event_handler = (event) => {
       emit('disclosure', message.opponent);
       break;
     case "error":
-      console.log(message)
+      console.log(message);
       toast.add({severity: "error", summary: 'Websocket error', detail: 'Server send error: '+message.error, life: 3000 });
       break;
   }
