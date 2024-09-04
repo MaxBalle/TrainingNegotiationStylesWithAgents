@@ -14,7 +14,7 @@ import Toast from 'primevue/toast';
 const toast = useToast();
 
 const props = defineProps(["mode"]);
-const emit = defineEmits(['negotiation-start','negotiation-end']);
+const emit = defineEmits(['negotiation-start','negotiation-end','disclosure']);
 
 const state = ref('init');
 const loading = ref(false);
@@ -112,6 +112,9 @@ const websocket_message_event_handler = (event) => {
     case "end":
       loading.value = false;
       conclude("opponent", message.outcome)
+      break;
+    case "disclosure":
+      emit('disclosure', message.opponent);
       break;
     case "error":
       console.log(message)

@@ -15,6 +15,7 @@ const survey = ref()
 const tki_options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
 const judgment = ref();
 const judgment_send = ref(false);
+const disclosure = ref();
 
 const negotiation_component = ref();
 
@@ -38,22 +39,27 @@ const negotiation_end = () => {
 
 const send_judgment = () => {
   negotiation_component.value.send_judgment(judgment.value);
-  negotiation_component.value.close();
-  negotiation_component.value.visible = false;
-  judgment_send.value = true;
-  judgment.value = null;
 }
 
 const restart_identification = () => {
   negotiation_complete.value = false;
   loading.value = true;
-  negotiation_component.value.start("random");
+  negotiation_component.value.start("random", survey.value.data);
+  judgment.value = null;
+}
+
+const handle_disclosure = (truth) => {
+  console.log(truth)
+  negotiation_component.value.close();
+  negotiation_component.value.visible = false;
+  judgment_send.value = true;
+  disclosure.value = truth;
 }
 
 </script>
 
 <template>
-  <Card v-if="show_start_card">
+  <Card v-show="show_start_card">
     <template #title>Can you identify what TKI-style you negotiate with?</template>
     <template #content>
       <p>For the research, please enter some information about yourself:</p>
@@ -76,7 +82,12 @@ const restart_identification = () => {
       </template>
     </Card>
     <Card v-else>
-      <template #title>Options</template>
+      <template #title>Conclusion</template>
+      <template #content>
+        <p v-if="disclosure === judgment">You identified the opponent model correctly as {{disclosure}}!</p>
+        <p v-else>Your judgment of {{judgment}} was incorrect, you negotiated against the {{disclosure}} model.</p>
+        <p style="margin-top: 1rem">Feel free to negotiate another round:</p>
+      </template>
       <template #footer>
         <div class="button-row">
           <Button label="Restart" @click="restart_identification"/>
@@ -84,7 +95,8 @@ const restart_identification = () => {
       </template>
     </Card>
   </div>
-  <Negotiation ref="negotiation_component" mode="identification" @negotiation-start="negotiation_start" @negotiation-end="negotiation_end"/>
+  <Negotiation ref="negotiation_component" mode="identification"
+               @negotiation-start="negotiation_start" @negotiation-end="negotiation_end" @disclosure="handle_disclosure"/>
 </template>
 
 <style scoped>
