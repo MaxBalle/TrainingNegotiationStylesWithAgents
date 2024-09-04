@@ -72,3 +72,6 @@ def build_negotiation_scenario(issues: list[int], logging=False, plotting=False)
     while not discreteEvaluator.evaluate(negotiation, logging=logging, plotting=plotting):
         negotiation = build_raw_negotiation_scenario(issues)
     return negotiation
+
+if __name__ == '__main__':
+    build_negotiation_scenario([5,5,5,5,5], logging=True, plotting=True)
