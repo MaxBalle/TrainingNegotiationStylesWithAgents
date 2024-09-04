@@ -73,8 +73,12 @@ const handle_disclosure = (truth) => {
     <Card v-if="!judgment_send">
       <template #title>Judgment</template>
       <template #content>
-        <p>What do you think was the TKI of you opponent?</p>
-        <SelectButton v-model="judgment" :options="tki_options" aria-labelledby="basic" :allow-empty="false"/>
+        <div class="paragraph-group">
+          <p>What do you think was the negotiation style of your opponent?</p>
+          <p>If you are uncertain, comparing the behaviour of the model to the descriptions in the <a @click="$emit('show-info-dialog')" style="cursor: pointer">information</a> might help.</p>
+          <p>Please choose carefully, this is the most important step for the research!</p>
+        </div>
+        <SelectButton v-model="judgment" :options="tki_options" aria-labelledby="basic" :allow-empty="false" style="margin-top: 1rem"/>
       </template>
       <template #footer>
         <Button label="Send" @click="send_judgment" :disabled="judgment == null"/>

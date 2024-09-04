@@ -4,6 +4,8 @@ import {ref} from "vue";
 import Menubar from 'primevue/menubar';
 import Dialog from 'primevue/dialog';
 
+import Explanation from "@/components/Explanation.vue";
+
 const menu_items = ref([
   {
     label: 'Home',
@@ -42,8 +44,8 @@ const dialog_visible = ref(false);
       </template>
     </Menubar>
   </header>
-  <Dialog v-model:visible="dialog_visible" modal dismissableMask header="Negotiation Information" :style="{ width: '25rem' }">
-    <p>Explanatory text here.</p>
+  <Dialog v-model:visible="dialog_visible" modal dismissableMask header="Information" style="width: 960px" maximizable>
+    <Explanation/>
   </Dialog>
   <RouterView
       @show-info-dialog="dialog_visible = true"

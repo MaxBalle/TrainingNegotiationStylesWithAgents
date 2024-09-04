@@ -24,3 +24,7 @@
 .button-row > *:not(:last-child) {
   margin-right: 0.5rem;
 }
+
+.paragraph-group p + p {
+  margin-top: 1rem;
+}
