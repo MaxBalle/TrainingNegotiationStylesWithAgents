@@ -6,6 +6,7 @@ import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
 import Card from "primevue/card";
 import Survey from "@/components/Survey.vue";
+import ProgressSpinner from "primevue/progressspinner";
 
 defineEmits(['show-info-dialog']);
 
@@ -13,7 +14,7 @@ const loading = ref(false);
 const show_start_card = ref(true);
 const survey = ref();
 const judgment = ref();
-const judgment_send = ref(false);
+const judgment_visible = ref(true);
 
 const negotiation_component = ref();
 
@@ -31,27 +32,31 @@ const negotiation_start = () => {
 }
 
 const negotiation_end = () => {
-  judgment_send.value = false;
+  judgment_visible.value = true;
   negotiation_complete.value = true;
 }
 
 const send_judgment = () => {
   negotiation_component.value.send_judgment(judgment.value);
-  negotiation_component.value.close();
-  negotiation_component.value.visible = false;
-  judgment_send.value = true;
-  judgment.value = null;
 }
 
 const restart_turing = () => {
   negotiation_complete.value = false;
   loading.value = true;
-  negotiation_component.value.start("random");
+  negotiation_component.value.start("random", survey.value.data);
+  judgment.value = null;
 }
+
+const handle_disclosure = (truth) => {
+  negotiation_component.value.close();
+  negotiation_component.value.visible = false;
+  judgment_visible.value = false;
+}
+
 </script>
 
 <template>
-  <Card v-if="show_start_card">
+  <Card v-show="show_start_card">
     <template #title>Turing-Test</template>
     <template #subtitle>Can you tell if you negotiate against a person or an AI-model?</template>
     <template #content>
@@ -65,11 +70,14 @@ const restart_turing = () => {
     </template>
   </Card>
   <div v-if="negotiation_complete">
-    <Card v-if="!judgment_send">
+    <Card v-if="judgment_visible">
       <template #title>Judgment</template>
       <template #content>
-        <p>What do you think?</p>
-        <SelectButton v-model="judgment" :options="['Person', 'AI']" aria-labelledby="basic" :allow-empty="false"/>
+        <div class="paragraph-group">
+          <p>What kind of negotiation partner do you think was on the other end?</p>
+          <p>Please choose carefully, this is the most important step for the research!</p>
+        </div>
+        <SelectButton v-model="judgment" :options="['Person', 'AI']" aria-labelledby="basic" :allow-empty="false" style="margin-top: 1rem"/>
       </template>
       <template #footer>
         <Button label="Send" @click="send_judgment" :disabled="judgment == null"/>
@@ -84,7 +92,13 @@ const restart_turing = () => {
       </template>
     </Card>
   </div>
-  <Negotiation ref="negotiation_component" mode="turing" @negotiation-start="negotiation_start" @negotiation-end="negotiation_end"/>
+  <Card v-if="loading && !show_start_card && !negotiation_complete" style="width: fit-content">
+    <template #content>
+      <ProgressSpinner/>
+    </template>
+  </Card>
+  <Negotiation ref="negotiation_component" mode="turing"
+               @negotiation-start="negotiation_start" @negotiation-end="negotiation_end" @disclosure="handle_disclosure"/>
 </template>
 
 <style scoped>

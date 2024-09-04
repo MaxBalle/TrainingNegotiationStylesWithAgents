@@ -91,6 +91,9 @@ const websocket_message_event_handler = (event) => {
         state.value = "writing_new_offer";
       }
       timeout.value = message.timeout;
+      websocket.send(JSON.stringify({
+        message_type: "init_ack"
+      }))
       emit('negotiation-start');
       break;
     case "offer":
