@@ -22,12 +22,13 @@ const loading = ref(false);
 const url = "ws://localhost:8001/"
 let websocket;
 
+const issue_names = ref(['Price', 'Open at', 'Open for', 'Tables', 'Team size'])
 const issue_options = ref([
-  {val: 0, label: 'A'},
-  {val: 1, label: 'B'},
-  {val: 2, label: 'C'},
-  {val: 3, label: 'D'},
-  {val: 4, label: 'E'},
+  [{val: 0, label: '€'}, {val: 1, label: '€€'}, {val: 2, label: '€€€'}, {val: 3, label: '€€€€'}, {val: 4, label: '€€€€€'},],
+  [{val: 0, label: '9:00'}, {val: 1, label: '9:30'}, {val: 2, label: '10:00'}, {val: 3, label: '10:30'}, {val: 4, label: '11:00'},],
+  [{val: 0, label: '5h'}, {val: 1, label: '6h'}, {val: 2, label: '7h'}, {val: 3, label: '8h'}, {val: 4, label: '9h'},],
+  [{val: 0, label: '8'}, {val: 1, label: '9'}, {val: 2, label: '10'}, {val: 3, label: '11'}, {val: 4, label: '12'},],
+  [{val: 0, label: '2'}, {val: 1, label: '3'}, {val: 2, label: '4'}, {val: 3, label: '5'}, {val: 4, label: '6'},],
 ])
 
 const issues = ref();
@@ -200,14 +201,14 @@ defineExpose({
   send_judgment
 });
 
-const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
+const float_to_percent_string = (val) => {return Math.round(val * 100) + '%'}
 
 </script>
 
 <template>
   <div v-if="visible">
     <Toast/>
-    <UtilityInformation ref="utilityInformationComponent" :issues="issues"/>
+    <UtilityInformation ref="utilityInformationComponent" :issues="issues" :issue_names="issue_names" :issue_options="issue_options"/>
     <Card v-if="loading" style="width: fit-content">
       <template #content>
         <ProgressSpinner/>
@@ -218,14 +219,14 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
         <template #title>
           <div>
             <p>Newest opponent offer</p>
-            <Knob v-model="current_opponent_offer_utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text" v-tooltip="'This offers utility to you'"/>
+            <Knob v-model="current_opponent_offer_utility" :max="1" readonly :size="50" :valueTemplate="float_to_percent_string" v-tooltip="'This offers utility to you'"/>
           </div>
         </template>
         <template #content>
           <div class="issue_row" v-for="(issue, index) in issues">
-            <label>Issue {{index}}</label>
-            <SelectButton v-model="current_opponent_offer[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"
-                          v-tooltip="'Your preference for ' + issue_options[current_opponent_offer[index]].label + ' is ' + issue[1][current_opponent_offer[index]]"/>
+            <label v-tooltip.left="'Importance to you '+float_to_percent_string(issue[0])">{{issue_names[index]}}</label>
+            <SelectButton v-model="current_opponent_offer[index]" :options="issue_options[index]" optionValue="val" optionLabel="label" :disabled="true"
+                          v-tooltip="'Your preference for ' + issue_options[index][current_opponent_offer[index]].label + ' is ' + issue[1][current_opponent_offer[index]]"/>
           </div>
         </template>
         <template #footer>
@@ -244,14 +245,14 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
         <template #title>
           <div>
             <p>Write your offer</p>
-            <Knob v-model="current_offer_utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text" v-tooltip="'The total utility of the offer'"/>
+            <Knob v-model="current_offer_utility" :max="1" readonly :size="50" :valueTemplate="float_to_percent_string" v-tooltip="'The total utility of the offer'"/>
           </div>
         </template>
         <template #content>
           <div class="issue_row" v-for="(issue, index) in issues">
-            <label>Issue {{index}} with importance {{issue[0]}}</label>
-            <SelectButton v-model="current_offer_choices[index]" :options="issue_options" optionValue="val" optionLabel="label"/>
-            <Knob v-model="issue[1][current_offer_choices[index]]" :max="1" readonly :size="50" :valueTemplate="format_knob_text" v-tooltip="'Your preference for the chosen value'"/>
+            <label v-tooltip.left="'Importance to you '+float_to_percent_string(issue[0])">{{issue_names[index]}}</label>
+            <SelectButton v-model="current_offer_choices[index]" :options="issue_options[index]" optionValue="val" optionLabel="label"/>
+            <Knob v-model="issue[1][current_offer_choices[index]]" :max="1" readonly :size="50" :valueTemplate="float_to_percent_string" v-tooltip="'Your preference for the chosen value'"/>
           </div>
         </template>
         <template #footer>
@@ -274,16 +275,16 @@ const format_knob_text = (val) => {return Math.round(val * 100) + '%'}
         <template #title>
           <div>
             <p>Offer Nr. {{offer_stack.length - index}}</p>
-            <Knob v-model="offer.utility" :max="1" readonly :size="50" :valueTemplate="format_knob_text"
+            <Knob v-model="offer.utility" :max="1" readonly :size="50" :valueTemplate="float_to_percent_string"
                   v-tooltip="'This offers utility to you'"/>
           </div>
         </template>
         <template #subtitle>coming from {{offer.author === 'self' ? 'yourself' : 'your opponent'}}</template>
         <template #content>
           <div class="issue_row" v-for="(issue, index) in issues">
-            <label>Issue {{index}}</label>
-            <SelectButton v-model="offer.values[index]" :options="issue_options" optionValue="val" optionLabel="label" :disabled="true"
-                          v-tooltip="'Your preference for ' + issue_options[offer.values[index]].label + ' is ' + issue[1][offer.values[index]]"/>
+            <label v-tooltip.left="'Importance to you '+float_to_percent_string(issue[0])">{{issue_names[index]}}</label>
+            <SelectButton v-model="offer.values[index]" :options="issue_options[index]" optionValue="val" optionLabel="label" :disabled="true"
+                          v-tooltip="'Your preference for ' + issue_options[index][offer.values[index]].label + ' is ' + issue[1][offer.values[index]]"/>
           </div>
         </template>
       </Card>
