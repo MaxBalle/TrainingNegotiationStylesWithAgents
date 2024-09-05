@@ -1,12 +1,15 @@
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "1"
+
 from negotiationGenerator.scenario import Scenario
 from negotiationGenerator.discreteGenerator import build_negotiation_scenario
 from agent import Agent
-from negotiation import negotiate
+from negotiation import simulate_negotiations
 import fitness
 
 import random
 import time
-from multiprocessing import Pool
+import csv
 
 from keras.src.models.cloning import clone_model
 import tensorflow as tf
@@ -14,14 +17,14 @@ from keras import layers, Sequential
 import numpy as np
 
 issues = [5, 5, 5, 5, 5]
-time_cap = 100 #Max number of send messages / moment of timeout
-max_generation = 10 #Number of generations to simulate / last generation
+max_generation = 1 #Number of generations to simulate / last generation
 population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
 mutation_stddev = 0.03
 
-def init_population(size: int, fitness_function) -> list[Agent]:
+#Initializes the populations with random weights
+def init_population(size: int, fitness_function, style) -> list[Agent]:
     population: list[Agent] = []
     for x in range(size):
         model = Sequential()
@@ -29,22 +32,15 @@ def init_population(size: int, fitness_function) -> list[Agent]:
         model.add(layers.GRU(50, name='Recurrent Middle', stateful=True))
         model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
         model.build(input_shape=(1, 1, 50))
-        population.append(Agent(model, fitness_function))
+        population.append(Agent(model, fitness_function, style))
     return population
 
-def cross_negotiate(agent_1: Agent, agent_2: Agent, negotiation_scenario: Scenario):
-    #Negotiate in both constellations to decrease influence of unfair negotiations
-    outcome_1_2 = negotiate(agent_1, agent_2, negotiation_scenario, time_cap)
-    outcome_2_1 = negotiate(agent_2, agent_1, negotiation_scenario, time_cap)
-    fitness_1 = agent_1.fitness_function(outcome_1_2, negotiation_scenario.a) + agent_1.fitness_function(outcome_2_1, negotiation_scenario.b)
-    fitness_2 = agent_2.fitness_function(outcome_1_2, negotiation_scenario.a) + agent_2.fitness_function(outcome_2_1, negotiation_scenario.b)
-    return fitness_1, fitness_2
-
+#Returns two new agents that are children of the provided agents through recombination
 def reproduce(parent_1: Agent, parent_2: Agent) -> tuple[Agent, Agent]:
     genome_parent_1 = parent_1.model.get_weights()
     genome_parent_2 = parent_2.model.get_weights()
-    child_1 = Agent(clone_model(parent_1.model), parent_1.fitness_function)
-    child_2 = Agent(clone_model(parent_2.model), parent_2.fitness_function)
+    child_1 = Agent(clone_model(parent_1.model), parent_1.fitness_function, parent_1.style)
+    child_2 = Agent(clone_model(parent_2.model), parent_2.fitness_function, parent_2.style)
     genome_child_1 = []
     genome_child_2 = []
     for arr_1, arr_2 in zip(genome_parent_1, genome_parent_2):
@@ -71,49 +67,59 @@ def mutate(agent: Agent) -> Agent:
             weight.assign_add(tf.random.normal(tf.shape(weight), 0, mutation_stddev))
     return agent
 
-if __name__ == "__main__":
-    start_time = time.time()
-    populations = {
-        "accommodating": init_population(population_size, fitness.accommodating),
-        "collaborating": init_population(population_size, fitness.collaborating),
-        "compromising": init_population(population_size, fitness.compromising),
-        "avoiding": init_population(population_size, fitness.avoiding),
-        "competing": init_population(population_size, fitness.competing)
-    }
-    generation = 1
-    while generation <= max_generation:
-        generation_start_time = time.time()
-        print(f"\nGeneration {generation}")
-        scenario: Scenario = build_negotiation_scenario(issues)
-        print(f"Scenario:\nPerspective A:{scenario.a.get_issues()}\nPerspective B:{scenario.b.get_issues()}")
-        #Negotiation simulation
-        for population_name in populations:
-            random.shuffle(populations[population_name])
-        negotiations: list[tuple[Agent, Agent, Scenario]] = []
-        #Intra-style negotiations
-        for population_name in populations:
-            for i in range(0,population_size, 2):
-                negotiations.append((populations[population_name][i], populations[population_name][i+1], scenario))
-        #Inter-style negotiations
+def generate_csv_headers():
+    headers = ["Generation"]
+    for population_name in populations:
+        for population_name_2 in populations:
+            headers.append(f"Fitness_{population_name}_vs_{population_name_2}")
+    for stat in ["Accepts", "Rejects", "Time"]:
         for population_name in populations:
             active = False
             for population_name_2 in populations:
-                if active:
-                    for i in range(population_size):
-                        negotiations.append((populations[population_name][i], populations[population_name_2][i], scenario))
-                elif population_name_2 == population_name:
+                if population_name_2 == population_name:
                     active = True
-        #Simulate negotiations
-        with Pool() as p:
-            negotiation_results = p.starmap(cross_negotiate, negotiations)
-        for negotiation, result in zip(negotiations, negotiation_results):
-            negotiation[0].fitness += result[0]
-            negotiation[1].fitness += result[1]
+                if active:
+                    headers.append(f"{stat}_{population_name}_vs_{population_name_2}")
+    for population_name in populations:
+        headers.append(f"Total_fitness_{population_name}")
+        headers.append(f"Highest_fitness_{population_name}")
+    headers.append("Training_Time")
+    return headers
+
+if __name__ == "__main__":
+    start_time = time.time()
+    print("Initializing populations")
+    populations = {
+        "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
+        "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
+        "compromising": init_population(population_size, fitness.compromising, "compromising"),
+        "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
+        "competing": init_population(population_size, fitness.competing, "competing")
+    }
+    csv_file = open("training.csv", "w", newline="")
+    csv_writer = csv.writer(csv_file, dialect='excel')
+    csv_writer.writerow(generate_csv_headers())
+    generation = 1
+    while generation <= max_generation:
+        csv_row = [generation]
+        generation_start_time = time.time()
+        print(f"\nGeneration {generation}")
+        scenario: Scenario = build_negotiation_scenario(issues)
+        #print(f"Scenario:\nPerspective A:{scenario.a.get_issues()}\nPerspective B:{scenario.b.get_issues()}")
+        #Negotiation / Fitness
+        simulation_stats = simulate_negotiations(populations, scenario)
+        for matrix in simulation_stats:
+            #print(f"Matrix: {matrix}")
+            csv_row.extend([value for value in matrix.values()])
         for population_name in populations:
             #Selection
             populations[population_name].sort(key=lambda agent: agent.fitness)
-            print(f"Total fitness {population_name}: {sum([agent.fitness for agent in populations[population_name]])}")
-            print(f"Highest fitness {population_name}: {populations[population_name][-1].fitness}")
+            total_fitness = sum([simulation_stats[0][(population_name, population_name_2)] for population_name_2 in populations])
+            print(f"Total fitness {population_name}: {total_fitness}")
+            csv_row.append(total_fitness)
+            highest_fitness = populations[population_name][-1].fitness
+            print(f"Highest fitness {population_name}: {highest_fitness}")
+            csv_row.append(highest_fitness)
             new_population = []
             new_population.extend(populations[population_name][-survivor_count:]) #Fittest survive into next generation
             for agent in new_population: #Reset fitness of survivors
@@ -128,9 +134,13 @@ if __name__ == "__main__":
                 for child in children:
                     new_population.append(mutate(child))
             populations[population_name] = new_population
-        print(f"Generation training time: {time.time() - generation_start_time}")
+        generation_training_time = time.time() - generation_start_time
+        print(f"Generation training time: {generation_training_time}")
+        csv_row.append(generation_training_time)
+        csv_writer.writerow(csv_row)
         generation += 1
     print(f"\nTotal training time: {time.time() - start_time}")
+    csv_file.close()
     #Save the best models
     for population_name in populations:
         populations[population_name][survivor_count - 1].model.save(f"models/{population_name}.keras")

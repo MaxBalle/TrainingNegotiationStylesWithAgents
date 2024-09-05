@@ -1,0 +1,30 @@
+@import './base.css';
+@import 'primeicons/primeicons.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+.p-togglebutton {
+  --p-togglebutton-content-checked-background: var(--p-primary-color);
+  --p-togglebutton-checked-color: var(--p-primary-contrast-color);
+}
+
+.p-togglebutton.p-togglebutton-checked {
+  --p-togglebutton-disabled-color: var(--p-primary-contrast-color);
+}
+
+.p-card {
+  margin-top: 1rem;
+}
+
+.button-row > *:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.paragraph-group p + p {
+  margin-top: 1rem;
+}
