@@ -6,6 +6,7 @@ import json
 import random
 import secrets
 import csv
+import http
 
 import asyncio
 from websockets.asyncio.server import serve
@@ -22,7 +23,7 @@ model_options = ['accommodating', 'collaborating', 'compromising', 'avoiding', '
 negotiation_shape = [5, 5, 5, 5, 5]
 
 def save(filename, content):
-    with open(f"{filename}.csv", "a", newline="") as csv_file:
+    with open(f"csv/{filename}.csv", "a", newline="") as csv_file:
         csv_writer = csv.writer(csv_file, dialect='excel')
         csv_writer.writerow(content)
 
@@ -245,12 +246,16 @@ async def handler(websocket):
         }))
     print(f"Closed connection {code}")
 
+def health_check(connection, request):
+    if request.path == "/healthz":
+        return connection.respond(http.HTTPStatus.OK, "OK\n")
+
 async def main_app():
     #Headers
     save("identification", ["connection_code", "person_name", "person_age", "person_gender", "person_education", "person_negotiation_experience", "outcome", "ending_party", "length", "model_name", "judgment"])
     save("turing", ["connection_code", "person_name", "person_age", "person_gender", "person_education", "person_negotiation_experience", "outcome", "ending_party", "length", "opponent_type", "judgment"])
 
-    async with serve(handler, "", 8001):
+    async with serve(handler, "", 8001, process_request=health_check):
         await asyncio.get_running_loop().create_future()
 
 if __name__ == '__main__':
