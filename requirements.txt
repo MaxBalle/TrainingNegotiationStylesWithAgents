@@ -10,3 +10,4 @@ tensorstore==0.1.64
 tf_keras==2.17.0
 websockets==13.0
 Werkzeug==3.0.3
+mpi4py==4.0.0

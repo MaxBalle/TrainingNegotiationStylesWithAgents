@@ -4,7 +4,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "1"
 from negotiationGenerator.scenario import Scenario
 from negotiationGenerator.discreteGenerator import build_negotiation_scenario
 from agent import Agent
-from negotiation import simulate_negotiations
+from negotiation import generate_simulations, simulate_local_negotiations, process_results
 import fitness
 
 import random
@@ -16,8 +16,10 @@ import tensorflow as tf
 from keras import layers, Sequential
 import numpy as np
 
+from mpi4py import MPI
+
 issues = [5, 5, 5, 5, 5]
-max_generation = 1 #Number of generations to simulate / last generation
+max_generation = 3 #Number of generations to simulate / last generation
 population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
@@ -87,60 +89,75 @@ def generate_csv_headers():
     return headers
 
 if __name__ == "__main__":
-    start_time = time.time()
-    print("Initializing populations")
-    populations = {
-        "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
-        "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
-        "compromising": init_population(population_size, fitness.compromising, "compromising"),
-        "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
-        "competing": init_population(population_size, fitness.competing, "competing")
-    }
-    csv_file = open("training.csv", "w", newline="")
-    csv_writer = csv.writer(csv_file, dialect='excel')
-    csv_writer.writerow(generate_csv_headers())
-    generation = 1
-    while generation <= max_generation:
-        csv_row = [generation]
-        generation_start_time = time.time()
-        print(f"\nGeneration {generation}")
-        scenario: Scenario = build_negotiation_scenario(issues)
-        #print(f"Scenario:\nPerspective A:{scenario.a.get_issues()}\nPerspective B:{scenario.b.get_issues()}")
-        #Negotiation / Fitness
-        simulation_stats = simulate_negotiations(populations, scenario)
-        for matrix in simulation_stats:
-            #print(f"Matrix: {matrix}")
-            csv_row.extend([value for value in matrix.values()])
+    comm = MPI.COMM_WORLD
+    size = comm.Get_size()
+    rank = comm.Get_rank()
+
+    print(f"Rank {rank}, Size {size}")
+
+    if rank == 0:
+        start_time = time.time()
+        print("Initializing populations")
+        populations = {
+            "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
+            "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
+            "compromising": init_population(population_size, fitness.compromising, "compromising"),
+            "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
+            "competing": init_population(population_size, fitness.competing, "competing")
+        }
+        csv_file = open("training.csv", "w", newline="")
+        csv_writer = csv.writer(csv_file, dialect='excel')
+        csv_writer.writerow(generate_csv_headers())
+    for generation in range(1,max_generation+1):
+        if rank == 0:
+            csv_row = [generation]
+            generation_start_time = time.time()
+            print(f"\nGeneration {generation}")
+            scenario: Scenario = build_negotiation_scenario(issues)
+        # Parallel Negotiation / Fitness
+        simulations = None
+        if rank == 0:
+            all_simulations = generate_simulations(populations, scenario)
+            simulations = all_simulations
+        simulations = comm.bcast(simulations, root=0)
+        local_simulation_results = simulate_local_negotiations(simulations, rank, size)
+        simulation_results = comm.gather(local_simulation_results, root=0)
+        if rank == 0:
+            simulation_results = [item for sublist in simulation_results for item in sublist] #Flatten results
+            simulation_stats = process_results(populations, all_simulations, simulation_results)
+            for matrix in simulation_stats:
+                #print(f"Matrix: {matrix}")
+                csv_row.extend([value for value in matrix.values()])
+            for population_name in populations:
+                #Selection
+                populations[population_name].sort(key=lambda agent: agent.fitness)
+                total_fitness = sum([simulation_stats[0][(population_name, population_name_2)] for population_name_2 in populations])
+                print(f"Total fitness {population_name}: {total_fitness}")
+                csv_row.append(total_fitness)
+                highest_fitness = populations[population_name][-1].fitness
+                print(f"Highest fitness {population_name}: {highest_fitness}")
+                csv_row.append(highest_fitness)
+                new_population = []
+                new_population.extend(populations[population_name][-survivor_count:]) #Fittest survive into next generation
+                for agent in new_population: #Reset fitness of survivors
+                    agent.fitness = 0.0
+                #Recombination and mutation
+                for group_size in recombination_split:
+                    pool = populations[population_name][-group_size:]
+                    random.shuffle(pool)
+                    children = []
+                    for i in range(0, group_size, 2):
+                        children.extend(reproduce(pool[i], pool[i+1]))
+                    for child in children:
+                        new_population.append(mutate(child))
+                populations[population_name] = new_population
+            generation_training_time = time.time() - generation_start_time
+            print(f"Generation training time: {generation_training_time}")
+            csv_row.append(generation_training_time)
+            csv_writer.writerow(csv_row)
+    if rank == 0:
+        print(f"\nTotal training time: {time.time() - start_time}")
+        csv_file.close()
+        #Save the best models
         for population_name in populations:
-            #Selection
-            populations[population_name].sort(key=lambda agent: agent.fitness)
-            total_fitness = sum([simulation_stats[0][(population_name, population_name_2)] for population_name_2 in populations])
-            print(f"Total fitness {population_name}: {total_fitness}")
-            csv_row.append(total_fitness)
-            highest_fitness = populations[population_name][-1].fitness
-            print(f"Highest fitness {population_name}: {highest_fitness}")
-            csv_row.append(highest_fitness)
-            new_population = []
-            new_population.extend(populations[population_name][-survivor_count:]) #Fittest survive into next generation
-            for agent in new_population: #Reset fitness of survivors
-                agent.fitness = 0.0
-            #Recombination and mutation
-            for group_size in recombination_split:
-                pool = populations[population_name][-group_size:]
-                random.shuffle(pool)
-                children = []
-                for i in range(0, group_size, 2):
-                    children.extend(reproduce(pool[i], pool[i+1]))
-                for child in children:
-                    new_population.append(mutate(child))
-            populations[population_name] = new_population
-        generation_training_time = time.time() - generation_start_time
-        print(f"Generation training time: {generation_training_time}")
-        csv_row.append(generation_training_time)
-        csv_writer.writerow(csv_row)
-        generation += 1
-    print(f"\nTotal training time: {time.time() - start_time}")
-    csv_file.close()
-    #Save the best models
-    for population_name in populations:
-        populations[population_name][survivor_count - 1].model.save(f"models/{population_name}.keras")
+            populations[population_name][survivor_count - 1].model.save(f"models/{population_name}.keras")

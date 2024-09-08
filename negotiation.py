@@ -104,7 +104,7 @@ def cross_negotiate(agent_1: Agent, agent_2: Agent, negotiation_scenario: Scenar
     total_time = outcome_1_2[3] + outcome_2_1[3]
     return fitness_1, fitness_2, accepts, rejects, total_time
 
-def simulate_negotiations(populations, scenario: Scenario):
+def generate_simulations(populations, scenario: Scenario):
     for population_name in populations:
         random.shuffle(populations[population_name])
     negotiations: list[tuple[Agent, Agent, Scenario]] = []
@@ -121,9 +121,18 @@ def simulate_negotiations(populations, scenario: Scenario):
                     negotiations.append((populations[population_name][i], populations[population_name_2][i], scenario))
             elif population_name_2 == population_name:
                 active = True
-    # Simulate negotiations
-    negotiation_results = itertools.starmap(cross_negotiate, negotiations)
-    # Process results (Update fitness values of agent and generate stats)
+    return negotiations
+
+def simulate_local_negotiations(negotiations, rank, size):
+    chunk_size = len(negotiations) // size
+    start = rank * chunk_size
+    end = start + chunk_size if rank != size - 1 else len(negotiations)
+    local_negotiations = negotiations[start:end]
+    negotiation_results = [res for res in itertools.starmap(cross_negotiate, local_negotiations)]
+    return negotiation_results
+
+def process_results(populations, negotiations, negotiation_results):
+    # Update fitness values of agent and generate stats
     fitness_matrix = {}
     for population_name in populations:
         for population_name_2 in populations:
