@@ -6,7 +6,7 @@ from negotiationGenerator.scenario import Scenario
 import tensorflow as tf
 
 import random
-from multiprocessing import Pool
+import itertools
 
 #This file contains the logic to simulate the negotiation between two agents
 
@@ -122,8 +122,7 @@ def simulate_negotiations(populations, scenario: Scenario):
             elif population_name_2 == population_name:
                 active = True
     # Simulate negotiations
-    with Pool() as p:
-        negotiation_results = p.starmap(cross_negotiate, negotiations)
+    negotiation_results = itertools.starmap(cross_negotiate, negotiations)
     # Process results (Update fitness values of agent and generate stats)
     fitness_matrix = {}
     for population_name in populations:
