@@ -19,7 +19,7 @@ import numpy as np
 from mpi4py import MPI
 
 issues = [5, 5, 5, 5, 5]
-max_generation = 100 #Number of generations to simulate / last generation
+max_generation = 10 #Number of generations to simulate / last generation
 population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
@@ -30,9 +30,9 @@ def init_population(size: int, fitness_function, style) -> list[Agent]:
     population: list[Agent] = []
     for x in range(size):
         model = Sequential()
-        model.add(layers.Dense(50, name='In'))
-        model.add(layers.GRU(50, name='Recurrent Middle', stateful=True))
-        model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
+        #model.add(layers.Dense(50, name='In'))
+        model.add(layers.GRU(28, name='Recurrent Middle', stateful=True, activation='sigmoid'))
+        #model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
         model.build(input_shape=(1, 1, 50))
         population.append(Agent(model, fitness_function, style))
     return population

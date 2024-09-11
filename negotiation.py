@@ -88,8 +88,8 @@ def negotiate(agent_a: Agent, agent_b: Agent, negotiation_scenario: Scenario) ->
                 # Build new offer by A to B
                 offer_one_hot = encode_as_one_hot(ret_a[0][3:].numpy(), negotiation_scenario.issue_shape)
                 offer = tf.constant([[[*offer_one_hot, *offer_utilities_a]]])
-    agent_a.model.layers[1].reset_states()
-    agent_b.model.layers[1].reset_states()
+    agent_a.model.layers[0].reset_states()
+    agent_b.model.layers[0].reset_states()
     #print(f"Negotiation between {agent_a} and {agent_b} came to the outcome {outcome} at t={time} with utility_a={result_utility_a} and utility_b={result_utility_b}")
     return outcome, result_utility_a, result_utility_b, time
 
