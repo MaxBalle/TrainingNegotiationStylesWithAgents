@@ -1,5 +1,9 @@
 #!/bin/bash
-module load devel/python/3.12.3_gnu_13.3
+
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=balle-max@web.de
+
+module load devel/python/3.12.3_intel_2023.1.0
 module load mpi/openmpi/5.0
-module list
+
 mpirun --bind-to core --map-by core -report-bindings python main.py
