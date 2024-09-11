@@ -1,83 +1,83 @@
-[uc2n347.localdomain:604742] Rank 0 bound to package[0][core:0]
-[uc2n347.localdomain:604742] Rank 1 bound to package[0][core:1]
-[uc2n347.localdomain:604742] Rank 2 bound to package[0][core:2]
-[uc2n347.localdomain:604742] Rank 3 bound to package[0][core:3]
-[uc2n347.localdomain:604742] Rank 4 bound to package[0][core:4]
-[uc2n347.localdomain:604742] Rank 5 bound to package[0][core:5]
-[uc2n347.localdomain:604742] Rank 6 bound to package[0][core:6]
-[uc2n347.localdomain:604742] Rank 7 bound to package[0][core:7]
-[uc2n347.localdomain:604742] Rank 8 bound to package[1][core:20]
-[uc2n347.localdomain:604742] Rank 9 bound to package[1][core:21]
-[uc2n347.localdomain:604742] Rank 10 bound to package[1][core:22]
-[uc2n347.localdomain:604742] Rank 11 bound to package[1][core:23]
-[uc2n347.localdomain:604742] Rank 12 bound to package[1][core:24]
-[uc2n347.localdomain:604742] Rank 13 bound to package[1][core:25]
-[uc2n347.localdomain:604742] Rank 14 bound to package[1][core:26]
-[uc2n347.localdomain:604742] Rank 15 bound to package[1][core:27]
-2024-09-11 16:09:07.093336: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093360: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093358: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093368: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093363: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093348: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093372: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093361: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093369: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093375: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093352: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093383: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093377: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093395: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093399: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.093403: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-09-11 16:09:07.178490: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178487: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178494: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178488: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178501: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178505: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178696: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178705: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178699: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178701: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178728: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178740: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178755: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178785: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.178805: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.179895: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-09-11 16:09:07.287865: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.287858: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.287859: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.287859: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.287867: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.287868: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.287888: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288036: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288043: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288048: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288052: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288064: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288063: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288082: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288102: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:07.288412: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-09-11 16:09:32.546683: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546687: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546680: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546697: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546700: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546694: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546705: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546700: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546716: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546714: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546716: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546723: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546727: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546730: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546737: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-2024-09-11 16:09:32.546742: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[uc2n359.localdomain:653435] Rank 0 bound to package[0][core:0]
+[uc2n359.localdomain:653435] Rank 1 bound to package[0][core:1]
+[uc2n359.localdomain:653435] Rank 2 bound to package[0][core:2]
+[uc2n359.localdomain:653435] Rank 3 bound to package[0][core:10]
+[uc2n359.localdomain:653435] Rank 4 bound to package[0][core:11]
+[uc2n359.localdomain:653435] Rank 5 bound to package[0][core:12]
+[uc2n359.localdomain:653435] Rank 6 bound to package[0][core:13]
+[uc2n359.localdomain:653435] Rank 7 bound to package[0][core:14]
+[uc2n359.localdomain:653435] Rank 8 bound to package[1][core:25]
+[uc2n359.localdomain:653435] Rank 9 bound to package[1][core:26]
+[uc2n359.localdomain:653435] Rank 10 bound to package[1][core:27]
+[uc2n359.localdomain:653435] Rank 11 bound to package[1][core:28]
+[uc2n359.localdomain:653435] Rank 12 bound to package[1][core:29]
+[uc2n359.localdomain:653435] Rank 13 bound to package[1][core:30]
+[uc2n359.localdomain:653435] Rank 14 bound to package[1][core:31]
+[uc2n359.localdomain:653435] Rank 15 bound to package[1][core:32]
+2024-09-11 23:30:24.815623: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815636: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815637: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815640: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815626: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815621: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815618: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815653: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815657: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815650: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815669: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815617: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815685: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815633: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.815645: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.818821: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 23:30:24.971402: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971402: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971394: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971464: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971470: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971492: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971485: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971486: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971495: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971504: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971517: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971524: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971527: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971547: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971560: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:24.971562: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 23:30:25.030463: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030467: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030468: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030476: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030479: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030480: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030486: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030486: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030491: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030492: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030499: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030501: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030504: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030511: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030520: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:25.030580: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 23:30:51.485098: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485105: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485107: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485101: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485102: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485100: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485110: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485112: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485112: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485114: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485124: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485127: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485130: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485135: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485136: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 23:30:51.485138: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 [LOG_CAT_MCAST] No MCAST components selected
 
 [LOG_CAT_ML] Failure in hcoll_mcast_base_select
@@ -158,1353 +158,1353 @@
 [LOG_CAT_ML] ml_discover_hierarchy exited with error
 [LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
 [LOG_CAT_ML] ml_discover_hierarchy exited with error
-Rank 4, Size 16
-Rank 7, Size 16
 Rank 1, Size 16
-Rank 2, Size 16
-Rank 5, Size 16
-Rank 6, Size 16
+Rank 9, Size 16
 Rank 0, Size 16
 Initializing populations
-Rank 3, Size 16
-Rank 15, Size 16
-Rank 12, Size 16
-Rank 14, Size 16
-Rank 9, Size 16
-Rank 10, Size 16
-Rank 11, Size 16
-Rank 13, Size 16
 Rank 8, Size 16
-2024-09-11 16:10:04.148864: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+Rank 11, Size 16
+Rank 2, Size 16
+Rank 15, Size 16
+Rank 10, Size 16
+Rank 13, Size 16
+Rank 14, Size 16
+Rank 12, Size 16
+Rank 3, Size 16
+Rank 7, Size 16
+Rank 6, Size 16
+Rank 5, Size 16
+Rank 4, Size 16
+2024-09-11 23:31:21.695126: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
 
 Generation 1
-2024-09-11 16:10:21.996823: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.996877: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.996899: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.996940: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.997018: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.997157: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.997208: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.998122: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.998158: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.998175: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.998260: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.998449: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.998485: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.998505: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-2024-09-11 16:10:21.998612: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
-Total fitness accommodating: 674.2766999999997
-Highest fitness accommodating: 12.041500000000001
-Total fitness collaborating: 1791.8023000000012
-Highest fitness collaborating: 34.711000000000006
-Total fitness compromising: 870.1069999999995
-Highest fitness compromising: 19.0266
-Total fitness avoiding: 172.92379999999994
-Highest fitness avoiding: 4.515099999999999
-Total fitness competing: 830.0796000000003
-Highest fitness competing: 16.77275
-Generation training time: 44.81168818473816
+2024-09-11 23:31:37.156712: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.156768: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.156902: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157027: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157025: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157086: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157144: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157168: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157194: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157285: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157358: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157479: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157569: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157648: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 23:31:37.157764: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+Total fitness accommodating: 615.0785999999999
+Highest fitness accommodating: 13.306449999999998
+Total fitness collaborating: 1596.5388
+Highest fitness collaborating: 33.7162
+Total fitness compromising: 792.0347999999994
+Highest fitness compromising: 19.9
+Total fitness avoiding: 118.82749999999999
+Highest fitness avoiding: 3.6316999999999995
+Total fitness competing: 756.8355499999997
+Highest fitness competing: 17.796499999999998
+Generation training time: 32.108153104782104
 
 Generation 2
-Total fitness accommodating: 640.2284999999999
-Highest fitness accommodating: 12.5065
-Total fitness collaborating: 1720.1893000000002
-Highest fitness collaborating: 33.7831
-Total fitness compromising: 930.3229999999993
-Highest fitness compromising: 19.9
-Total fitness avoiding: 169.72649999999996
-Highest fitness avoiding: 4.4377
-Total fitness competing: 750.4009999999997
-Highest fitness competing: 15.92605
-Generation training time: 40.80613470077515
+Total fitness accommodating: 733.8583499999997
+Highest fitness accommodating: 14.3473
+Total fitness collaborating: 1886.2689000000005
+Highest fitness collaborating: 36.118
+Total fitness compromising: 944.7941999999995
+Highest fitness compromising: 18.761
+Total fitness avoiding: 120.45009999999996
+Highest fitness avoiding: 3.2487999999999997
+Total fitness competing: 991.3346999999999
+Highest fitness competing: 17.984
+Generation training time: 32.997087478637695
 
 Generation 3
-Total fitness accommodating: 596.4576000000003
-Highest fitness accommodating: 11.26325
-Total fitness collaborating: 1835.8063000000025
-Highest fitness collaborating: 33.47800000000001
-Total fitness compromising: 1001.0513999999997
-Highest fitness compromising: 19.900000000000006
-Total fitness avoiding: 271.8294000000001
-Highest fitness avoiding: 6.272000000000002
-Total fitness competing: 923.3578499999998
-Highest fitness competing: 16.664
-Generation training time: 43.63783860206604
+Total fitness accommodating: 657.9536999999999
+Highest fitness accommodating: 10.9336
+Total fitness collaborating: 1771.1548999999998
+Highest fitness collaborating: 30.382600000000004
+Total fitness compromising: 995.3387999999992
+Highest fitness compromising: 19.1704
+Total fitness avoiding: 297.5684000000003
+Highest fitness avoiding: 5.952999999999999
+Total fitness competing: 933.0984000000002
+Highest fitness competing: 16.4935
+Generation training time: 29.766809940338135
 
 Generation 4
-Total fitness accommodating: 504.68285
-Highest fitness accommodating: 9.3798
-Total fitness collaborating: 1772.6634000000004
-Highest fitness collaborating: 31.268300000000004
-Total fitness compromising: 968.939199999999
-Highest fitness compromising: 19.2546
-Total fitness avoiding: 369.79740000000015
-Highest fitness avoiding: 7.120499999999999
-Total fitness competing: 786.2480000000004
-Highest fitness competing: 14.783249999999999
-Generation training time: 39.86809325218201
+Total fitness accommodating: 962.4280499999995
+Highest fitness accommodating: 13.292699999999998
+Total fitness collaborating: 2654.8339000000033
+Highest fitness collaborating: 35.235
+Total fitness compromising: 1371.194799999999
+Highest fitness compromising: 19.9
+Total fitness avoiding: 286.2298999999999
+Highest fitness avoiding: 4.515000000000001
+Total fitness competing: 1239.1830499999992
+Highest fitness competing: 17.5425
+Generation training time: 27.590641021728516
 
 Generation 5
-Total fitness accommodating: 686.0919000000002
-Highest fitness accommodating: 12.474750000000002
-Total fitness collaborating: 1945.4083
-Highest fitness collaborating: 33.7951
-Total fitness compromising: 1069.621199999999
-Highest fitness compromising: 19.5016
-Total fitness avoiding: 243.63940000000008
-Highest fitness avoiding: 5.1044
-Total fitness competing: 867.6339
-Highest fitness competing: 16.11975
-Generation training time: 40.20087909698486
+Total fitness accommodating: 1110.3617499999996
+Highest fitness accommodating: 15.30105
+Total fitness collaborating: 2668.447299999999
+Highest fitness collaborating: 36.777
+Total fitness compromising: 1429.3527999999992
+Highest fitness compromising: 19.9
+Total fitness avoiding: 173.01229999999998
+Highest fitness avoiding: 2.973
+Total fitness competing: 1215.6194499999997
+Highest fitness competing: 18.3135
+Generation training time: 28.897835969924927
 
 Generation 6
-Total fitness accommodating: 895.6426499999999
-Highest fitness accommodating: 14.317
-Total fitness collaborating: 1999.4470999999999
-Highest fitness collaborating: 36.228
-Total fitness compromising: 1102.1683999999987
+Total fitness accommodating: 989.7010999999997
+Highest fitness accommodating: 13.30865
+Total fitness collaborating: 2661.4514000000017
+Highest fitness collaborating: 35.088
+Total fitness compromising: 1549.3463999999997
 Highest fitness compromising: 19.9
-Total fitness avoiding: 162.6658
-Highest fitness avoiding: 3.5219999999999994
-Total fitness competing: 981.2145499999999
-Highest fitness competing: 18.039
-Generation training time: 40.815118074417114
+Total fitness avoiding: 300.70920000000007
+Highest fitness avoiding: 4.661999999999999
+Total fitness competing: 1387.1292499999988
+Highest fitness competing: 17.468999999999998
+Generation training time: 27.51475501060486
 
 Generation 7
-Total fitness accommodating: 825.0977999999996
-Highest fitness accommodating: 14.057400000000001
-Total fitness collaborating: 2140.060899999999
-Highest fitness collaborating: 35.2026
-Total fitness compromising: 1134.9085999999988
-Highest fitness compromising: 18.6934
-Total fitness avoiding: 144.08139999999992
-Highest fitness avoiding: 3.030999999999999
-Total fitness competing: 987.6987999999999
-Highest fitness competing: 16.7326
-Generation training time: 40.36173391342163
+Total fitness accommodating: 994.93975
+Highest fitness accommodating: 12.30605
+Total fitness collaborating: 3042.583300000004
+Highest fitness collaborating: 34.635000000000005
+Total fitness compromising: 1722.5658000000005
+Highest fitness compromising: 19.9
+Total fitness avoiding: 381.87960000000027
+Highest fitness avoiding: 5.114999999999999
+Total fitness competing: 1428.7972499999996
+Highest fitness competing: 17.2425
+Generation training time: 28.217665672302246
 
 Generation 8
-Total fitness accommodating: 706.29525
-Highest fitness accommodating: 10.456750000000001
-Total fitness collaborating: 1949.4920000000016
-Highest fitness collaborating: 33.494
-Total fitness compromising: 1113.9899999999989
-Highest fitness compromising: 19.4808
-Total fitness avoiding: 277.64709999999997
-Highest fitness avoiding: 5.657399999999999
-Total fitness competing: 925.2558999999991
-Highest fitness competing: 15.897950000000002
-Generation training time: 39.390403509140015
+Total fitness accommodating: 1179.274100000001
+Highest fitness accommodating: 13.71415
+Total fitness collaborating: 3087.4929000000034
+Highest fitness collaborating: 35.654
+Total fitness compromising: 1742.7982000000002
+Highest fitness compromising: 19.9
+Total fitness avoiding: 323.0715000000003
+Highest fitness avoiding: 4.1552999999999995
+Total fitness competing: 1533.7925000000007
+Highest fitness competing: 17.752000000000002
+Generation training time: 27.142860174179077
 
 Generation 9
-Total fitness accommodating: 684.3496499999999
-Highest fitness accommodating: 10.908249999999999
-Total fitness collaborating: 1725.0911000000015
-Highest fitness collaborating: 32.736
-Total fitness compromising: 1232.7487999999987
+Total fitness accommodating: 1121.3086499999993
+Highest fitness accommodating: 12.54985
+Total fitness collaborating: 3137.6752999999953
+Highest fitness collaborating: 34.799
+Total fitness compromising: 1736.5304000000006
 Highest fitness compromising: 19.9
-Total fitness avoiding: 284.47809999999987
-Highest fitness avoiding: 5.5163
-Total fitness competing: 920.0579499999994
-Highest fitness competing: 16.511300000000002
-Generation training time: 38.72095227241516
+Total fitness avoiding: 381.86640000000017
+Highest fitness avoiding: 4.951
+Total fitness competing: 1499.7333500000002
+Highest fitness competing: 17.3245
+Generation training time: 26.166501760482788
 
 Generation 10
-Total fitness accommodating: 747.1225499999999
-Highest fitness accommodating: 11.6783
-Total fitness collaborating: 2071.0839000000014
-Highest fitness collaborating: 34.307
-Total fitness compromising: 1151.740399999999
+Total fitness accommodating: 985.1242999999989
+Highest fitness accommodating: 10.825500000000002
+Total fitness collaborating: 3168.5955000000013
+Highest fitness collaborating: 33.543000000000006
+Total fitness compromising: 1864.0722000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 270.7359999999998
-Highest fitness avoiding: 5.443
-Total fitness competing: 935.9691499999989
-Highest fitness competing: 17.0785
-Generation training time: 39.53001666069031
+Total fitness avoiding: 559.4361999999998
+Highest fitness avoiding: 6.207000000000001
+Total fitness competing: 1523.1295499999997
+Highest fitness competing: 16.6965
+Generation training time: 26.084039211273193
 
 Generation 11
-Total fitness accommodating: 893.8903500000004
-Highest fitness accommodating: 12.9474
-Total fitness collaborating: 2222.3194999999996
-Highest fitness collaborating: 34.7182
-Total fitness compromising: 1127.8613999999993
+Total fitness accommodating: 1075.1234499999996
+Highest fitness accommodating: 14.027250000000002
+Total fitness collaborating: 2755.218500000002
+Highest fitness collaborating: 35.07
+Total fitness compromising: 1538.2599999999998
 Highest fitness compromising: 19.9
-Total fitness avoiding: 220.89079999999996
-Highest fitness avoiding: 4.483999999999999
-Total fitness competing: 995.1998000000001
-Highest fitness competing: 17.558
-Generation training time: 38.6538941860199
+Total fitness avoiding: 406.0895000000002
+Highest fitness avoiding: 4.7257
+Total fitness competing: 1467.7851999999993
+Highest fitness competing: 17.46
+Generation training time: 28.034890174865723
 
 Generation 12
-Total fitness accommodating: 866.2616000000003
-Highest fitness accommodating: 12.665500000000002
-Total fitness collaborating: 2158.9058999999997
-Highest fitness collaborating: 34.215500000000006
-Total fitness compromising: 1197.2551999999987
+Total fitness accommodating: 1131.0573000000013
+Highest fitness accommodating: 13.84715
+Total fitness collaborating: 2675.528300000001
+Highest fitness collaborating: 35.705
+Total fitness compromising: 1675.8546000000008
 Highest fitness compromising: 19.9
-Total fitness avoiding: 217.89079999999998
-Highest fitness avoiding: 4.622999999999999
-Total fitness competing: 976.0773500000006
-Highest fitness competing: 17.22085
-Generation training time: 38.62572145462036
+Total fitness avoiding: 269.5892999999999
+Highest fitness avoiding: 4.045
+Total fitness competing: 1341.1177999999995
+Highest fitness competing: 17.7775
+Generation training time: 25.782944202423096
 
 Generation 13
-Total fitness accommodating: 920.0892000000001
-Highest fitness accommodating: 13.1985
-Total fitness collaborating: 2244.3187000000007
-Highest fitness collaborating: 35.373000000000005
-Total fitness compromising: 1189.4593999999988
+Total fitness accommodating: 995.5428999999996
+Highest fitness accommodating: 12.830300000000001
+Total fitness collaborating: 2937.637999999999
+Highest fitness collaborating: 34.400000000000006
+Total fitness compromising: 1512.3515999999993
 Highest fitness compromising: 19.9
-Total fitness avoiding: 200.29689999999994
-Highest fitness avoiding: 4.377
-Total fitness competing: 1083.5124499999995
-Highest fitness competing: 17.6115
-Generation training time: 38.51363229751587
+Total fitness avoiding: 450.05919999999946
+Highest fitness avoiding: 5.415799999999999
+Total fitness competing: 1556.5264000000016
+Highest fitness competing: 17.125
+Generation training time: 26.582041263580322
 
 Generation 14
-Total fitness accommodating: 834.4190999999995
-Highest fitness accommodating: 13.7904
-Total fitness collaborating: 2245.886999999999
-Highest fitness collaborating: 34.733999999999995
-Total fitness compromising: 1245.5617999999986
+Total fitness accommodating: 854.073449999999
+Highest fitness accommodating: 10.882150000000003
+Total fitness collaborating: 2985.9146000000005
+Highest fitness collaborating: 32.322
+Total fitness compromising: 1883.340600000001
 Highest fitness compromising: 19.9
-Total fitness avoiding: 263.52930000000003
-Highest fitness avoiding: 5.016
-Total fitness competing: 1056.8303000000005
-Highest fitness competing: 17.291999999999998
-Generation training time: 38.63010787963867
+Total fitness avoiding: 662.7992000000007
+Highest fitness avoiding: 7.427999999999999
+Total fitness competing: 1523.1221999999984
+Highest fitness competing: 16.086
+Generation training time: 26.142484664916992
 
 Generation 15
-Total fitness accommodating: 812.0074500000005
-Highest fitness accommodating: 11.913350000000001
-Total fitness collaborating: 2396.967499999999
-Highest fitness collaborating: 33.686499999999995
-Total fitness compromising: 1226.8183999999992
+Total fitness accommodating: 1153.9912499999984
+Highest fitness accommodating: 13.679899999999998
+Total fitness collaborating: 3151.7346000000016
+Highest fitness collaborating: 35.612
+Total fitness compromising: 1796.855400000001
 Highest fitness compromising: 19.9
-Total fitness avoiding: 317.0536000000001
-Highest fitness avoiding: 5.805
-Total fitness competing: 1033.3368500000001
-Highest fitness competing: 16.897499999999997
-Generation training time: 39.30541968345642
+Total fitness avoiding: 318.18819999999954
+Highest fitness avoiding: 4.138
+Total fitness competing: 1543.4761500000002
+Highest fitness competing: 17.731
+Generation training time: 26.795754194259644
 
 Generation 16
-Total fitness accommodating: 758.2210999999996
-Highest fitness accommodating: 12.71355
-Total fitness collaborating: 2385.5426999999986
-Highest fitness collaborating: 33.977000000000004
-Total fitness compromising: 1187.8913999999988
-Highest fitness compromising: 19.6584
-Total fitness avoiding: 290.6431
-Highest fitness avoiding: 5.4293
-Total fitness competing: 1065.8918500000002
-Highest fitness competing: 16.432850000000002
-Generation training time: 38.12107586860657
+Total fitness accommodating: 751.7488999999991
+Highest fitness accommodating: 10.383500000000002
+Total fitness collaborating: 2935.7364999999995
+Highest fitness collaborating: 31.6
+Total fitness compromising: 1913.2556000000016
+Highest fitness compromising: 19.9
+Total fitness avoiding: 743.4112999999991
+Highest fitness avoiding: 8.149999999999999
+Total fitness competing: 1492.5047000000004
+Highest fitness competing: 15.725
+Generation training time: 26.51942014694214
 
 Generation 17
-Total fitness accommodating: 788.8983999999994
-Highest fitness accommodating: 13.0735
-Total fitness collaborating: 2594.020700000002
-Highest fitness collaborating: 33.641
-Total fitness compromising: 1293.3769999999993
+Total fitness accommodating: 941.728449999999
+Highest fitness accommodating: 11.720000000000002
+Total fitness collaborating: 3111.9485999999965
+Highest fitness collaborating: 32.935
+Total fitness compromising: 1921.1356000000017
 Highest fitness compromising: 19.9
-Total fitness avoiding: 334.92130000000014
-Highest fitness avoiding: 6.109
-Total fitness competing: 1052.014549999999
-Highest fitness competing: 16.7455
-Generation training time: 39.25948119163513
+Total fitness avoiding: 621.0050999999999
+Highest fitness avoiding: 6.8149999999999995
+Total fitness competing: 1519.9471500000016
+Highest fitness competing: 16.3925
+Generation training time: 28.518814086914062
 
 Generation 18
-Total fitness accommodating: 969.5966
-Highest fitness accommodating: 14.088500000000002
-Total fitness collaborating: 2710.8181999999983
-Highest fitness collaborating: 36.042
-Total fitness compromising: 1396.480599999999
+Total fitness accommodating: 798.7635500000006
+Highest fitness accommodating: 12.30085
+Total fitness collaborating: 2897.4641999999967
+Highest fitness collaborating: 32.0822
+Total fitness compromising: 1825.370600000001
 Highest fitness compromising: 19.9
-Total fitness avoiding: 228.47629999999978
-Highest fitness avoiding: 3.7079999999999993
-Total fitness competing: 1150.4497000000008
-Highest fitness competing: 17.945999999999998
-Generation training time: 38.95608878135681
+Total fitness avoiding: 674.8115999999993
+Highest fitness avoiding: 7.741
+Total fitness competing: 1420.8878000000009
+Highest fitness competing: 15.929499999999999
+Generation training time: 28.510351419448853
 
 Generation 19
-Total fitness accommodating: 921.7403499999996
-Highest fitness accommodating: 13.21905
-Total fitness collaborating: 2672.0793999999987
-Highest fitness collaborating: 35.484
-Total fitness compromising: 1160.611999999999
-Highest fitness compromising: 19.6002
-Total fitness avoiding: 230.8936
-Highest fitness avoiding: 4.266
-Total fitness competing: 1174.3212499999993
-Highest fitness competing: 17.666999999999998
-Generation training time: 38.43632173538208
+Total fitness accommodating: 918.8618500000003
+Highest fitness accommodating: 12.28725
+Total fitness collaborating: 3097.550700000001
+Highest fitness collaborating: 34.230000000000004
+Total fitness compromising: 1777.5882000000006
+Highest fitness compromising: 19.9
+Total fitness avoiding: 446.32639999999975
+Highest fitness avoiding: 5.5514
+Total fitness competing: 1540.3797999999992
+Highest fitness competing: 17.04
+Generation training time: 27.681738138198853
 
 Generation 20
-Total fitness accommodating: 938.4220500000006
-Highest fitness accommodating: 12.68745
-Total fitness collaborating: 2507.648100000001
-Highest fitness collaborating: 34.963
-Total fitness compromising: 1324.6499999999987
+Total fitness accommodating: 1069.8614999999995
+Highest fitness accommodating: 12.930150000000001
+Total fitness collaborating: 3259.4036000000033
+Highest fitness collaborating: 33.54600000000001
+Total fitness compromising: 1889.2944000000011
 Highest fitness compromising: 19.9
-Total fitness avoiding: 302.3892000000001
-Highest fitness avoiding: 4.787
-Total fitness competing: 1156.6889999999999
-Highest fitness competing: 17.0397
-Generation training time: 39.46505618095398
+Total fitness avoiding: 566.7949999999987
+Highest fitness avoiding: 6.203999999999999
+Total fitness competing: 1582.27095
+Highest fitness competing: 16.698
+Generation training time: 29.76107382774353
 
 Generation 21
-Total fitness accommodating: 948.2114499999999
-Highest fitness accommodating: 12.5476
-Total fitness collaborating: 2664.7508000000016
-Highest fitness collaborating: 34.90899999999999
-Total fitness compromising: 1408.341
+Total fitness accommodating: 1225.5045000000005
+Highest fitness accommodating: 13.973099999999999
+Total fitness collaborating: 3396.793899999998
+Highest fitness collaborating: 35.31099999999999
+Total fitness compromising: 1841.6214000000007
 Highest fitness compromising: 19.899999999999995
-Total fitness avoiding: 318.79610000000014
-Highest fitness avoiding: 4.840999999999998
-Total fitness competing: 1168.8229499999989
-Highest fitness competing: 17.3795
-Generation training time: 38.408655881881714
+Total fitness avoiding: 395.6883999999996
+Highest fitness avoiding: 4.438999999999998
+Total fitness competing: 1594.2882499999982
+Highest fitness competing: 17.580499999999997
+Generation training time: 28.123393058776855
 
 Generation 22
-Total fitness accommodating: 916.9789999999998
-Highest fitness accommodating: 12.87135
-Total fitness collaborating: 2584.665000000003
-Highest fitness collaborating: 35.079
-Total fitness compromising: 1352.4489999999992
+Total fitness accommodating: 1004.5271999999991
+Highest fitness accommodating: 13.031150000000002
+Total fitness collaborating: 3014.488400000006
+Highest fitness collaborating: 33.754
+Total fitness compromising: 1865.2648000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 283.6358999999997
-Highest fitness avoiding: 4.6709999999999985
-Total fitness competing: 1154.246499999999
-Highest fitness competing: 17.464499999999997
-Generation training time: 38.427855491638184
+Total fitness avoiding: 509.7605000000004
+Highest fitness avoiding: 5.995999999999999
+Total fitness competing: 1579.0408000000018
+Highest fitness competing: 16.802
+Generation training time: 28.37843942642212
 
 Generation 23
-Total fitness accommodating: 976.8310999999989
-Highest fitness accommodating: 13.526700000000002
-Total fitness collaborating: 2718.1868000000018
-Highest fitness collaborating: 35.021
-Total fitness compromising: 1343.6081999999992
-Highest fitness compromising: 19.5164
-Total fitness avoiding: 297.46979999999985
-Highest fitness avoiding: 4.729
-Total fitness competing: 1251.2461500000002
-Highest fitness competing: 17.435499999999998
-Generation training time: 38.160897731781006
+Total fitness accommodating: 984.7955
+Highest fitness accommodating: 13.077200000000001
+Total fitness collaborating: 3133.044299999999
+Highest fitness collaborating: 33.846000000000004
+Total fitness compromising: 1867.4134000000013
+Highest fitness compromising: 19.9
+Total fitness avoiding: 525.1340000000007
+Highest fitness avoiding: 5.903999999999999
+Total fitness competing: 1520.9161999999988
+Highest fitness competing: 16.848
+Generation training time: 27.770533561706543
 
 Generation 24
-Total fitness accommodating: 1077.5956999999994
-Highest fitness accommodating: 14.990499999999997
-Total fitness collaborating: 2720.875199999998
-Highest fitness collaborating: 36.677
-Total fitness compromising: 1418.4737999999995
+Total fitness accommodating: 1059.7300500000003
+Highest fitness accommodating: 13.482500000000002
+Total fitness collaborating: 3236.808800000001
+Highest fitness collaborating: 35.523
+Total fitness compromising: 1728.3418000000006
 Highest fitness compromising: 19.9
-Total fitness avoiding: 174.59120000000007
-Highest fitness avoiding: 3.0730000000000013
-Total fitness competing: 1210.2967000000003
-Highest fitness competing: 18.2635
-Generation training time: 39.47323489189148
+Total fitness avoiding: 317.4779999999999
+Highest fitness avoiding: 4.226999999999999
+Total fitness competing: 1606.3632999999998
+Highest fitness competing: 17.686500000000002
+Generation training time: 30.232977390289307
 
 Generation 25
-Total fitness accommodating: 996.8974000000002
-Highest fitness accommodating: 13.642050000000001
-Total fitness collaborating: 2691.3698999999997
-Highest fitness collaborating: 34.794
-Total fitness compromising: 1299.956599999999
+Total fitness accommodating: 1131.324849999999
+Highest fitness accommodating: 13.269250000000001
+Total fitness collaborating: 2958.453500000004
+Highest fitness collaborating: 34.884
+Total fitness compromising: 1724.5126000000002
 Highest fitness compromising: 19.9
-Total fitness avoiding: 301.71889999999996
-Highest fitness avoiding: 4.9559999999999995
-Total fitness competing: 1188.4945
-Highest fitness competing: 17.322
-Generation training time: 38.55115842819214
+Total fitness avoiding: 419.2633000000002
+Highest fitness avoiding: 4.866
+Total fitness competing: 1482.9614000000004
+Highest fitness competing: 17.367
+Generation training time: 27.305185079574585
 
 Generation 26
-Total fitness accommodating: 937.4303999999998
-Highest fitness accommodating: 13.71045
-Total fitness collaborating: 2587.0654999999983
-Highest fitness collaborating: 34.775999999999996
-Total fitness compromising: 1258.1285999999986
+Total fitness accommodating: 1198.4925999999996
+Highest fitness accommodating: 14.0233
+Total fitness collaborating: 3295.168800000004
+Highest fitness collaborating: 35.353
+Total fitness compromising: 1762.9498000000008
 Highest fitness compromising: 19.9
-Total fitness avoiding: 304.0581
-Highest fitness avoiding: 4.974
-Total fitness competing: 1239.8296000000012
-Highest fitness competing: 17.313
-Generation training time: 38.26287007331848
+Total fitness avoiding: 379.6312999999999
+Highest fitness avoiding: 4.4963999999999995
+Total fitness competing: 1520.2128500000003
+Highest fitness competing: 17.6015
+Generation training time: 27.94305968284607
 
 Generation 27
-Total fitness accommodating: 903.1607999999999
-Highest fitness accommodating: 12.004999999999999
-Total fitness collaborating: 2598.833400000001
-Highest fitness collaborating: 34.347
-Total fitness compromising: 1332.234599999999
+Total fitness accommodating: 1062.3336
+Highest fitness accommodating: 12.8445
+Total fitness collaborating: 3196.59
+Highest fitness collaborating: 33.67
+Total fitness compromising: 1893.5240000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 354.07179999999994
-Highest fitness avoiding: 5.4030000000000005
-Total fitness competing: 1134.0867500000004
-Highest fitness competing: 17.0985
-Generation training time: 38.988401889801025
+Total fitness avoiding: 558.3918999999989
+Highest fitness avoiding: 6.079999999999998
+Total fitness competing: 1585.8154999999988
+Highest fitness competing: 16.759999999999998
+Generation training time: 28.66326117515564
 
 Generation 28
-Total fitness accommodating: 897.9160999999997
-Highest fitness accommodating: 11.789500000000002
-Total fitness collaborating: 2624.5917
-Highest fitness collaborating: 34.168000000000006
-Total fitness compromising: 1368.424199999999
+Total fitness accommodating: 1288.3048999999992
+Highest fitness accommodating: 15.12725
+Total fitness collaborating: 3394.5618999999974
+Highest fitness collaborating: 35.669
+Total fitness compromising: 1930.2780000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 340.0915
-Highest fitness avoiding: 5.581999999999999
-Total fitness competing: 1144.91305
-Highest fitness competing: 17.009
-Generation training time: 38.401944160461426
+Total fitness avoiding: 373.6023999999999
+Highest fitness avoiding: 4.1385000000000005
+Total fitness competing: 1664.7077499999978
+Highest fitness competing: 17.7595
+Generation training time: 29.92941403388977
 
 Generation 29
-Total fitness accommodating: 936.5953999999994
-Highest fitness accommodating: 12.836099999999998
-Total fitness collaborating: 2623.2059000000036
-Highest fitness collaborating: 35.081
-Total fitness compromising: 1400.0357999999992
+Total fitness accommodating: 1007.8025000000009
+Highest fitness accommodating: 13.487199999999998
+Total fitness collaborating: 3184.239399999997
+Highest fitness collaborating: 33.905
+Total fitness compromising: 1914.3842000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 314.1184999999999
-Highest fitness avoiding: 4.669
-Total fitness competing: 1175.106249999999
-Highest fitness competing: 17.4655
-Generation training time: 38.17225694656372
+Total fitness avoiding: 541.9586999999992
+Highest fitness avoiding: 5.8797
+Total fitness competing: 1591.1013999999975
+Highest fitness competing: 16.8775
+Generation training time: 33.71631145477295
 
 Generation 30
-Total fitness accommodating: 842.7327500000004
-Highest fitness accommodating: 12.662849999999999
-Total fitness collaborating: 2689.4356
-Highest fitness collaborating: 33.276
-Total fitness compromising: 1423.7827999999995
+Total fitness accommodating: 1107.9157499999997
+Highest fitness accommodating: 13.44575
+Total fitness collaborating: 3318.925499999998
+Highest fitness collaborating: 34.548
+Total fitness compromising: 1904.7080000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 416.3008
-Highest fitness avoiding: 6.474
-Total fitness competing: 1169.3924000000002
-Highest fitness competing: 16.563000000000002
-Generation training time: 38.74076557159424
+Total fitness avoiding: 486.64480000000043
+Highest fitness avoiding: 5.202999999999999
+Total fitness competing: 1656.8179999999984
+Highest fitness competing: 17.198999999999998
+Generation training time: 36.162046909332275
 
 Generation 31
-Total fitness accommodating: 932.3940500000008
-Highest fitness accommodating: 11.895799999999998
-Total fitness collaborating: 2796.8857000000003
-Highest fitness collaborating: 34.378
-Total fitness compromising: 1477.0746
+Total fitness accommodating: 1075.0354500000005
+Highest fitness accommodating: 13.349000000000002
+Total fitness collaborating: 3220.6076000000003
+Highest fitness collaborating: 34.079
+Total fitness compromising: 1901.8588000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 345.13969999999983
-Highest fitness avoiding: 5.371999999999999
-Total fitness competing: 1256.3194499999997
-Highest fitness competing: 17.113999999999997
-Generation training time: 38.75881552696228
+Total fitness avoiding: 504.60369999999904
+Highest fitness avoiding: 5.670999999999999
+Total fitness competing: 1603.6180499999991
+Highest fitness competing: 16.9645
+Generation training time: 29.25257182121277
 
 Generation 32
-Total fitness accommodating: 785.0190999999999
-Highest fitness accommodating: 12.8044
-Total fitness collaborating: 2537.7223
-Highest fitness collaborating: 32.972
-Total fitness compromising: 1411.3927999999996
+Total fitness accommodating: 1142.0313999999998
+Highest fitness accommodating: 14.26475
+Total fitness collaborating: 3259.1937999999977
+Highest fitness collaborating: 35.408
+Total fitness compromising: 1862.5188000000007
 Highest fitness compromising: 19.9
-Total fitness avoiding: 432.9865999999997
-Highest fitness avoiding: 6.778
-Total fitness competing: 1073.1244999999997
-Highest fitness competing: 16.411
-Generation training time: 38.148191928863525
+Total fitness avoiding: 386.8980999999998
+Highest fitness avoiding: 4.3420000000000005
+Total fitness competing: 1549.7151500000004
+Highest fitness competing: 17.628999999999998
+Generation training time: 27.42821431159973
 
 Generation 33
-Total fitness accommodating: 948.3674499999989
-Highest fitness accommodating: 13.01625
-Total fitness collaborating: 2759.6849999999995
-Highest fitness collaborating: 34.066
-Total fitness compromising: 1483.5027999999995
-Highest fitness compromising: 19.9
-Total fitness avoiding: 367.4514
-Highest fitness avoiding: 5.683999999999999
-Total fitness competing: 1204.5815500000008
-Highest fitness competing: 16.958
-Generation training time: 38.405293703079224
+Total fitness accommodating: 1190.8064999999997
+Highest fitness accommodating: 15.034600000000001
+Total fitness collaborating: 3298.707399999998
+Highest fitness collaborating: 35.41000000000001
+Total fitness compromising: 1833.5050000000012
+Highest fitness compromising: 19.900000000000006
+Total fitness avoiding: 361.3388000000003
+Highest fitness avoiding: 4.340000000000002
+Total fitness competing: 1474.7518500000015
+Highest fitness competing: 17.630000000000003
+Generation training time: 28.12265682220459
 
 Generation 34
-Total fitness accommodating: 673.4043000000001
-Highest fitness accommodating: 11.694650000000001
-Total fitness collaborating: 2583.153600000002
-Highest fitness collaborating: 31.485
-Total fitness compromising: 1510.4189999999996
+Total fitness accommodating: 1112.6075000000003
+Highest fitness accommodating: 13.94875
+Total fitness collaborating: 3305.7221000000054
+Highest fitness collaborating: 35.017
+Total fitness compromising: 1862.903400000001
 Highest fitness compromising: 19.9
-Total fitness avoiding: 576.7178000000004
-Highest fitness avoiding: 8.282
-Total fitness competing: 1118.3272499999998
-Highest fitness competing: 15.658999999999999
-Generation training time: 38.47330927848816
+Total fitness avoiding: 433.94059999999985
+Highest fitness avoiding: 4.733
+Total fitness competing: 1619.4259000000004
+Highest fitness competing: 17.4335
+Generation training time: 27.06462836265564
 
 Generation 35
-Total fitness accommodating: 944.5789499999992
-Highest fitness accommodating: 11.772650000000002
-Total fitness collaborating: 2770.3383999999996
-Highest fitness collaborating: 34.279
-Total fitness compromising: 1530.8955999999998
+Total fitness accommodating: 1139.8226500000005
+Highest fitness accommodating: 14.526799999999998
+Total fitness collaborating: 3279.092499999996
+Highest fitness collaborating: 34.734
+Total fitness compromising: 1894.1982000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 394.9815000000001
-Highest fitness avoiding: 5.471
-Total fitness competing: 1242.0604500000002
-Highest fitness competing: 17.0645
-Generation training time: 38.23720908164978
+Total fitness avoiding: 454.63920000000047
+Highest fitness avoiding: 5.0565999999999995
+Total fitness competing: 1612.337150000002
+Highest fitness competing: 17.287000000000003
+Generation training time: 28.34034752845764
 
 Generation 36
-Total fitness accommodating: 949.3897499999993
-Highest fitness accommodating: 12.588350000000002
-Total fitness collaborating: 2679.034999999999
-Highest fitness collaborating: 34.262
-Total fitness compromising: 1487.2253999999996
+Total fitness accommodating: 818.8335000000002
+Highest fitness accommodating: 11.295450000000002
+Total fitness collaborating: 3083.0598000000036
+Highest fitness collaborating: 32.363
+Total fitness compromising: 1844.309600000001
 Highest fitness compromising: 19.9
-Total fitness avoiding: 361.15049999999985
-Highest fitness avoiding: 5.5249
-Total fitness competing: 1194.812650000001
-Highest fitness competing: 17.056
-Generation training time: 38.10709071159363
+Total fitness avoiding: 653.8996000000004
+Highest fitness avoiding: 7.386999999999999
+Total fitness competing: 1463.6964000000007
+Highest fitness competing: 16.1065
+Generation training time: 28.013622045516968
 
 Generation 37
-Total fitness accommodating: 779.7251000000007
-Highest fitness accommodating: 12.107250000000002
-Total fitness collaborating: 2711.9782000000014
-Highest fitness collaborating: 33.019000000000005
-Total fitness compromising: 1543.1789999999996
+Total fitness accommodating: 1258.3630500000004
+Highest fitness accommodating: 14.6705
+Total fitness collaborating: 3448.305600000002
+Highest fitness collaborating: 35.486
+Total fitness compromising: 1909.3586000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 483.51139999999947
-Highest fitness avoiding: 6.846999999999999
-Total fitness competing: 1161.3695999999984
-Highest fitness competing: 16.3765
-Generation training time: 39.18996548652649
+Total fitness avoiding: 390.42780000000033
+Highest fitness avoiding: 4.399499999999999
+Total fitness competing: 1692.7404999999983
+Highest fitness competing: 17.667999999999996
+Generation training time: 29.045674324035645
 
 Generation 38
-Total fitness accommodating: 967.4841499999998
-Highest fitness accommodating: 12.129550000000002
-Total fitness collaborating: 2684.2626999999993
-Highest fitness collaborating: 34.397000000000006
-Total fitness compromising: 1506.1714
+Total fitness accommodating: 1196.7325500000002
+Highest fitness accommodating: 14.0225
+Total fitness collaborating: 3250.4183999999996
+Highest fitness collaborating: 34.086
+Total fitness compromising: 1898.1144000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 352.58340000000004
-Highest fitness avoiding: 5.353
-Total fitness competing: 1267.9595499999998
-Highest fitness competing: 17.1235
-Generation training time: 38.819154262542725
+Total fitness avoiding: 516.2048000000008
+Highest fitness avoiding: 5.753299999999999
+Total fitness competing: 1625.1435499999984
+Highest fitness competing: 16.968
+Generation training time: 31.043973445892334
 
 Generation 39
-Total fitness accommodating: 734.2486999999999
-Highest fitness accommodating: 10.265999999999998
-Total fitness collaborating: 2593.326299999999
-Highest fitness collaborating: 32.43000000000001
-Total fitness compromising: 1460.3273999999997
+Total fitness accommodating: 1131.9139999999995
+Highest fitness accommodating: 13.1075
+Total fitness collaborating: 3297.1141000000034
+Highest fitness collaborating: 34.22
+Total fitness compromising: 1880.4520000000011
 Highest fitness compromising: 19.9
-Total fitness avoiding: 468.10699999999997
-Highest fitness avoiding: 7.32
-Total fitness competing: 1132.7883500000012
-Highest fitness competing: 16.14
-Generation training time: 37.86867141723633
+Total fitness avoiding: 501.9809999999994
+Highest fitness avoiding: 5.529999999999999
+Total fitness competing: 1606.5496499999995
+Highest fitness competing: 17.035
+Generation training time: 28.314154148101807
 
 Generation 40
-Total fitness accommodating: 719.8305000000001
-Highest fitness accommodating: 10.029250000000001
-Total fitness collaborating: 2464.947500000003
-Highest fitness collaborating: 32.219
-Total fitness compromising: 1448.6013999999996
+Total fitness accommodating: 1010.4629500000005
+Highest fitness accommodating: 14.416600000000003
+Total fitness collaborating: 3117.7426000000014
+Highest fitness collaborating: 35.04
+Total fitness compromising: 1856.3176000000012
 Highest fitness compromising: 19.9
-Total fitness avoiding: 519.8360000000002
-Highest fitness avoiding: 7.531
-Total fitness competing: 1066.7343499999988
-Highest fitness competing: 16.0345
-Generation training time: 38.55689191818237
+Total fitness avoiding: 413.89549999999934
+Highest fitness avoiding: 4.71
+Total fitness competing: 1572.0734499999994
+Highest fitness competing: 17.445
+Generation training time: 29.524353504180908
 
 Generation 41
-Total fitness accommodating: 963.1089500000005
-Highest fitness accommodating: 13.643650000000001
-Total fitness collaborating: 2724.5680999999986
-Highest fitness collaborating: 34.561
-Total fitness compromising: 1506.6187999999993
+Total fitness accommodating: 1248.2547000000009
+Highest fitness accommodating: 14.418100000000003
+Total fitness collaborating: 3291.554299999998
+Highest fitness collaborating: 35.22
+Total fitness compromising: 1879.5970000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 350.8909999999998
-Highest fitness avoiding: 5.188999999999999
-Total fitness competing: 1250.7382500000008
-Highest fitness competing: 17.2055
-Generation training time: 38.33193564414978
+Total fitness avoiding: 398.1452000000002
+Highest fitness avoiding: 4.529999999999999
+Total fitness competing: 1519.697500000001
+Highest fitness competing: 17.535
+Generation training time: 29.3928325176239
 
 Generation 42
-Total fitness accommodating: 969.0373999999995
-Highest fitness accommodating: 13.032500000000002
-Total fitness collaborating: 2825.6263999999987
-Highest fitness collaborating: 34.588
-Total fitness compromising: 1431.758999999999
+Total fitness accommodating: 1144.8475
+Highest fitness accommodating: 13.982000000000001
+Total fitness collaborating: 3420.5121999999974
+Highest fitness collaborating: 35.512
+Total fitness compromising: 1879.1908000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 376.49070000000006
-Highest fitness avoiding: 5.162
-Total fitness competing: 1270.5182000000011
-Highest fitness competing: 17.219
-Generation training time: 37.96011471748352
+Total fitness avoiding: 392.7192999999999
+Highest fitness avoiding: 4.2379999999999995
+Total fitness competing: 1699.4870000000014
+Highest fitness competing: 17.681
+Generation training time: 30.69188117980957
 
 Generation 43
-Total fitness accommodating: 1107.3317000000006
-Highest fitness accommodating: 14.537949999999997
-Total fitness collaborating: 2843.1602000000003
-Highest fitness collaborating: 36.150999999999996
-Total fitness compromising: 1445.2187999999996
+Total fitness accommodating: 1299.1774
+Highest fitness accommodating: 15.450300000000002
+Total fitness collaborating: 3442.3957999999952
+Highest fitness collaborating: 35.925000000000004
+Total fitness compromising: 1848.5510000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 277.55409999999983
-Highest fitness avoiding: 3.6535
-Total fitness competing: 1137.61485
-Highest fitness competing: 18.0005
-Generation training time: 38.80270171165466
+Total fitness avoiding: 332.09920000000017
+Highest fitness avoiding: 3.8250000000000006
+Total fitness competing: 1676.150099999997
+Highest fitness competing: 17.8875
+Generation training time: 31.450284719467163
 
 Generation 44
-Total fitness accommodating: 1062.5130499999993
-Highest fitness accommodating: 13.656400000000001
-Total fitness collaborating: 2762.945000000002
-Highest fitness collaborating: 35.027
-Total fitness compromising: 1541.5499999999997
+Total fitness accommodating: 998.7126999999998
+Highest fitness accommodating: 13.339450000000001
+Total fitness collaborating: 3105.1118999999944
+Highest fitness collaborating: 33.438
+Total fitness compromising: 1891.7746000000016
 Highest fitness compromising: 19.9
-Total fitness avoiding: 325.4201000000002
-Highest fitness avoiding: 4.728399999999999
-Total fitness competing: 1250.5779999999986
-Highest fitness competing: 17.438499999999998
-Generation training time: 38.44527220726013
+Total fitness avoiding: 581.5985999999998
+Highest fitness avoiding: 6.311999999999999
+Total fitness competing: 1559.8633000000002
+Highest fitness competing: 16.644
+Generation training time: 30.044344425201416
 
 Generation 45
-Total fitness accommodating: 582.0261500000001
-Highest fitness accommodating: 10.08305
-Total fitness collaborating: 2551.8270999999972
-Highest fitness collaborating: 30.759
-Total fitness compromising: 1548.1042
+Total fitness accommodating: 1180.4369499999991
+Highest fitness accommodating: 13.76875
+Total fitness collaborating: 3352.617600000001
+Highest fitness collaborating: 34.439
+Total fitness compromising: 1922.6108000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 628.1474999999994
-Highest fitness avoiding: 8.991
-Total fitness competing: 1087.7979500000006
-Highest fitness competing: 15.304499999999999
-Generation training time: 38.07480049133301
+Total fitness avoiding: 498.2411000000003
+Highest fitness avoiding: 5.310999999999999
+Total fitness competing: 1637.71515
+Highest fitness competing: 17.1445
+Generation training time: 28.339552879333496
 
 Generation 46
-Total fitness accommodating: 857.5026499999997
-Highest fitness accommodating: 11.522300000000001
-Total fitness collaborating: 2773.111499999998
-Highest fitness collaborating: 33.175
-Total fitness compromising: 1557.6249999999998
+Total fitness accommodating: 1107.7764500000005
+Highest fitness accommodating: 13.149849999999997
+Total fitness collaborating: 3226.604799999999
+Highest fitness collaborating: 33.412
+Total fitness compromising: 1900.1000000000015
 Highest fitness compromising: 19.9
-Total fitness avoiding: 488.7340999999998
-Highest fitness avoiding: 6.574999999999999
-Total fitness competing: 1225.0656500000014
-Highest fitness competing: 16.5125
-Generation training time: 38.0137939453125
+Total fitness avoiding: 586.3986000000006
+Highest fitness avoiding: 6.337999999999999
+Total fitness competing: 1598.6381499999975
+Highest fitness competing: 16.631
+Generation training time: 28.203863382339478
 
 Generation 47
-Total fitness accommodating: 794.2351000000003
-Highest fitness accommodating: 10.754850000000001
-Total fitness collaborating: 2768.7077999999974
-Highest fitness collaborating: 32.926
-Total fitness compromising: 1536.6910000000003
-Highest fitness compromising: 19.9
-Total fitness avoiding: 529.1268000000005
-Highest fitness avoiding: 6.823999999999999
-Total fitness competing: 1151.5178500000013
-Highest fitness competing: 16.388
-Generation training time: 38.309011936187744
+Total fitness accommodating: 1086.9471000000005
+Highest fitness accommodating: 12.706850000000001
+Total fitness collaborating: 3207.783500000006
+Highest fitness collaborating: 33.086000000000006
+Total fitness compromising: 1931.2428000000018
+Highest fitness compromising: 19.900000000000006
+Total fitness avoiding: 627.500300000001
+Highest fitness avoiding: 6.664000000000002
+Total fitness competing: 1580.8246500000016
+Highest fitness competing: 16.468000000000004
+Generation training time: 28.699923992156982
 
 Generation 48
-Total fitness accommodating: 1031.8976499999987
-Highest fitness accommodating: 13.1433
-Total fitness collaborating: 2895.6154000000006
-Highest fitness collaborating: 35.341
-Total fitness compromising: 1521.5439999999999
+Total fitness accommodating: 1181.5767999999996
+Highest fitness accommodating: 13.900750000000002
+Total fitness collaborating: 3215.038900000006
+Highest fitness collaborating: 34.576
+Total fitness compromising: 1892.7378000000015
 Highest fitness compromising: 19.9
-Total fitness avoiding: 346.67709999999977
-Highest fitness avoiding: 4.409
-Total fitness competing: 1422.8905000000004
-Highest fitness competing: 17.5955
-Generation training time: 38.73445725440979
+Total fitness avoiding: 477.86900000000026
+Highest fitness avoiding: 5.1739999999999995
+Total fitness competing: 1618.347150000002
+Highest fitness competing: 17.213
+Generation training time: 28.84255027770996
 
 Generation 49
-Total fitness accommodating: 1059.7596500000004
-Highest fitness accommodating: 12.67805
-Total fitness collaborating: 2999.5419
-Highest fitness collaborating: 34.88
-Total fitness compromising: 1489.2507999999996
+Total fitness accommodating: 1114.33205
+Highest fitness accommodating: 13.9892
+Total fitness collaborating: 3269.583700000004
+Highest fitness collaborating: 34.318
+Total fitness compromising: 1912.5686000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 350.86739999999963
-Highest fitness avoiding: 4.87
-Total fitness competing: 1362.6204500000008
-Highest fitness competing: 17.365
-Generation training time: 40.02785587310791
+Total fitness avoiding: 500.6599999999994
+Highest fitness avoiding: 5.431999999999999
+Total fitness competing: 1627.7456500000008
+Highest fitness competing: 17.084
+Generation training time: 29.43184804916382
 
 Generation 50
-Total fitness accommodating: 898.2856999999988
-Highest fitness accommodating: 11.02305
-Total fitness collaborating: 2842.0895000000023
-Highest fitness collaborating: 33.263
-Total fitness compromising: 1637.1756000000005
+Total fitness accommodating: 1196.3756000000003
+Highest fitness accommodating: 15.2316
+Total fitness collaborating: 3210.617699999996
+Highest fitness collaborating: 35.184200000000004
+Total fitness compromising: 1835.5620000000008
 Highest fitness compromising: 19.9
-Total fitness avoiding: 501.0420999999998
-Highest fitness avoiding: 6.487
-Total fitness competing: 1330.4804499999984
-Highest fitness competing: 16.5565
-Generation training time: 38.776960611343384
+Total fitness avoiding: 414.8130000000004
+Highest fitness avoiding: 4.6899999999999995
+Total fitness competing: 1581.6173500000011
+Highest fitness competing: 17.48585
+Generation training time: 29.78484082221985
 
 Generation 51
-Total fitness accommodating: 916.1083499999997
-Highest fitness accommodating: 11.256700000000002
-Total fitness collaborating: 2889.7088000000003
-Highest fitness collaborating: 33.955
-Total fitness compromising: 1547.9959999999996
+Total fitness accommodating: 1239.4947499999998
+Highest fitness accommodating: 14.714550000000003
+Total fitness collaborating: 3333.6770999999976
+Highest fitness collaborating: 35.010000000000005
+Total fitness compromising: 1897.9156000000012
 Highest fitness compromising: 19.9
-Total fitness avoiding: 460.4194000000003
-Highest fitness avoiding: 5.795
-Total fitness competing: 1304.058850000001
-Highest fitness competing: 16.9025
-Generation training time: 38.34590005874634
+Total fitness avoiding: 400.70649999999955
+Highest fitness avoiding: 4.74
+Total fitness competing: 1628.205799999998
+Highest fitness competing: 17.43
+Generation training time: 29.115724086761475
 
 Generation 52
-Total fitness accommodating: 1025.3011499999989
-Highest fitness accommodating: 13.012950000000002
-Total fitness collaborating: 2896.3158999999996
-Highest fitness collaborating: 34.374
-Total fitness compromising: 1555.8429999999996
+Total fitness accommodating: 997.5371499999999
+Highest fitness accommodating: 11.990599999999999
+Total fitness collaborating: 3115.347299999996
+Highest fitness collaborating: 32.098
+Total fitness compromising: 1915.2358000000015
 Highest fitness compromising: 19.9
-Total fitness avoiding: 424.15379999999993
-Highest fitness avoiding: 5.3759999999999994
-Total fitness competing: 1283.5763500000007
-Highest fitness competing: 17.112000000000002
-Generation training time: 38.00406336784363
+Total fitness avoiding: 704.5431999999992
+Highest fitness avoiding: 7.652
+Total fitness competing: 1517.1327499999973
+Highest fitness competing: 15.974
+Generation training time: 30.764178037643433
 
 Generation 53
-Total fitness accommodating: 1087.74165
-Highest fitness accommodating: 13.2883
-Total fitness collaborating: 2823.5823
-Highest fitness collaborating: 35.402
-Total fitness compromising: 1493.8283999999996
+Total fitness accommodating: 1338.7671500000001
+Highest fitness accommodating: 15.000999999999998
+Total fitness collaborating: 3353.152200000005
+Highest fitness collaborating: 34.9686
+Total fitness compromising: 1933.7026000000012
 Highest fitness compromising: 19.9
-Total fitness avoiding: 325.39339999999976
-Highest fitness avoiding: 4.348
-Total fitness competing: 1334.4194500000012
-Highest fitness competing: 17.625999999999998
-Generation training time: 38.88042640686035
+Total fitness avoiding: 446.4639000000004
+Highest fitness avoiding: 4.7924
+Total fitness competing: 1664.4978000000015
+Highest fitness competing: 17.409000000000002
+Generation training time: 30.373870134353638
 
 Generation 54
-Total fitness accommodating: 1164.9565999999988
-Highest fitness accommodating: 14.883300000000002
-Total fitness collaborating: 3090.847200000001
-Highest fitness collaborating: 35.667
-Total fitness compromising: 1602.1057999999998
+Total fitness accommodating: 1199.8265500000002
+Highest fitness accommodating: 13.79215
+Total fitness collaborating: 3211.0745000000024
+Highest fitness collaborating: 35.794000000000004
+Total fitness compromising: 1797.4458000000009
 Highest fitness compromising: 19.9
-Total fitness avoiding: 338.5734000000002
-Highest fitness avoiding: 4.083
-Total fitness competing: 1480.8161500000003
-Highest fitness competing: 17.758499999999998
-Generation training time: 37.74925470352173
+Total fitness avoiding: 367.7283000000006
+Highest fitness avoiding: 3.9559999999999995
+Total fitness competing: 1696.3451999999988
+Highest fitness competing: 17.822
+Generation training time: 27.63680076599121
 
 Generation 55
-Total fitness accommodating: 1027.8527999999994
-Highest fitness accommodating: 12.142650000000001
-Total fitness collaborating: 2894.445900000004
-Highest fitness collaborating: 34.42
-Total fitness compromising: 1644.2030000000004
+Total fitness accommodating: 1033.21305
+Highest fitness accommodating: 11.53615
+Total fitness collaborating: 3063.2045999999955
+Highest fitness collaborating: 31.683000000000003
+Total fitness compromising: 1919.3600000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 429.4303000000005
-Highest fitness avoiding: 5.329999999999999
-Total fitness competing: 1412.5065
-Highest fitness competing: 17.135
-Generation training time: 38.593992948532104
+Total fitness avoiding: 744.4960000000007
+Highest fitness avoiding: 8.067
+Total fitness competing: 1514.2428500000005
+Highest fitness competing: 15.7665
+Generation training time: 27.534999132156372
 
 Generation 56
-Total fitness accommodating: 1129.6860499999993
-Highest fitness accommodating: 14.084000000000001
-Total fitness collaborating: 3187.9344
-Highest fitness collaborating: 35.062000000000005
-Total fitness compromising: 1734.9242000000006
+Total fitness accommodating: 1166.0389000000011
+Highest fitness accommodating: 13.51485
+Total fitness collaborating: 3279.4851000000044
+Highest fitness collaborating: 34.053000000000004
+Total fitness compromising: 1948.4124000000015
 Highest fitness compromising: 19.9
-Total fitness avoiding: 403.23170000000067
-Highest fitness avoiding: 4.688
-Total fitness competing: 1472.9344999999987
-Highest fitness competing: 17.456
-Generation training time: 39.03082227706909
+Total fitness avoiding: 533.7328999999993
+Highest fitness avoiding: 5.696999999999999
+Total fitness competing: 1653.8263500000016
+Highest fitness competing: 16.951500000000003
+Generation training time: 27.579397916793823
 
 Generation 57
-Total fitness accommodating: 1145.5656500000007
-Highest fitness accommodating: 13.580699999999998
-Total fitness collaborating: 3019.5538000000006
-Highest fitness collaborating: 35.711000000000006
-Total fitness compromising: 1598.6455999999994
+Total fitness accommodating: 1439.2184000000002
+Highest fitness accommodating: 15.601949999999999
+Total fitness collaborating: 3537.1285999999986
+Highest fitness collaborating: 36.022
+Total fitness compromising: 1951.1628000000012
 Highest fitness compromising: 19.9
-Total fitness avoiding: 318.70859999999993
-Highest fitness avoiding: 4.042999999999999
-Total fitness competing: 1432.1334499999984
-Highest fitness competing: 17.7805
-Generation training time: 38.352630853652954
+Total fitness avoiding: 350.2013000000003
+Highest fitness avoiding: 3.728
+Total fitness competing: 1701.511199999999
+Highest fitness competing: 17.936
+Generation training time: 27.93771457672119
 
 Generation 58
-Total fitness accommodating: 1238.1797499999982
-Highest fitness accommodating: 13.93355
-Total fitness collaborating: 3130.5807000000023
-Highest fitness collaborating: 35.966
-Total fitness compromising: 1631.5930000000003
+Total fitness accommodating: 1330.6668999999993
+Highest fitness accommodating: 14.360350000000002
+Total fitness collaborating: 3285.2719999999986
+Highest fitness collaborating: 33.889
+Total fitness compromising: 1947.5536000000016
 Highest fitness compromising: 19.9
-Total fitness avoiding: 316.90419999999966
-Highest fitness avoiding: 3.8249999999999997
-Total fitness competing: 1515.2667000000001
-Highest fitness competing: 17.908
-Generation training time: 37.73207449913025
+Total fitness avoiding: 556.2078000000004
+Highest fitness avoiding: 5.861
+Total fitness competing: 1585.9247499999985
+Highest fitness competing: 16.8695
+Generation training time: 27.663411617279053
 
 Generation 59
-Total fitness accommodating: 973.995999999999
-Highest fitness accommodating: 12.496950000000002
-Total fitness collaborating: 2982.1722000000054
-Highest fitness collaborating: 34.456
-Total fitness compromising: 1689.5438000000001
-Highest fitness compromising: 19.9
-Total fitness avoiding: 452.4179000000004
-Highest fitness avoiding: 5.294
-Total fitness competing: 1403.76835
-Highest fitness competing: 17.153
-Generation training time: 37.799246311187744
+Total fitness accommodating: 1335.5291499999998
+Highest fitness accommodating: 14.171899999999999
+Total fitness collaborating: 3309.5920000000006
+Highest fitness collaborating: 33.7192
+Total fitness compromising: 1955.9726000000012
+Highest fitness compromising: 19.8614
+Total fitness avoiding: 557.0753
+Highest fitness avoiding: 6.017199999999999
+Total fitness competing: 1585.0304499999993
+Highest fitness competing: 16.6507
+Generation training time: 28.35913872718811
 
 Generation 60
-Total fitness accommodating: 1145.6902499999994
-Highest fitness accommodating: 14.4017
-Total fitness collaborating: 3040.108899999999
-Highest fitness collaborating: 36.152
-Total fitness compromising: 1488.365999999999
+Total fitness accommodating: 1154.9920499999998
+Highest fitness accommodating: 12.8464
+Total fitness collaborating: 3285.043900000001
+Highest fitness collaborating: 33.439
+Total fitness compromising: 1929.9554000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 291.1870999999999
-Highest fitness avoiding: 3.6740999999999993
-Total fitness competing: 1402.8066999999992
-Highest fitness competing: 18.000999999999998
-Generation training time: 38.602399587631226
+Total fitness avoiding: 565.9525000000012
+Highest fitness avoiding: 6.311
+Total fitness competing: 1623.1082499999989
+Highest fitness competing: 16.6445
+Generation training time: 28.642682313919067
 
 Generation 61
-Total fitness accommodating: 728.722050000001
-Highest fitness accommodating: 11.43165
-Total fitness collaborating: 2702.820900000001
-Highest fitness collaborating: 31.801000000000002
-Total fitness compromising: 1633.5480000000005
-Highest fitness compromising: 19.9
-Total fitness avoiding: 651.6628999999992
-Highest fitness avoiding: 7.949
-Total fitness competing: 1222.1670999999997
-Highest fitness competing: 15.825500000000002
-Generation training time: 37.702147483825684
+Total fitness accommodating: 1267.2839
+Highest fitness accommodating: 13.915150000000002
+Total fitness collaborating: 3365.598800000002
+Highest fitness collaborating: 34.202
+Total fitness compromising: 1942.8402000000012
+Highest fitness compromising: 19.899999999999995
+Total fitness avoiding: 513.4831000000001
+Highest fitness avoiding: 5.547999999999998
+Total fitness competing: 1648.2976499999986
+Highest fitness competing: 17.025999999999996
+Generation training time: 27.74658703804016
 
 Generation 62
-Total fitness accommodating: 939.5356499999995
-Highest fitness accommodating: 12.721
-Total fitness collaborating: 2954.5730999999973
-Highest fitness collaborating: 33.56
-Total fitness compromising: 1585.8164000000002
+Total fitness accommodating: 1303.3048500000004
+Highest fitness accommodating: 14.9178
+Total fitness collaborating: 3412.3841000000043
+Highest fitness collaborating: 34.614
+Total fitness compromising: 1944.9496000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 504.0135999999999
-Highest fitness avoiding: 6.1899999999999995
-Total fitness competing: 1317.1156500000013
-Highest fitness competing: 16.705
-Generation training time: 38.38551092147827
+Total fitness avoiding: 476.32659999999913
+Highest fitness avoiding: 5.135999999999998
+Total fitness competing: 1674.8887999999995
+Highest fitness competing: 17.232
+Generation training time: 27.68418550491333
 
 Generation 63
-Total fitness accommodating: 1107.8718000000008
-Highest fitness accommodating: 13.76425
-Total fitness collaborating: 2942.7814000000026
-Highest fitness collaborating: 35.14
-Total fitness compromising: 1638.1100000000004
-Highest fitness compromising: 19.9
-Total fitness avoiding: 361.11469999999974
-Highest fitness avoiding: 4.609999999999999
-Total fitness competing: 1397.5243499999997
-Highest fitness competing: 17.495
-Generation training time: 38.60607886314392
+Total fitness accommodating: 1068.9901999999997
+Highest fitness accommodating: 12.313300000000002
+Total fitness collaborating: 2927.4409999999993
+Highest fitness collaborating: 32.8756
+Total fitness compromising: 1864.6952000000015
+Highest fitness compromising: 19.543
+Total fitness avoiding: 559.0047999999999
+Highest fitness avoiding: 6.2056000000000004
+Total fitness competing: 1562.6573999999982
+Highest fitness competing: 16.35905
+Generation training time: 29.662774562835693
 
 Generation 64
-Total fitness accommodating: 1212.1303499999995
-Highest fitness accommodating: 13.51825
-Total fitness collaborating: 3106.864799999999
-Highest fitness collaborating: 35.453
-Total fitness compromising: 1650.6998000000006
+Total fitness accommodating: 1363.6837
+Highest fitness accommodating: 15.5258
+Total fitness collaborating: 3508.1522999999956
+Highest fitness collaborating: 36.054
+Total fitness compromising: 1927.4286000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 344.4997
-Highest fitness avoiding: 4.296999999999999
-Total fitness competing: 1506.8161000000014
-Highest fitness competing: 17.6515
-Generation training time: 37.89603567123413
+Total fitness avoiding: 338.66109999999946
+Highest fitness avoiding: 3.7630999999999992
+Total fitness competing: 1721.8506999999975
+Highest fitness competing: 17.952
+Generation training time: 30.427090167999268
 
 Generation 65
-Total fitness accommodating: 881.8842500000002
-Highest fitness accommodating: 11.044649999999999
-Total fitness collaborating: 2897.9078000000045
-Highest fitness collaborating: 33.197
-Total fitness compromising: 1734.322400000001
+Total fitness accommodating: 1217.9311
+Highest fitness accommodating: 13.3077
+Total fitness collaborating: 3329.239200000003
+Highest fitness collaborating: 34.112
+Total fitness compromising: 1921.6040000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 530.7759999999996
-Highest fitness avoiding: 6.5732
-Total fitness competing: 1358.1907999999994
-Highest fitness competing: 16.5235
-Generation training time: 38.76951599121094
+Total fitness avoiding: 518.4165000000002
+Highest fitness avoiding: 5.638
+Total fitness competing: 1601.8388000000004
+Highest fitness competing: 16.980999999999998
+Generation training time: 28.814538955688477
 
 Generation 66
-Total fitness accommodating: 877.2819499999997
-Highest fitness accommodating: 11.286950000000001
-Total fitness collaborating: 2975.8255000000026
-Highest fitness collaborating: 32.766999999999996
-Total fitness compromising: 1572.2418000000002
-Highest fitness compromising: 19.9
-Total fitness avoiding: 562.8017000000006
-Highest fitness avoiding: 6.982999999999999
-Total fitness competing: 1367.404199999999
-Highest fitness competing: 16.3085
-Generation training time: 37.73867893218994
+Total fitness accommodating: 1243.8788500000005
+Highest fitness accommodating: 14.0793
+Total fitness collaborating: 3288.7352999999976
+Highest fitness collaborating: 34.8591
+Total fitness compromising: 1882.2928000000015
+Highest fitness compromising: 19.667
+Total fitness avoiding: 389.5309999999999
+Highest fitness avoiding: 4.4224
+Total fitness competing: 1667.109849999998
+Highest fitness competing: 17.249499999999998
+Generation training time: 28.75856876373291
 
 Generation 67
-Total fitness accommodating: 1123.7082000000007
-Highest fitness accommodating: 13.2819
-Total fitness collaborating: 2991.407000000001
-Highest fitness collaborating: 35.268
-Total fitness compromising: 1539.3048
+Total fitness accommodating: 1235.1741999999997
+Highest fitness accommodating: 13.675050000000002
+Total fitness collaborating: 3324.752300000001
+Highest fitness collaborating: 34.587
+Total fitness compromising: 1892.6414000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 366.18069999999983
-Highest fitness avoiding: 4.481999999999999
-Total fitness competing: 1372.732249999999
-Highest fitness competing: 17.559
-Generation training time: 37.96754693984985
+Total fitness avoiding: 457.80660000000046
+Highest fitness avoiding: 5.163
+Total fitness competing: 1518.5496
+Highest fitness competing: 17.218500000000002
+Generation training time: 27.288790464401245
 
 Generation 68
-Total fitness accommodating: 1129.9406000000006
-Highest fitness accommodating: 12.834999999999999
-Total fitness collaborating: 3215.8027
-Highest fitness collaborating: 35.24
-Total fitness compromising: 1742.4022000000007
+Total fitness accommodating: 1197.48435
+Highest fitness accommodating: 13.44995
+Total fitness collaborating: 3380.0659000000005
+Highest fitness collaborating: 34.615
+Total fitness compromising: 1925.0506000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 386.15290000000005
-Highest fitness avoiding: 5.0009999999999994
-Total fitness competing: 1449.1687999999983
-Highest fitness competing: 17.544999999999998
-Generation training time: 38.3218560218811
+Total fitness avoiding: 451.39600000000024
+Highest fitness avoiding: 5.135
+Total fitness competing: 1674.3834499999994
+Highest fitness competing: 17.232499999999998
+Generation training time: 27.409167528152466
 
 Generation 69
-Total fitness accommodating: 986.2876000000011
-Highest fitness accommodating: 12.92215
-Total fitness collaborating: 3060.208300000002
-Highest fitness collaborating: 33.953
-Total fitness compromising: 1744.6828000000007
+Total fitness accommodating: 1408.6035
+Highest fitness accommodating: 15.404300000000003
+Total fitness collaborating: 3589.2073999999943
+Highest fitness collaborating: 36.790000000000006
+Total fitness compromising: 1939.2014000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 506.3142000000005
-Highest fitness avoiding: 5.804099999999999
-Total fitness competing: 1471.40605
-Highest fitness competing: 16.9015
-Generation training time: 38.16399002075195
+Total fitness avoiding: 274.2715999999997
+Highest fitness avoiding: 2.9951999999999996
+Total fitness competing: 1718.1187999999977
+Highest fitness competing: 18.32
+Generation training time: 29.872837781906128
 
 Generation 70
-Total fitness accommodating: 821.7555499999993
-Highest fitness accommodating: 11.54065
-Total fitness collaborating: 2949.5972000000015
-Highest fitness collaborating: 32.795
-Total fitness compromising: 1648.8496
+Total fitness accommodating: 1258.5859999999998
+Highest fitness accommodating: 13.9911
+Total fitness collaborating: 3394.4358999999977
+Highest fitness collaborating: 35.207
+Total fitness compromising: 1899.4204000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 561.4947000000004
-Highest fitness avoiding: 6.955
-Total fitness competing: 1332.2501
-Highest fitness competing: 16.322499999999998
-Generation training time: 37.47292733192444
+Total fitness avoiding: 429.51540000000074
+Highest fitness avoiding: 4.668
+Total fitness competing: 1714.1897499999977
+Highest fitness competing: 17.5285
+Generation training time: 27.563220024108887
 
 Generation 71
-Total fitness accommodating: 1003.5715500000009
-Highest fitness accommodating: 12.2868
-Total fitness collaborating: 3063.778800000001
-Highest fitness collaborating: 33.882000000000005
-Total fitness compromising: 1769.4674000000005
+Total fitness accommodating: 1119.1843499999998
+Highest fitness accommodating: 14.2946
+Total fitness collaborating: 3238.6661999999947
+Highest fitness collaborating: 34.611000000000004
+Total fitness compromising: 1882.0756000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 488.5728999999993
-Highest fitness avoiding: 5.868
-Total fitness competing: 1417.5869499999997
-Highest fitness competing: 16.866
-Generation training time: 38.64768648147583
+Total fitness avoiding: 424.2550999999996
+Highest fitness avoiding: 5.139
+Total fitness competing: 1634.0294000000008
+Highest fitness competing: 17.2305
+Generation training time: 28.984961986541748
 
 Generation 72
-Total fitness accommodating: 823.630100000001
-Highest fitness accommodating: 10.8306
-Total fitness collaborating: 2826.6140000000005
-Highest fitness collaborating: 32.463
-Total fitness compromising: 1708.5038000000006
-Highest fitness compromising: 19.9
-Total fitness avoiding: 594.0735000000004
-Highest fitness avoiding: 7.286999999999999
-Total fitness competing: 1355.8510000000006
-Highest fitness competing: 16.1565
-Generation training time: 42.36178421974182
+Total fitness accommodating: 1103.7799000000005
+Highest fitness accommodating: 12.305299999999999
+Total fitness collaborating: 3236.589299999999
+Highest fitness collaborating: 32.9331
+Total fitness compromising: 1892.1598000000013
+Highest fitness compromising: 19.5372
+Total fitness avoiding: 587.7974000000006
+Highest fitness avoiding: 6.2669999999999995
+Total fitness competing: 1606.1762499999988
+Highest fitness competing: 16.387800000000002
+Generation training time: 30.924116373062134
 
 Generation 73
-Total fitness accommodating: 868.0858000000005
-Highest fitness accommodating: 9.981449999999999
-Total fitness collaborating: 2984.5850999999966
-Highest fitness collaborating: 33.062
-Total fitness compromising: 1715.7510000000004
-Highest fitness compromising: 19.9
-Total fitness avoiding: 588.1513999999992
-Highest fitness avoiding: 6.688
-Total fitness competing: 1339.4302000000012
-Highest fitness competing: 16.456
-Generation training time: 48.2548668384552
+Total fitness accommodating: 1401.5670499999997
+Highest fitness accommodating: 15.7361
+Total fitness collaborating: 3490.315700000002
+Highest fitness collaborating: 35.723499999999994
+Total fitness compromising: 1936.4456000000014
+Highest fitness compromising: 19.895
+Total fitness avoiding: 382.20079999999956
+Highest fitness avoiding: 4.0906
+Total fitness competing: 1710.6798500000002
+Highest fitness competing: 17.69925
+Generation training time: 29.66066813468933
 
 Generation 74
-Total fitness accommodating: 1147.5861500000005
-Highest fitness accommodating: 13.241600000000002
-Total fitness collaborating: 3091.6579
-Highest fitness collaborating: 34.914
-Total fitness compromising: 1757.1514000000009
+Total fitness accommodating: 1185.5288500000004
+Highest fitness accommodating: 13.0179
+Total fitness collaborating: 3334.535800000004
+Highest fitness collaborating: 34.275000000000006
+Total fitness compromising: 1918.1706000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 402.78340000000003
-Highest fitness avoiding: 4.836
-Total fitness competing: 1510.7970000000016
-Highest fitness competing: 17.381999999999998
-Generation training time: 49.19741344451904
+Total fitness avoiding: 497.53709999999967
+Highest fitness avoiding: 5.475
+Total fitness competing: 1640.0827500000012
+Highest fitness competing: 17.0625
+Generation training time: 28.36959147453308
 
 Generation 75
-Total fitness accommodating: 984.2360000000003
-Highest fitness accommodating: 12.607650000000001
-Total fitness collaborating: 2923.372899999998
-Highest fitness collaborating: 34.324000000000005
-Total fitness compromising: 1714.0702000000006
+Total fitness accommodating: 1294.6262000000004
+Highest fitness accommodating: 14.8321
+Total fitness collaborating: 3459.7142999999996
+Highest fitness collaborating: 35.308
+Total fitness compromising: 1948.1330000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 446.32050000000004
-Highest fitness avoiding: 5.426
-Total fitness competing: 1390.0220999999983
-Highest fitness competing: 17.087
-Generation training time: 51.0587522983551
+Total fitness avoiding: 419.2601000000001
+Highest fitness avoiding: 4.441999999999999
+Total fitness competing: 1702.0980500000032
+Highest fitness competing: 17.579
+Generation training time: 27.493324995040894
 
 Generation 76
-Total fitness accommodating: 1251.27525
-Highest fitness accommodating: 13.9809
-Total fitness collaborating: 3186.2255000000027
-Highest fitness collaborating: 35.83
-Total fitness compromising: 1739.2474000000009
-Highest fitness compromising: 19.9
-Total fitness avoiding: 333.90819999999985
-Highest fitness avoiding: 3.919999999999999
-Total fitness competing: 1547.5065000000004
-Highest fitness competing: 17.84
-Generation training time: 48.97177577018738
+Total fitness accommodating: 1317.7447000000006
+Highest fitness accommodating: 14.124699999999997
+Total fitness collaborating: 3327.922800000003
+Highest fitness collaborating: 33.765
+Total fitness compromising: 1852.638200000001
+Highest fitness compromising: 19.7998
+Total fitness avoiding: 552.2144999999996
+Highest fitness avoiding: 5.844199999999999
+Total fitness competing: 1618.2369999999992
+Highest fitness competing: 16.71975
+Generation training time: 29.69144892692566
 
 Generation 77
-Total fitness accommodating: 855.0579499999991
-Highest fitness accommodating: 11.584999999999999
-Total fitness collaborating: 2868.052500000001
-Highest fitness collaborating: 32.673
-Total fitness compromising: 1757.1862000000006
-Highest fitness compromising: 19.9
-Total fitness avoiding: 592.1754000000006
-Highest fitness avoiding: 7.077
-Total fitness competing: 1395.132799999999
-Highest fitness competing: 16.261499999999998
-Generation training time: 48.84863018989563
+Total fitness accommodating: 1123.28925
+Highest fitness accommodating: 13.3462
+Total fitness collaborating: 3299.630899999996
+Highest fitness collaborating: 33.901
+Total fitness compromising: 1891.8514000000014
+Highest fitness compromising: 19.507
+Total fitness avoiding: 463.6338999999996
+Highest fitness avoiding: 5.1919
+Total fitness competing: 1579.6713500000008
+Highest fitness competing: 16.8844
+Generation training time: 28.102109909057617
 
 Generation 78
-Total fitness accommodating: 908.554550000001
-Highest fitness accommodating: 11.9235
-Total fitness collaborating: 3037.583200000005
-Highest fitness collaborating: 33.437
-Total fitness compromising: 1772.0436000000009
-Highest fitness compromising: 19.9
-Total fitness avoiding: 518.4227000000005
-Highest fitness avoiding: 6.313
-Total fitness competing: 1469.1271000000006
-Highest fitness competing: 16.6435
-Generation training time: 50.26662039756775
+Total fitness accommodating: 1158.45015
+Highest fitness accommodating: 12.947100000000002
+Total fitness collaborating: 3217.628399999996
+Highest fitness collaborating: 32.68450000000001
+Total fitness compromising: 1925.7164000000012
+Highest fitness compromising: 19.7216
+Total fitness avoiding: 625.1912
+Highest fitness avoiding: 6.7062
+Total fitness competing: 1562.5149999999971
+Highest fitness competing: 16.12125
+Generation training time: 28.536888122558594
 
 Generation 79
-Total fitness accommodating: 1160.6105499999992
-Highest fitness accommodating: 14.1214
-Total fitness collaborating: 2942.987900000004
-Highest fitness collaborating: 35.826
-Total fitness compromising: 1806.4264000000007
+Total fitness accommodating: 1179.9286000000004
+Highest fitness accommodating: 13.615549999999999
+Total fitness collaborating: 3342.8905999999947
+Highest fitness collaborating: 35.39
+Total fitness compromising: 1899.9670000000012
 Highest fitness compromising: 19.9
-Total fitness avoiding: 331.8128999999996
-Highest fitness avoiding: 4.0367999999999995
-Total fitness competing: 1386.2471
-Highest fitness competing: 17.838
-Generation training time: 49.137535095214844
+Total fitness avoiding: 402.8469999999999
+Highest fitness avoiding: 4.425799999999999
+Total fitness competing: 1612.0776
+Highest fitness competing: 17.62
+Generation training time: 28.557968616485596
 
 Generation 80
-Total fitness accommodating: 976.815150000001
-Highest fitness accommodating: 12.49275
-Total fitness collaborating: 3034.3235999999997
-Highest fitness collaborating: 33.359
-Total fitness compromising: 1861.126600000001
-Highest fitness compromising: 19.9
-Total fitness avoiding: 558.1517999999996
-Highest fitness avoiding: 6.391
-Total fitness competing: 1414.683349999999
-Highest fitness competing: 16.6045
-Generation training time: 49.03145146369934
+Total fitness accommodating: 1137.83625
+Highest fitness accommodating: 12.433800000000002
+Total fitness collaborating: 3133.8605000000034
+Highest fitness collaborating: 31.955199999999998
+Total fitness compromising: 1941.8284000000015
+Highest fitness compromising: 19.7872
+Total fitness avoiding: 728.6418999999992
+Highest fitness avoiding: 7.566699999999997
+Total fitness competing: 1524.966350000001
+Highest fitness competing: 15.662349999999998
+Generation training time: 28.10553288459778
 
 Generation 81
-Total fitness accommodating: 1204.792649999999
-Highest fitness accommodating: 14.539749999999998
-Total fitness collaborating: 2916.178499999998
-Highest fitness collaborating: 35.578
-Total fitness compromising: 1727.671200000001
+Total fitness accommodating: 1160.4517500000002
+Highest fitness accommodating: 13.075150000000002
+Total fitness collaborating: 3279.6254999999965
+Highest fitness collaborating: 33.988
+Total fitness compromising: 1915.6580000000015
 Highest fitness compromising: 19.9
-Total fitness avoiding: 366.63810000000035
-Highest fitness avoiding: 4.172000000000001
-Total fitness competing: 1529.48855
-Highest fitness competing: 17.714000000000002
-Generation training time: 49.77141833305359
+Total fitness avoiding: 515.3083
+Highest fitness avoiding: 5.762
+Total fitness competing: 1626.3616500000014
+Highest fitness competing: 16.919
+Generation training time: 28.71442484855652
 
 Generation 82
-Total fitness accommodating: 858.8674999999988
-Highest fitness accommodating: 11.78625
-Total fitness collaborating: 2813.7140999999956
-Highest fitness collaborating: 32.496
-Total fitness compromising: 1779.2574000000004
-Highest fitness compromising: 19.9
-Total fitness avoiding: 616.3024000000001
-Highest fitness avoiding: 7.2540000000000004
-Total fitness competing: 1418.3435000000002
-Highest fitness competing: 16.173
-Generation training time: 49.62081718444824
+Total fitness accommodating: 1207.9950499999993
+Highest fitness accommodating: 13.412099999999997
+Total fitness collaborating: 3225.3160999999945
+Highest fitness collaborating: 33.899
+Total fitness compromising: 1918.483800000001
+Highest fitness compromising: 19.6726
+Total fitness avoiding: 509.67859999999996
+Highest fitness avoiding: 5.524799999999999
+Total fitness competing: 1637.31175
+Highest fitness competing: 16.85355
+Generation training time: 28.723328590393066
 
 Generation 83
-Total fitness accommodating: 1286.6051000000011
-Highest fitness accommodating: 14.552500000000002
-Total fitness collaborating: 3223.533099999996
-Highest fitness collaborating: 35.882
-Total fitness compromising: 1786.7054000000012
-Highest fitness compromising: 19.9
-Total fitness avoiding: 347.4958000000002
-Highest fitness avoiding: 3.8679999999999994
-Total fitness competing: 1607.1951999999974
-Highest fitness competing: 17.866
-Generation training time: 49.6215124130249
+Total fitness accommodating: 1361.420500000001
+Highest fitness accommodating: 15.539549999999998
+Total fitness collaborating: 3367.757299999996
+Highest fitness collaborating: 35.6201
+Total fitness compromising: 1943.1868000000013
+Highest fitness compromising: 19.8506
+Total fitness avoiding: 397.07679999999914
+Highest fitness avoiding: 4.1285
+Total fitness competing: 1690.1383999999975
+Highest fitness competing: 17.382199999999997
+Generation training time: 28.067697286605835
 
 Generation 84
-Total fitness accommodating: 1296.3595499999992
-Highest fitness accommodating: 14.466250000000002
-Total fitness collaborating: 3110.0321000000013
-Highest fitness collaborating: 36.215
-Total fitness compromising: 1718.8346000000008
+Total fitness accommodating: 1218.7587500000006
+Highest fitness accommodating: 13.15815
+Total fitness collaborating: 3248.886600000007
+Highest fitness collaborating: 33.994
+Total fitness compromising: 1924.187600000001
 Highest fitness compromising: 19.9
-Total fitness avoiding: 304.5698000000002
-Highest fitness avoiding: 3.5349999999999993
-Total fitness competing: 1447.3409500000007
-Highest fitness competing: 18.0325
-Generation training time: 49.27730989456177
+Total fitness avoiding: 533.4951000000008
+Highest fitness avoiding: 5.7559999999999985
+Total fitness competing: 1594.0881000000024
+Highest fitness competing: 16.922
+Generation training time: 27.791359663009644
 
 Generation 85
-Total fitness accommodating: 1058.8242500000015
-Highest fitness accommodating: 13.9831
-Total fitness collaborating: 3034.497699999998
-Highest fitness collaborating: 34.24400000000001
-Total fitness compromising: 1799.580600000001
-Highest fitness compromising: 19.900000000000006
-Total fitness avoiding: 458.4405000000005
-Highest fitness avoiding: 5.506000000000002
-Total fitness competing: 1523.8507500000017
-Highest fitness competing: 17.047000000000004
-Generation training time: 49.182684898376465
+Total fitness accommodating: 1191.3308999999992
+Highest fitness accommodating: 13.565050000000003
+Total fitness collaborating: 3413.7743999999966
+Highest fitness collaborating: 34.8093
+Total fitness compromising: 1902.3994000000014
+Highest fitness compromising: 19.3628
+Total fitness avoiding: 386.2145999999997
+Highest fitness avoiding: 4.0561
+Total fitness competing: 1659.1468499999976
+Highest fitness competing: 17.3076
+Generation training time: 28.29474401473999
 
 Generation 86
-Total fitness accommodating: 986.5764500000006
-Highest fitness accommodating: 13.329649999999997
-Total fitness collaborating: 2931.3398999999977
-Highest fitness collaborating: 33.887
-Total fitness compromising: 1740.7472000000005
-Highest fitness compromising: 19.9
-Total fitness avoiding: 525.9392000000006
-Highest fitness avoiding: 5.863
-Total fitness competing: 1534.573700000001
-Highest fitness competing: 16.8685
-Generation training time: 49.92927646636963
+Total fitness accommodating: 1042.0865000000003
+Highest fitness accommodating: 11.9777
+Total fitness collaborating: 3072.444099999997
+Highest fitness collaborating: 31.226699999999994
+Total fitness compromising: 1934.1640000000016
+Highest fitness compromising: 19.7814
+Total fitness avoiding: 787.6745000000008
+Highest fitness avoiding: 8.2836
+Total fitness competing: 1498.2335999999973
+Highest fitness competing: 15.3058
+Generation training time: 28.437967777252197
 
 Generation 87
-Total fitness accommodating: 1125.1907999999994
-Highest fitness accommodating: 13.976000000000003
-Total fitness collaborating: 3166.5726000000004
-Highest fitness collaborating: 34.985
-Total fitness compromising: 1771.7476000000008
+Total fitness accommodating: 1254.9556500000003
+Highest fitness accommodating: 14.02045
+Total fitness collaborating: 3325.5894999999955
+Highest fitness collaborating: 34.235
+Total fitness compromising: 1929.2382000000016
 Highest fitness compromising: 19.9
-Total fitness avoiding: 434.3133000000007
-Highest fitness avoiding: 4.764999999999999
-Total fitness competing: 1611.1890499999984
-Highest fitness competing: 17.4175
-Generation training time: 49.64031219482422
+Total fitness avoiding: 503.4465999999993
+Highest fitness avoiding: 5.515
+Total fitness competing: 1629.8403000000012
+Highest fitness competing: 17.0425
+Generation training time: 33.310317277908325
 
 Generation 88
-Total fitness accommodating: 1007.5236500000002
-Highest fitness accommodating: 12.811250000000001
-Total fitness collaborating: 3014.708700000001
-Highest fitness collaborating: 33.842
-Total fitness compromising: 1804.862600000001
-Highest fitness compromising: 19.9
-Total fitness avoiding: 505.58490000000063
-Highest fitness avoiding: 5.907999999999998
-Total fitness competing: 1496.2417000000003
-Highest fitness competing: 16.846
-Generation training time: 49.527873039245605
+Total fitness accommodating: 1187.2986000000005
+Highest fitness accommodating: 12.9095
+Total fitness collaborating: 3232.7044999999944
+Highest fitness collaborating: 32.7577
+Total fitness compromising: 1933.0176000000015
+Highest fitness compromising: 19.7108
+Total fitness avoiding: 619.6760000000003
+Highest fitness avoiding: 6.680999999999999
+Total fitness competing: 1572.04575
+Highest fitness competing: 16.05545
+Generation training time: 32.00755977630615
 
 Generation 89
-Total fitness accommodating: 1035.648800000001
-Highest fitness accommodating: 12.717899999999997
-Total fitness collaborating: 2997.805800000001
-Highest fitness collaborating: 33.91
-Total fitness compromising: 1811.121400000001
-Highest fitness compromising: 19.9
-Total fitness avoiding: 531.9987000000007
-Highest fitness avoiding: 5.84
-Total fitness competing: 1510.8287999999998
-Highest fitness competing: 16.88
-Generation training time: 49.46475028991699
+Total fitness accommodating: 1128.0765000000001
+Highest fitness accommodating: 12.082700000000003
+Total fitness collaborating: 3124.2131999999983
+Highest fitness collaborating: 31.497500000000002
+Total fitness compromising: 1930.6862000000012
+Highest fitness compromising: 19.552
+Total fitness avoiding: 701.0010999999988
+Highest fitness avoiding: 7.5539999999999985
+Total fitness competing: 1505.481150000002
+Highest fitness competing: 15.65165
+Generation training time: 30.689502954483032
 
 Generation 90
-Total fitness accommodating: 921.1203999999997
-Highest fitness accommodating: 11.362850000000002
-Total fitness collaborating: 3064.9691000000003
-Highest fitness collaborating: 32.956
-Total fitness compromising: 1821.2782000000009
-Highest fitness compromising: 19.9
-Total fitness avoiding: 590.1482000000005
-Highest fitness avoiding: 6.7940000000000005
-Total fitness competing: 1450.3097499999994
-Highest fitness competing: 16.403000000000002
-Generation training time: 50.24013018608093
+Total fitness accommodating: 1177.64115
+Highest fitness accommodating: 13.937050000000001
+Total fitness collaborating: 3340.6420999999996
+Highest fitness collaborating: 34.25580000000001
+Total fitness compromising: 1922.0896000000016
+Highest fitness compromising: 19.676600000000004
+Total fitness avoiding: 490.2418000000008
+Highest fitness avoiding: 5.162000000000001
+Total fitness competing: 1632.8635000000027
+Highest fitness competing: 16.760000000000005
+Generation training time: 30.49548029899597
 
 Generation 91
-Total fitness accommodating: 985.5984999999994
-Highest fitness accommodating: 12.969600000000002
-Total fitness collaborating: 3111.950599999995
-Highest fitness collaborating: 33.515
-Total fitness compromising: 1828.342000000001
-Highest fitness compromising: 19.9
-Total fitness avoiding: 553.8373999999999
-Highest fitness avoiding: 6.3427
-Total fitness competing: 1492.6207500000007
-Highest fitness competing: 16.6825
-Generation training time: 49.43750047683716
+Total fitness accommodating: 1093.8406499999996
+Highest fitness accommodating: 12.9121
+Total fitness collaborating: 3151.7936999999984
+Highest fitness collaborating: 33.758199999999995
+Total fitness compromising: 1813.423200000001
+Highest fitness compromising: 19.452
+Total fitness avoiding: 434.08979999999974
+Highest fitness avoiding: 5.1337
+Total fitness competing: 1202.6613000000018
+Highest fitness competing: 16.7847
+Generation training time: 29.5367534160614
 
 Generation 92
-Total fitness accommodating: 1374.375900000001
-Highest fitness accommodating: 15.86785
-Total fitness collaborating: 3306.8397999999993
-Highest fitness collaborating: 37.18600000000001
-Total fitness compromising: 1690.2490000000007
-Highest fitness compromising: 19.9
-Total fitness avoiding: 234.1460999999997
-Highest fitness avoiding: 2.5671
-Total fitness competing: 1680.7442999999982
-Highest fitness competing: 18.518
-Generation training time: 51.3938262462616
+Total fitness accommodating: 1225.6824000000001
+Highest fitness accommodating: 13.991750000000003
+Total fitness collaborating: 3402.5766000000062
+Highest fitness collaborating: 34.863499999999995
+Total fitness compromising: 1898.4016000000015
+Highest fitness compromising: 19.6586
+Total fitness avoiding: 398.89120000000014
+Highest fitness avoiding: 4.4311
+Total fitness competing: 1663.469900000002
+Highest fitness competing: 17.2926
+Generation training time: 31.946489334106445
 
 Generation 93
-Total fitness accommodating: 1151.97555
-Highest fitness accommodating: 13.598750000000003
-Total fitness collaborating: 3262.9041000000034
-Highest fitness collaborating: 34.854
-Total fitness compromising: 1741.9836000000003
-Highest fitness compromising: 19.9
-Total fitness avoiding: 438.2782000000004
-Highest fitness avoiding: 4.896000000000001
-Total fitness competing: 1565.3458000000005
-Highest fitness competing: 17.352
-Generation training time: 50.12020778656006
+Total fitness accommodating: 1403.0604500000004
+Highest fitness accommodating: 15.284999999999998
+Total fitness collaborating: 3403.1797000000033
+Highest fitness collaborating: 35.302899999999994
+Total fitness compromising: 1952.6850000000013
+Highest fitness compromising: 19.8086
+Total fitness avoiding: 424.0262999999995
+Highest fitness avoiding: 4.3599
+Total fitness competing: 1670.8355499999989
+Highest fitness competing: 17.3324
+Generation training time: 34.062074422836304
 
 Generation 94
-Total fitness accommodating: 1152.1991999999993
-Highest fitness accommodating: 13.30165
-Total fitness collaborating: 3248.1826000000037
-Highest fitness collaborating: 35.396
-Total fitness compromising: 1721.9008000000008
-Highest fitness compromising: 19.9
-Total fitness avoiding: 370.6683000000004
-Highest fitness avoiding: 4.353999999999999
-Total fitness competing: 1516.72215
-Highest fitness competing: 17.623
-Generation training time: 49.157315492630005
+Total fitness accommodating: 1205.3261000000005
+Highest fitness accommodating: 12.96035
+Total fitness collaborating: 3238.400000000001
+Highest fitness collaborating: 32.9005
+Total fitness compromising: 1943.3170000000014
+Highest fitness compromising: 19.802
+Total fitness avoiding: 614.4572000000005
+Highest fitness avoiding: 6.4582
+Total fitness competing: 1598.7872499999985
+Highest fitness competing: 16.372349999999997
+Generation training time: 30.19360089302063
 
 Generation 95
-Total fitness accommodating: 1125.5953000000002
-Highest fitness accommodating: 13.586850000000002
-Total fitness collaborating: 3065.8457999999973
-Highest fitness collaborating: 35.365
-Total fitness compromising: 1739.8894000000007
+Total fitness accommodating: 993.0541499999996
+Highest fitness accommodating: 13.456800000000001
+Total fitness collaborating: 2991.8777
+Highest fitness collaborating: 34.634
+Total fitness compromising: 1871.1324000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 389.4344
-Highest fitness avoiding: 4.385
-Total fitness competing: 1525.4590000000005
-Highest fitness competing: 17.6075
-Generation training time: 59.48676776885986
+Total fitness avoiding: 467.9129000000006
+Highest fitness avoiding: 5.1160000000000005
+Total fitness competing: 1620.0962499999987
+Highest fitness competing: 17.242
+Generation training time: 27.492510318756104
 
 Generation 96
-Total fitness accommodating: 1004.446449999999
-Highest fitness accommodating: 12.153749999999999
-Total fitness collaborating: 3128.3265999999985
-Highest fitness collaborating: 33.652
-Total fitness compromising: 1837.740800000001
-Highest fitness compromising: 19.9
-Total fitness avoiding: 557.7820999999999
-Highest fitness avoiding: 6.098
-Total fitness competing: 1440.1622999999986
-Highest fitness competing: 16.751
-Generation training time: 51.37562298774719
+Total fitness accommodating: 1290.1605
+Highest fitness accommodating: 14.058249999999997
+Total fitness collaborating: 3382.6004999999973
+Highest fitness collaborating: 34.5281
+Total fitness compromising: 1936.1332000000018
+Highest fitness compromising: 19.7162
+Total fitness avoiding: 456.1134999999996
+Highest fitness avoiding: 4.886099999999999
+Total fitness competing: 1641.6255999999976
+Highest fitness competing: 17.120549999999998
+Generation training time: 34.10812306404114
 
 Generation 97
-Total fitness accommodating: 1046.1031499999985
-Highest fitness accommodating: 13.25375
-Total fitness collaborating: 3052.9818
-Highest fitness collaborating: 33.871
-Total fitness compromising: 1714.8468000000007
+Total fitness accommodating: 1203.3987499999996
+Highest fitness accommodating: 13.006250000000001
+Total fitness collaborating: 3264.1699
+Highest fitness collaborating: 33.562000000000005
+Total fitness compromising: 1921.1946000000014
 Highest fitness compromising: 19.9
-Total fitness avoiding: 514.5380999999995
-Highest fitness avoiding: 5.879
-Total fitness competing: 1395.5377999999992
-Highest fitness competing: 16.860500000000002
-Generation training time: 50.62203407287598
+Total fitness avoiding: 552.8926
+Highest fitness avoiding: 6.188000000000001
+Total fitness competing: 1559.8713499999994
+Highest fitness competing: 16.706
+Generation training time: 30.553152084350586
 
 Generation 98
-Total fitness accommodating: 1210.6558500000003
-Highest fitness accommodating: 13.52805
-Total fitness collaborating: 3262.8791999999994
-Highest fitness collaborating: 35.382000000000005
-Total fitness compromising: 1838.714800000001
-Highest fitness compromising: 19.9
-Total fitness avoiding: 405.64720000000017
-Highest fitness avoiding: 4.367999999999999
-Total fitness competing: 1570.5811999999987
-Highest fitness competing: 17.616
-Generation training time: 51.361457109451294
+Total fitness accommodating: 1409.0518000000002
+Highest fitness accommodating: 15.596150000000002
+Total fitness collaborating: 3476.1700999999957
+Highest fitness collaborating: 35.3315
+Total fitness compromising: 1952.0616000000014
+Highest fitness compromising: 19.8466
+Total fitness avoiding: 417.3176999999996
+Highest fitness avoiding: 4.3694
+Total fitness competing: 1698.9799999999977
+Highest fitness competing: 17.4529
+Generation training time: 29.08282446861267
 
 Generation 99
-Total fitness accommodating: 1127.9962500000004
-Highest fitness accommodating: 13.69255
-Total fitness collaborating: 3196.2793999999994
-Highest fitness collaborating: 34.421
-Total fitness compromising: 1879.157200000001
+Total fitness accommodating: 1281.9740500000007
+Highest fitness accommodating: 14.80745
+Total fitness collaborating: 3437.6037
+Highest fitness collaborating: 35.231
+Total fitness compromising: 1930.2060000000013
 Highest fitness compromising: 19.9
-Total fitness avoiding: 491.82389999999975
-Highest fitness avoiding: 5.328999999999999
-Total fitness competing: 1579.657449999999
-Highest fitness competing: 17.1355
-Generation training time: 51.67912268638611
+Total fitness avoiding: 396.0636999999999
+Highest fitness avoiding: 4.519
+Total fitness competing: 1679.0912000000026
+Highest fitness competing: 17.5405
+Generation training time: 28.33015203475952
 
 Generation 100
-Total fitness accommodating: 778.1047499999999
-Highest fitness accommodating: 10.1492
-Total fitness collaborating: 2993.247500000001
-Highest fitness collaborating: 31.61
-Total fitness compromising: 1859.1218000000006
+Total fitness accommodating: 1222.5141499999995
+Highest fitness accommodating: 13.931099999999999
+Total fitness collaborating: 3463.6702
+Highest fitness collaborating: 35.330000000000005
+Total fitness compromising: 1944.8960000000015
 Highest fitness compromising: 19.9
-Total fitness avoiding: 718.0275999999993
-Highest fitness avoiding: 8.1616
-Total fitness competing: 1365.858449999998
-Highest fitness competing: 15.73
-Generation training time: 50.55156874656677
+Total fitness avoiding: 415.9846000000001
+Highest fitness avoiding: 4.42
+Total fitness competing: 1661.336649999998
+Highest fitness competing: 17.59
+Generation training time: 29.312548875808716
 
-Total training time: 4214.730990409851
+Total training time: 2911.5304169654846
 
 ============================= JOB FEEDBACK =============================
 
-NodeName=uc2n347
-Job ID: 24220813
+NodeName=uc2n359
+Job ID: 24222306
 Cluster: uc2
 User/Group: ho_mekai06/ho_winf
 State: COMPLETED (exit code 0)
 Nodes: 1
 Cores per node: 32
-CPU Utilized: 18:35:29
-CPU Efficiency: 48.19% of 1-14:34:40 core-walltime
-Job Wall-clock time: 01:12:20
-Memory Utilized: 37.63 GB
-Memory Efficiency: 60.21% of 62.50 GB
+CPU Utilized: 12:50:55
+CPU Efficiency: 47.58% of 1-03:00:16 core-walltime
+Job Wall-clock time: 00:50:38
+Memory Utilized: 35.56 GB
+Memory Efficiency: 56.89% of 62.50 GB
