@@ -19,7 +19,7 @@ import numpy as np
 from mpi4py import MPI
 
 issues = [5, 5, 5, 5, 5]
-max_generation = 10 #Number of generations to simulate / last generation
+max_generation = 20 #Number of generations to simulate / last generation
 population_size = 200 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 20 #Number of survivors per generation
 recombination_split = [20, 60, 100] #Top x to group and reproduce (2 -> 2), also has to be even
