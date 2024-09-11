@@ -1,0 +1,340 @@
+[uc2n558.localdomain:603506] Rank 0 bound to package[0][core:0]
+[uc2n558.localdomain:603506] Rank 1 bound to package[0][core:1]
+[uc2n558.localdomain:603506] Rank 2 bound to package[0][core:2]
+[uc2n558.localdomain:603506] Rank 3 bound to package[0][core:3]
+[uc2n558.localdomain:603506] Rank 4 bound to package[0][core:4]
+[uc2n558.localdomain:603506] Rank 5 bound to package[0][core:5]
+[uc2n558.localdomain:603506] Rank 6 bound to package[0][core:6]
+[uc2n558.localdomain:603506] Rank 7 bound to package[0][core:7]
+[uc2n558.localdomain:603506] Rank 8 bound to package[1][core:20]
+[uc2n558.localdomain:603506] Rank 9 bound to package[1][core:21]
+[uc2n558.localdomain:603506] Rank 10 bound to package[1][core:22]
+[uc2n558.localdomain:603506] Rank 11 bound to package[1][core:23]
+[uc2n558.localdomain:603506] Rank 12 bound to package[1][core:24]
+[uc2n558.localdomain:603506] Rank 13 bound to package[1][core:25]
+[uc2n558.localdomain:603506] Rank 14 bound to package[1][core:26]
+[uc2n558.localdomain:603506] Rank 15 bound to package[1][core:27]
+2024-09-11 13:27:24.190260: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190256: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190254: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190249: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190248: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190254: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190258: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190256: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190408: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190417: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190420: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190413: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190436: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190480: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.190979: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.193555: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-11 13:27:24.285213: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285226: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285292: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285299: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285306: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285307: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285315: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285387: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285923: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.285975: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.286004: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.286039: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.286054: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.286061: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.286067: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.286119: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-11 13:27:24.290874: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.290876: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.290874: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.290884: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.290886: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.290887: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291227: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291320: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291466: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291476: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291482: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291490: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291492: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291502: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291517: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:24.291581: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-11 13:27:47.384373: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384373: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384378: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384383: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384383: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384391: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384388: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384388: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384388: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384388: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384393: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384412: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384417: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384422: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384431: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-09-11 13:27:47.384436: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_MCAST] No MCAST components selected
+
+[LOG_CAT_ML] Failure in hcoll_mcast_base_select
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+[LOG_CAT_ML] component basesmuma is not available but requested in hierarchy: basesmuma,basesmuma,ucx_p2p:basesmsocket,basesmuma,p2p
+[LOG_CAT_ML] ml_discover_hierarchy exited with error
+Rank 3, Size 16
+Rank 1, Size 16
+Rank 5, Size 16
+Rank 7, Size 16
+Rank 0, Size 16
+Initializing populations
+Rank 4, Size 16
+Rank 6, Size 16
+Rank 2, Size 16
+Rank 14, Size 16
+Rank 11, Size 16
+Rank 8, Size 16
+Rank 12, Size 16
+Rank 13, Size 16
+Rank 15, Size 16
+Rank 9, Size 16
+Rank 10, Size 16
+2024-09-11 13:28:13.289508: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+
+Generation 1
+2024-09-11 13:28:45.746777: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.746773: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.746773: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747245: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747252: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747256: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747337: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747349: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747372: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747372: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747370: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747377: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747382: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747418: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+2024-09-11 13:28:45.747425: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:266] failed call to cuInit: UNKNOWN ERROR (34)
+Total fitness accommodating: 1225.9417999999985
+Highest fitness accommodating: 12.786000000000001
+Total fitness collaborating: 3267.844000000001
+Highest fitness collaborating: 33.0227
+Total fitness compromising: 1669.9738000000007
+Highest fitness compromising: 19.4298
+Total fitness avoiding: 306.19200000000023
+Highest fitness avoiding: 4.0282
+Total fitness competing: 1619.2100999999996
+Highest fitness competing: 17.1058
+Generation training time: 82.92386794090271
+
+Generation 2
+Total fitness accommodating: 1442.6952000000006
+Highest fitness accommodating: 13.395150000000001
+Total fitness collaborating: 3624.349000000004
+Highest fitness collaborating: 35.502
+Total fitness compromising: 2003.2216000000026
+Highest fitness compromising: 19.9
+Total fitness avoiding: 358.3176000000001
+Highest fitness avoiding: 4.258399999999999
+Total fitness competing: 1827.7794999999994
+Highest fitness competing: 17.676000000000002
+Generation training time: 80.79652881622314
+
+Generation 3
+Total fitness accommodating: 1104.8137499999998
+Highest fitness accommodating: 10.250350000000001
+Total fitness collaborating: 3479.932899999996
+Highest fitness collaborating: 33.073
+Total fitness compromising: 1902.582400000002
+Highest fitness compromising: 18.0414
+Total fitness avoiding: 528.8712999999999
+Highest fitness avoiding: 6.4357
+Total fitness competing: 1684.5697999999993
+Highest fitness competing: 16.27495
+Generation training time: 83.07247471809387
+
+Generation 4
+Total fitness accommodating: 1475.0402499999993
+Highest fitness accommodating: 13.806749999999997
+Total fitness collaborating: 3752.4279999999953
+Highest fitness collaborating: 35.564
+Total fitness compromising: 2133.516800000003
+Highest fitness compromising: 19.9
+Total fitness avoiding: 344.7054000000002
+Highest fitness avoiding: 4.186
+Total fitness competing: 1817.0351499999997
+Highest fitness competing: 17.707
+Generation training time: 84.51072311401367
+
+Generation 5
+Total fitness accommodating: 1469.7701999999992
+Highest fitness accommodating: 12.783749999999998
+Total fitness collaborating: 3806.145099999998
+Highest fitness collaborating: 34.573
+Total fitness compromising: 2252.5130000000036
+Highest fitness compromising: 19.9
+Total fitness avoiding: 455.2492999999997
+Highest fitness avoiding: 5.1770000000000005
+Total fitness competing: 1791.2816499999974
+Highest fitness competing: 17.2115
+Generation training time: 84.60551619529724
+
+Generation 6
+Total fitness accommodating: 1330.4506999999994
+Highest fitness accommodating: 10.928650000000003
+Total fitness collaborating: 4099.323500000001
+Highest fitness collaborating: 33.45300000000001
+Total fitness compromising: 2253.4408000000035
+Highest fitness compromising: 19.900000000000006
+Total fitness avoiding: 595.4443000000003
+Highest fitness avoiding: 6.2970000000000015
+Total fitness competing: 1884.46145
+Highest fitness competing: 16.651500000000002
+Generation training time: 83.01109576225281
+
+Generation 7
+Total fitness accommodating: 1762.505449999998
+Highest fitness accommodating: 14.285300000000003
+Total fitness collaborating: 4207.372599999999
+Highest fitness collaborating: 35.6834
+Total fitness compromising: 2563.516600000004
+Highest fitness compromising: 19.4066
+Total fitness avoiding: 344.5504000000003
+Highest fitness avoiding: 3.4596999999999998
+Total fitness competing: 2156.3154500000032
+Highest fitness competing: 18.0185
+Generation training time: 82.10070729255676
+
+Generation 8
+Total fitness accommodating: 1408.7810999999988
+Highest fitness accommodating: 11.079250000000002
+Total fitness collaborating: 4368.093100000006
+Highest fitness collaborating: 33.446000000000005
+Total fitness compromising: 2571.568200000005
+Highest fitness compromising: 19.9
+Total fitness avoiding: 683.7731000000001
+Highest fitness avoiding: 6.303999999999999
+Total fitness competing: 2060.340300000005
+Highest fitness competing: 16.648
+Generation training time: 80.48021578788757
+
+Generation 9
+Total fitness accommodating: 1810.8363499999994
+Highest fitness accommodating: 13.67425
+Total fitness collaborating: 4561.835100000002
+Highest fitness collaborating: 35.423
+Total fitness compromising: 2486.0354000000043
+Highest fitness compromising: 19.9
+Total fitness avoiding: 444.0778999999999
+Highest fitness avoiding: 4.327
+Total fitness competing: 2104.302700000001
+Highest fitness competing: 17.636499999999998
+Generation training time: 83.16448640823364
+
+Generation 10
+Total fitness accommodating: 1782.2932500000004
+Highest fitness accommodating: 13.264750000000001
+Total fitness collaborating: 4754.080599999997
+Highest fitness collaborating: 35.129000000000005
+Total fitness compromising: 2604.229600000005
+Highest fitness compromising: 19.9
+Total fitness avoiding: 520.4209999999993
+Highest fitness avoiding: 4.6209999999999996
+Total fitness competing: 2286.8578999999995
+Highest fitness competing: 17.4895
+Generation training time: 79.85734701156616
+
+Total training time: 847.269501209259
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n558
+Job ID: 24219926
+Cluster: uc2
+User/Group: ho_mekai06/ho_winf
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 32
+CPU Utilized: 03:41:57
+CPU Efficiency: 43.17% of 08:34:08 core-walltime
+Job Wall-clock time: 00:16:04
+Memory Utilized: 20.35 GB
+Memory Efficiency: 16.28% of 125.00 GB
