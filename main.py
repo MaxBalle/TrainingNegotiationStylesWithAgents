@@ -23,7 +23,7 @@ max_generation = 20 #Number of generations to simulate / last generation
 population_size = 200 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 20 #Number of survivors per generation
 recombination_split = [20, 60, 100] #Top x to group and reproduce (2 -> 2), also has to be even
-mutation_stddev = 0.03
+mutation_stddev = 0.09
 
 #Initializes the populations with random weights
 def init_population(size: int, fitness_function, style) -> list[Agent]:
