@@ -19,7 +19,7 @@ import numpy as np
 from mpi4py import MPI
 
 issues = [5, 5, 5, 5, 5]
-max_generation = 100 #Number of generations to simulate / last generation
+max_generation = 20 #Number of generations to simulate / last generation
 population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
@@ -101,7 +101,7 @@ if __name__ == "__main__":
         populations = {
             "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
             "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
-            "compromising": init_population(population_size, fitness.compromising, "compromising"),
+            "compromising": init_population(population_size, fitness.collaborating, "compromising"),
             "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
             "competing": init_population(population_size, fitness.competing, "competing")
         }
