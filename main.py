@@ -68,7 +68,7 @@ def mutate(agent: Agent):
         for weight in layer.trainable_weights:
             weight.assign_add(tf.random.normal(tf.shape(weight), 0, mutation_stddev))
 
-def generate_csv_headers():
+def write_csv_headers():
     headers = ["Generation"]
     for population_name in populations:
         for population_name_2 in populations:
@@ -85,7 +85,14 @@ def generate_csv_headers():
         headers.append(f"Total_fitness_{population_name}")
         headers.append(f"Highest_fitness_{population_name}")
     headers.append("Training_Time")
-    return headers
+    csv_file = open("training.csv", "w", newline="")
+    csv_writer = csv.writer(csv_file, dialect='excel')
+    csv_writer.writerow(headers)
+
+def write_to_scv(row):
+    csv_file = open("training.csv", "a", newline="")
+    csv_writer = csv.writer(csv_file, dialect='excel')
+    csv_writer.writerow(row)
 
 if __name__ == "__main__":
     comm = MPI.COMM_WORLD
@@ -104,9 +111,7 @@ if __name__ == "__main__":
             "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
             "competing": init_population(population_size, fitness.competing, "competing")
         }
-        csv_file = open("training.csv", "w", newline="")
-        csv_writer = csv.writer(csv_file, dialect='excel')
-        csv_writer.writerow(generate_csv_headers())
+        write_csv_headers()
     for generation in range(1,max_generation+1):
         if rank == 0:
             csv_row = [generation]
@@ -161,11 +166,10 @@ if __name__ == "__main__":
             generation_training_time = time.time() - generation_start_time
             print(f"Generation training time: {generation_training_time}")
             csv_row.append(generation_training_time)
-            csv_writer.writerow(csv_row)
+            write_to_scv(csv_row)
         gc.collect()
     if rank == 0:
         print(f"\nTotal training time: {time.time() - start_time}")
-        csv_file.close()
         #Save the best models
         for population_name in populations:
             populations[population_name][survivor_count - 1].model.save(f"models/{population_name}.keras")
