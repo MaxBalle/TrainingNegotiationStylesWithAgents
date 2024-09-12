@@ -12,38 +12,39 @@ import time
 import csv
 import gc
 
-from keras.src.models.cloning import clone_model
 import tensorflow as tf
-from keras import layers, Sequential
+from keras import layers, Sequential, backend
 import numpy as np
 
 from mpi4py import MPI
 
 issues = [5, 5, 5, 5, 5]
-max_generation = 500 #Number of generations to simulate / last generation
+max_generation = 4 #Number of generations to simulate / last generation
 population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
 mutation_stddev = 0.15
 
+def create_model():
+    model = Sequential()
+    #model.add(layers.Dense(50, name='In'))
+    model.add(layers.GRU(28, name='Recurrent Middle', stateful=True, activation='sigmoid'))
+    #model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
+    model.build(input_shape=(1, 1, 50))
+    return model
+
 #Initializes the populations with random weights
 def init_population(size: int, fitness_function, style) -> list[Agent]:
     population: list[Agent] = []
     for x in range(size):
-        model = Sequential()
-        #model.add(layers.Dense(50, name='In'))
-        model.add(layers.GRU(28, name='Recurrent Middle', stateful=True, activation='sigmoid'))
-        #model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
-        model.build(input_shape=(1, 1, 50))
+        model = create_model()
         population.append(Agent(model, fitness_function, style))
     return population
 
 #Returns two new agents that are children of the provided agents through recombination
-def reproduce(parent_1: Agent, parent_2: Agent) -> tuple[Agent, Agent]:
+def crossover(parent_1: Agent, parent_2: Agent) -> tuple:
     genome_parent_1 = parent_1.model.get_weights()
     genome_parent_2 = parent_2.model.get_weights()
-    child_1 = Agent(clone_model(parent_1.model), parent_1.fitness_function, parent_1.style)
-    child_2 = Agent(clone_model(parent_2.model), parent_2.fitness_function, parent_2.style)
     genome_child_1 = []
     genome_child_2 = []
     for arr_1, arr_2 in zip(genome_parent_1, genome_parent_2):
@@ -59,16 +60,13 @@ def reproduce(parent_1: Agent, parent_2: Agent) -> tuple[Agent, Agent]:
         else:
             genome_child_1.append(new_arr_2)
             genome_child_2.append(new_arr_1)
-    child_1.model.set_weights(genome_child_1)
-    child_2.model.set_weights(genome_child_2)
-    return child_1, child_2
+    return genome_child_1, genome_child_2
 
 #Adds gaussian noise to all weights
-def mutate(agent: Agent) -> Agent:
+def mutate(agent: Agent):
     for layer in agent.model.layers:
         for weight in layer.trainable_weights:
             weight.assign_add(tf.random.normal(tf.shape(weight), 0, mutation_stddev))
-    return agent
 
 def generate_csv_headers():
     headers = ["Generation"]
@@ -129,6 +127,7 @@ if __name__ == "__main__":
             for matrix in simulation_stats:
                 #print(f"Matrix: {matrix}")
                 csv_row.extend([value for value in matrix.values()])
+            new_generation_genomes = {}
             for population_name in populations:
                 #Selection
                 populations[population_name].sort(key=lambda agent: agent.fitness)
@@ -138,20 +137,27 @@ if __name__ == "__main__":
                 highest_fitness = populations[population_name][-1].fitness
                 #print(f"Highest fitness {population_name}: {highest_fitness}")
                 csv_row.append(highest_fitness)
-                new_population = []
-                new_population.extend(populations[population_name][-survivor_count:]) #Fittest survive into next generation
-                for agent in new_population: #Reset fitness of survivors
-                    agent.fitness = 0.0
-                #Recombination and mutation
+                new_generation_genomes[population_name] = [survivor.model.get_weights() for survivor in populations[population_name][-survivor_count:]] #Fittest survive into next generation
+                #Recombination
                 for group_size in recombination_split:
                     pool = populations[population_name][-group_size:]
                     random.shuffle(pool)
-                    children = []
                     for i in range(0, group_size, 2):
-                        children.extend(reproduce(pool[i], pool[i+1]))
-                    for child in children:
-                        new_population.append(mutate(child))
-                populations[population_name] = new_population
+                        new_generation_genomes[population_name].extend(crossover(pool[i], pool[i + 1]))
+                #Clear old population
+                for agent in populations[population_name]:
+                    del agent
+                populations[population_name] = []
+            backend.clear_session()
+            gc.collect()
+            for population_name in populations:
+                for genome in new_generation_genomes[population_name]:
+                    agent = Agent(create_model(), getattr(fitness, population_name), population_name)
+                    agent.model.set_weights(genome)
+                    populations[population_name].append(agent)
+                #Mutate non survivors
+                for agent in populations[population_name][survivor_count:]:
+                    mutate(agent)
             generation_training_time = time.time() - generation_start_time
             print(f"Generation training time: {generation_training_time}")
             csv_row.append(generation_training_time)
