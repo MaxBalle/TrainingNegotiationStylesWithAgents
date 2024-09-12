@@ -10,6 +10,7 @@ import fitness
 import random
 import time
 import csv
+import gc
 
 from keras.src.models.cloning import clone_model
 import tensorflow as tf
@@ -19,7 +20,7 @@ import numpy as np
 from mpi4py import MPI
 
 issues = [5, 5, 5, 5, 5]
-max_generation = 20 #Number of generations to simulate / last generation
+max_generation = 500 #Number of generations to simulate / last generation
 population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
@@ -101,7 +102,7 @@ if __name__ == "__main__":
         populations = {
             "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
             "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
-            "compromising": init_population(population_size, fitness.collaborating, "compromising"),
+            "compromising": init_population(population_size, fitness.compromising, "compromising"),
             "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
             "competing": init_population(population_size, fitness.competing, "competing")
         }
@@ -132,10 +133,10 @@ if __name__ == "__main__":
                 #Selection
                 populations[population_name].sort(key=lambda agent: agent.fitness)
                 total_fitness = sum([simulation_stats[0][(population_name, population_name_2)] for population_name_2 in populations])
-                print(f"Total fitness {population_name}: {total_fitness}")
+                #print(f"Total fitness {population_name}: {total_fitness}")
                 csv_row.append(total_fitness)
                 highest_fitness = populations[population_name][-1].fitness
-                print(f"Highest fitness {population_name}: {highest_fitness}")
+                #print(f"Highest fitness {population_name}: {highest_fitness}")
                 csv_row.append(highest_fitness)
                 new_population = []
                 new_population.extend(populations[population_name][-survivor_count:]) #Fittest survive into next generation
@@ -155,6 +156,7 @@ if __name__ == "__main__":
             print(f"Generation training time: {generation_training_time}")
             csv_row.append(generation_training_time)
             csv_writer.writerow(csv_row)
+        gc.collect()
     if rank == 0:
         print(f"\nTotal training time: {time.time() - start_time}")
         csv_file.close()
