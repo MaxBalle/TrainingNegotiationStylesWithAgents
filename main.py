@@ -103,14 +103,14 @@ def write_csv_headers():
         headers.append(f"Total_fitness_{population_name}")
         headers.append(f"Highest_fitness_{population_name}")
     headers.append("Training_Time")
-    csv_file = open("training.csv", "w", newline="")
-    csv_writer = csv.writer(csv_file, dialect='excel')
-    csv_writer.writerow(headers)
+    with open("training.csv", "w", newline="") as csv_file:
+        csv_writer = csv.writer(csv_file, dialect='excel')
+        csv_writer.writerow(headers)
 
 def write_to_scv(row):
-    csv_file = open("training.csv", "a", newline="")
-    csv_writer = csv.writer(csv_file, dialect='excel')
-    csv_writer.writerow(row)
+    with open("training.csv", "a", newline="") as csv_file:
+        csv_writer = csv.writer(csv_file, dialect='excel')
+        csv_writer.writerow(row)
 
 if __name__ == "__main__":
     comm = MPI.COMM_WORLD
