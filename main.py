@@ -13,13 +13,14 @@ import csv
 import gc
 
 import tensorflow as tf
-from keras import layers, Sequential, backend
+from keras import layers, Sequential, backend, models
 import numpy as np
 
 from mpi4py import MPI
 
 issues = [5, 5, 5, 5, 5]
-max_generation = 4 #Number of generations to simulate / last generation
+starting_generation = 1
+generation_count = 10 #Number of generations to simulate / last generation
 population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
@@ -38,6 +39,13 @@ def init_population(size: int, fitness_function, style) -> list[Agent]:
     population: list[Agent] = []
     for x in range(size):
         model = create_model()
+        population.append(Agent(model, fitness_function, style))
+    return population
+
+def load_population(size, fitness_function, style) -> list[Agent]:
+    population: list[Agent] = []
+    for i in range(size):
+        model = models.load_model(f"models/all/{style}_{i}.keras")
         population.append(Agent(model, fitness_function, style))
     return population
 
@@ -67,6 +75,16 @@ def mutate(agent: Agent):
     for layer in agent.model.layers:
         for weight in layer.trainable_weights:
             weight.assign_add(tf.random.normal(tf.shape(weight), 0, mutation_stddev))
+
+def get_last_generation_from_csv() -> int:
+    try:
+        gen = 0
+        with open("training.csv", "r", newline="") as csv_file:
+            for row in csv.reader(csv_file, dialect="excel"):
+                gen = row[0]
+        return int(gen)
+    except FileNotFoundError:
+        return 0
 
 def write_csv_headers():
     headers = ["Generation"]
@@ -103,16 +121,28 @@ if __name__ == "__main__":
 
     if rank == 0:
         start_time = time.time()
-        print("Initializing populations")
-        populations = {
-            "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
-            "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
-            "compromising": init_population(population_size, fitness.compromising, "compromising"),
-            "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
-            "competing": init_population(population_size, fitness.competing, "competing")
-        }
-        write_csv_headers()
-    for generation in range(1,max_generation+1):
+        last_generation = get_last_generation_from_csv()
+        if last_generation == 0:
+            print("Initializing populations")
+            populations = {
+                "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
+                "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
+                "compromising": init_population(population_size, fitness.compromising, "compromising"),
+                "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
+                "competing": init_population(population_size, fitness.competing, "competing")
+            }
+            write_csv_headers()
+        else:
+            print(f"Loading populations from generation {last_generation}")
+            starting_generation = last_generation + 1
+            populations = {
+                "accommodating": load_population(population_size, fitness.accommodating, "accommodating"),
+                "collaborating": load_population(population_size, fitness.collaborating, "collaborating"),
+                "compromising": load_population(population_size, fitness.compromising, "compromising"),
+                "avoiding": load_population(population_size, fitness.avoiding, "avoiding"),
+                "competing": load_population(population_size, fitness.competing, "competing")
+            }
+    for generation in range(starting_generation, starting_generation + generation_count):
         if rank == 0:
             csv_row = [generation]
             generation_start_time = time.time()
@@ -170,6 +200,7 @@ if __name__ == "__main__":
         gc.collect()
     if rank == 0:
         print(f"\nTotal training time: {time.time() - start_time}")
-        #Save the best models
+        #Save all models
         for population_name in populations:
-            populations[population_name][survivor_count - 1].model.save(f"models/{population_name}.keras")
+            for i in range(len(populations[population_name])):
+                populations[population_name][i].model.save(f"models/all/{population_name}_{i}.keras")
