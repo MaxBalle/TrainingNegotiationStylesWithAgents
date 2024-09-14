@@ -61,3 +61,6 @@ if __name__ == '__main__':
 
     if rank == 0:
         csv_file.close()
+        for population_name in populations:
+            populations[population_name].sort(key=lambda agent: agent.fitness)
+            populations[population_name][-1].model.save(f"models/{population_name}.keras")
