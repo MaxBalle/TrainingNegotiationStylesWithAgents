@@ -7,6 +7,11 @@ import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
 import Card from "primevue/card";
 
+import Stepper from 'primevue/stepper';
+import StepList from 'primevue/steplist';
+import Step from 'primevue/step';
+
+
 defineEmits(['show-info-dialog']);
 
 const loading = ref(false);
@@ -21,8 +26,11 @@ const negotiation_component = ref();
 
 const negotiation_complete = ref(false);
 
+const stepper_value = ref("1");
+
 const start_negotiation = () => {
   loading.value = true;
+  stepper_value.value = "2"
   negotiation_component.value.start("random", survey.value.data);
 }
 
@@ -58,10 +66,22 @@ const handle_disclosure = (truth) => {
 </script>
 
 <template>
+  <Stepper :value="stepper_value" linear>
+    <Card>
+      <template #title>Identification game</template>
+      <template #subtitle>Can you identify what TKI-style you negotiate with?</template>
+      <template #content>
+        <StepList>
+          <Step value="1">Personal Information</Step>
+          <Step value="2">Identification</Step>
+          <Step value="3">Questionnaire</Step>
+        </StepList>
+      </template>
+    </Card>
+  </Stepper>
   <Card v-show="show_start_card">
-    <template #title>Can you identify what TKI-style you negotiate with?</template>
     <template #content>
-      <p>For the research, please enter some information about yourself:</p>
+      <p>For the research, please enter some information about yourself first:</p>
       <Survey ref="survey"/>
       <p>If this is your first negotiation, please check out the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> before you get started.</p>
     </template>
@@ -103,5 +123,4 @@ const handle_disclosure = (truth) => {
 </template>
 
 <style scoped>
-
 </style>

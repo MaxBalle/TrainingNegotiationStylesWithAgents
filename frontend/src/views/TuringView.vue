@@ -7,6 +7,9 @@ import SelectButton from "primevue/selectbutton";
 import Card from "primevue/card";
 import Survey from "@/components/Survey.vue";
 import ProgressSpinner from "primevue/progressspinner";
+import Step from "primevue/step";
+import StepList from "primevue/steplist";
+import Stepper from "primevue/stepper";
 
 defineEmits(['show-info-dialog']);
 
@@ -20,6 +23,8 @@ const negotiation_component = ref();
 
 const negotiation_complete = ref(false);
 
+const stepper_value = ref("1");
+
 const start_negotiation = () => {
   loading.value = true;
   negotiation_component.value.start("random", survey.value.data);
@@ -29,6 +34,7 @@ const negotiation_start = () => {
   negotiation_component.value.visible = true;
   show_start_card.value = false;
   loading.value = false;
+  stepper_value.value = "2"
 }
 
 const negotiation_end = () => {
@@ -56,11 +62,22 @@ const handle_disclosure = (truth) => {
 </script>
 
 <template>
+  <Stepper :value="stepper_value" linear>
+    <Card>
+      <template #title>Turing-Test</template>
+      <template #subtitle>Can you tell if you negotiate against a person or an AI-model?</template>
+      <template #content>
+        <StepList>
+          <Step value="1">Personal Information</Step>
+          <Step value="2">Identification</Step>
+          <Step value="3">Questionnaire</Step>
+        </StepList>
+      </template>
+    </Card>
+  </Stepper>
   <Card v-show="show_start_card">
-    <template #title>Turing-Test</template>
-    <template #subtitle>Can you tell if you negotiate against a person or an AI-model?</template>
     <template #content>
-      <p>For the research, please enter some information about yourself:</p>
+      <p>For the research, please enter some information about yourself first:</p>
       <Survey ref="survey"/>
       <p>If this is your first negotiation, please check out the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> before you get started.</p>
       <p>You may have to wait until someone else joins the Test</p>
