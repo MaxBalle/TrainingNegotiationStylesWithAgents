@@ -17,9 +17,9 @@ def encode_as_one_hot(li: list[float], shape: list[int], flat = True) -> list:
     one_hot = []
     start_index = 0
     for issue_length in shape:
-        max_index = 0
-        max_value = 0
-        for index in range(start_index, start_index + issue_length):
+        max_index = start_index
+        max_value = li[start_index]
+        for index in range(start_index + 1, start_index + issue_length):
             if li[index] > max_value:
                 max_index = index
                 max_value = li[index]
