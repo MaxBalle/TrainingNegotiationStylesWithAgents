@@ -58,6 +58,7 @@ if __name__ == '__main__':
             for matrix in simulation_stats:
                 csv_row.extend([value for value in matrix.values()])
             csv_writer.writerow(csv_row)
+            print(f"Cycle {cycle} done")
 
     if rank == 0:
         csv_file.close()
