@@ -2,6 +2,7 @@
 import {ref} from 'vue';
 import Negotiation from "@/components/Negotiation.vue";
 import Survey from "@/components/Survey.vue";
+import Questionnaire from "@/components/Questionnaire.vue";
 
 import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
@@ -11,11 +12,14 @@ import Stepper from 'primevue/stepper';
 import StepList from 'primevue/steplist';
 import Step from 'primevue/step';
 
+import Rating from 'primevue/rating';
+
 
 defineEmits(['show-info-dialog']);
 
 const loading = ref(false);
 const show_start_card = ref(true);
+const show_questionnaire = ref(false);
 const survey = ref()
 const tki_options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
 const judgment = ref();
@@ -27,6 +31,12 @@ const negotiation_component = ref();
 const negotiation_complete = ref(false);
 
 const stepper_value = ref("1");
+
+const questionnaire_questions = ref({
+  rating_learning_about_styles: null,
+  rating_identification_training: null,
+  realism: null
+});
 
 const start_negotiation = () => {
   loading.value = true;
@@ -61,6 +71,12 @@ const handle_disclosure = (truth) => {
   negotiation_component.value.visible = false;
   judgment_send.value = true;
   disclosure.value = truth;
+}
+
+const start_questionnaire = () => {
+  negotiation_complete.value = false;
+  show_questionnaire.value = true;
+  stepper_value.value = "3"
 }
 
 </script>
@@ -109,18 +125,40 @@ const handle_disclosure = (truth) => {
       <template #content>
         <p v-if="disclosure === judgment">You identified the opponent model correctly as {{disclosure}}!</p>
         <p v-else>Your judgment of {{judgment}} was incorrect, you negotiated against the {{disclosure}} model.</p>
-        <p style="margin-top: 1rem">Feel free to negotiate another round:</p>
+        <p style="margin-top: 1rem">Feel free to negotiate another round or complete the survey by answering some questions:</p>
       </template>
       <template #footer>
         <div class="button-row">
-          <Button label="Restart" @click="restart_identification"/>
+          <Button label="Restart identification" @click="restart_identification"/>
+          <Button label="Questionnaire" @click="start_questionnaire"/>
         </div>
       </template>
     </Card>
   </div>
   <Negotiation ref="negotiation_component" mode="identification"
                @negotiation-start="negotiation_start" @negotiation-end="negotiation_end" @disclosure="handle_disclosure"/>
+  <Questionnaire v-if="show_questionnaire" mode="identification" :questions_ref="questionnaire_questions" :person_data="survey.data">
+    <template #questions>
+      <p>How helpful do you feel this tool is when learning about different negotiation styles?</p>
+      <Rating v-model="questionnaire_questions.rating_learning_about_styles"/>
+      <p>Helpful to train the identification of the negotiation opponents style?</p>
+      <Rating v-model="questionnaire_questions.rating_identification_training"/>
+      <p>How realistic was the behavior of the AI models?</p>
+      <Rating v-model="questionnaire_questions.realism"/>
+    </template>
+    <template #thanks>
+      <div class="paragraph-group">
+        <p>You have successfully completed the identification survey!</p>
+        <p>If you haven't already, you can check out the Turing-Test. It requires someone else to take it simultaneously though!</p>
+      </div>
+    </template>
+  </Questionnaire>
 </template>
 
 <style scoped>
+
+.p-rating {
+  margin-bottom: 1rem;
+}
+
 </style>

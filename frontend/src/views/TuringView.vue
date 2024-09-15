@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import Negotiation from "@/components/Negotiation.vue";
+import Questionnaire from "@/components/Questionnaire.vue";
 
 import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
@@ -10,6 +11,7 @@ import ProgressSpinner from "primevue/progressspinner";
 import Step from "primevue/step";
 import StepList from "primevue/steplist";
 import Stepper from "primevue/stepper";
+import Rating from "primevue/rating";
 
 defineEmits(['show-info-dialog']);
 
@@ -18,12 +20,18 @@ const show_start_card = ref(true);
 const survey = ref();
 const judgment = ref();
 const judgment_visible = ref(true);
+const show_questionnaire = ref(false);
 
 const negotiation_component = ref();
 
 const negotiation_complete = ref(false);
 
 const stepper_value = ref("1");
+
+const questionnaire_questions = ref({
+  certain_of_judgment: null,
+  outside_influence: null,
+});
 
 const start_negotiation = () => {
   loading.value = true;
@@ -59,6 +67,12 @@ const handle_disclosure = (truth) => {
   judgment_visible.value = false;
 }
 
+const start_questionnaire = () => {
+  negotiation_complete.value = false;
+  show_questionnaire.value = true;
+  stepper_value.value = "3"
+}
+
 </script>
 
 <template>
@@ -80,7 +94,9 @@ const handle_disclosure = (truth) => {
       <p>For the research, please enter some information about yourself first:</p>
       <Survey ref="survey"/>
       <p>If this is your first negotiation, please check out the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> before you get started.</p>
-      <p>You may have to wait until someone else joins the Test</p>
+      <p>This test works in pairs of two: You either negotiate against the other party or against the AI. Then you can guess what the opponent was.</p>
+      <p>If there are any other persons participating in the Turing-Test in your proximity, please do your best to reveal no information that could help them determine if they are negotiating agains you.</p>
+      <p>You may have to wait until someone else joins the test.</p>
     </template>
     <template #footer>
       <Button label="Start Negotiation" :loading="loading" @click="start_negotiation" :disabled="survey == null ? true : (Object.values(survey.data).includes(null) || Object.values(survey.data).includes(''))"/>
@@ -102,9 +118,13 @@ const handle_disclosure = (truth) => {
     </Card>
     <Card v-else>
       <template #title>Options</template>
+      <template #content>
+        <p>Feel free to go another round or complete the survey by answering some questions:</p>
+      </template>
       <template #footer>
         <div class="button-row">
-          <Button label="Restart" @click="restart_turing"/>
+          <Button label="Restart Turing-Test" @click="restart_turing"/>
+          <Button label="Questionnaire" @click="start_questionnaire"/>
         </div>
       </template>
     </Card>
@@ -116,8 +136,26 @@ const handle_disclosure = (truth) => {
   </Card>
   <Negotiation ref="negotiation_component" mode="turing"
                @negotiation-start="negotiation_start" @negotiation-end="negotiation_end" @disclosure="handle_disclosure"/>
+  <Questionnaire v-if="show_questionnaire" mode="turing" :questions_ref="questionnaire_questions" :person_data="survey.data">
+    <template #questions>
+      <p>How certain are you of your judgments on average?</p>
+      <Rating v-model="questionnaire_questions.certain_of_judgment"/>
+      <p>How much outside information influenced you judgments? (E.g. by observing other parties performing the turing test alongside you)</p>
+      <Rating v-model="questionnaire_questions.outside_influence"/>
+    </template>
+    <template #thanks>
+      <div class="paragraph-group">
+        <p>You have successfully completed the Turing-Test survey!</p>
+        <p>If you haven't already, you can check out the Identification-Game. There you can find out if you can identify the different negotiation styles of the AI models!</p>
+      </div>
+    </template>
+  </Questionnaire>
 </template>
 
 <style scoped>
+
+.p-rating {
+  margin-bottom: 1rem;
+}
 
 </style>

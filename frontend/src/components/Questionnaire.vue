@@ -1,0 +1,51 @@
+<script setup>
+import {ref} from 'vue';
+
+import Card from "primevue/card";
+import Button from "primevue/button";
+
+const props = defineProps(["mode", "questions_ref", "person_data"]);
+
+const url = "http://localhost:8001"
+
+const questioning = ref(true);
+
+let websocket;
+const send_questionnaire = () => {
+  questioning.value = false;
+  websocket = new WebSocket(url);
+  websocket.onopen = () => {
+    websocket.send(JSON.stringify({
+      message_type: "questionnaire",
+      mode: props.mode,
+      personal_information: props.person_data,
+      questions: props.questions_ref
+    }));
+    websocket.close();
+  }
+}
+
+</script>
+
+<template>
+  <Card v-if="questioning">
+    <template #title>Questionnaire</template>
+    <template #content>
+      <p style="margin-bottom: 1rem">Please answer the following questions to complete the survey:</p>
+      <slot name="questions"></slot>
+    </template>
+    <template #footer>
+      <Button label="Send" :disabled="Object.values(questions_ref).includes(null)" @click="send_questionnaire"/>
+    </template>
+  </Card>
+  <Card v-else>
+    <template #title>Thank you very much!</template>
+    <template #content>
+      <slot name="thanks"></slot>
+    </template>
+  </Card>
+</template>
+
+<style scoped>
+
+</style>
