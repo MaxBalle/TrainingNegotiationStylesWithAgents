@@ -239,10 +239,13 @@ async def handler(websocket):
                 "message_type": "error",
                 "error": "No such mode"
             }))
+    elif init_message["message_type"] == "questionnaire":
+        mode = init_message["mode"]
+        save(f"{mode}-questionnaire", [*init_message["personal_information"].values(), *init_message["questions"].values()])
     else:
         await websocket.send(json.dumps({
             "message_type": "error",
-            "error": "First message must be init"
+            "error": "First message must be init or questionnaire"
         }))
     print(f"Closed connection {code}")
 
@@ -252,8 +255,11 @@ def health_check(connection, request):
 
 async def main_app():
     #Headers
-    save("identification", ["connection_code", "person_name", "person_age", "person_gender", "person_education", "person_negotiation_experience", "outcome", "ending_party", "length", "model_name", "judgment"])
-    save("turing", ["connection_code", "person_name", "person_age", "person_gender", "person_education", "person_negotiation_experience", "outcome", "ending_party", "length", "opponent_type", "judgment"])
+    person_fields = ["person_name", "person_age", "person_gender", "person_education", "person_negotiation_experience"]
+    save("identification", ["connection_code", *person_fields, "outcome", "ending_party", "length", "model_name", "judgment"])
+    save("turing", ["connection_code", *person_fields, "outcome", "ending_party", "length", "opponent_type", "judgment"])
+    save("identification-questionnaire",[*person_fields, "rating_learning_about_styles", "rating_identification_training", "realism"])
+    save("turing-questionnaire", [*person_fields, "certain_of_judgment", "outside_influence"])
 
     async with serve(handler, "", 8001, process_request=health_check):
         await asyncio.get_running_loop().create_future()
