@@ -1,7 +1,7 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, nextTick} from 'vue';
 import Negotiation from "@/components/Negotiation.vue";
-import Survey from "@/components/Survey.vue";
+import PersonalInformation from "@/components/PersonalInformation.vue";
 import Questionnaire from "@/components/Questionnaire.vue";
 
 import Button from "primevue/button";
@@ -20,10 +20,11 @@ defineEmits(['show-info-dialog']);
 const loading = ref(false);
 const show_start_card = ref(true);
 const show_questionnaire = ref(false);
-const survey = ref()
+const personal_information = ref()
 const tki_options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
 const judgment = ref();
 const judgment_send = ref(false);
+const judgment_card = ref();
 const disclosure = ref();
 
 const negotiation_component = ref();
@@ -38,10 +39,12 @@ const questionnaire_questions = ref({
   realism: null
 });
 
+const person_code = ref("pc" + Math.random().toString(16).slice(2));
+
 const start_negotiation = () => {
   loading.value = true;
   stepper_value.value = "2"
-  negotiation_component.value.start("random", survey.value.data);
+  negotiation_component.value.start("random", personal_information.value.data, person_code.value);
 }
 
 const negotiation_start = () => {
@@ -53,6 +56,11 @@ const negotiation_start = () => {
 const negotiation_end = () => {
   negotiation_complete.value = true;
   judgment_send.value = false;
+  nextTick(() => {
+    document.getElementById("judgment-card").scrollIntoView({ behavior: 'smooth', block: 'nearest'});
+    //judgment_card.value.scrollIntoView();
+  })
+
 }
 
 const send_judgment = () => {
@@ -62,7 +70,7 @@ const send_judgment = () => {
 const restart_identification = () => {
   negotiation_complete.value = false;
   loading.value = true;
-  negotiation_component.value.start("random", survey.value.data);
+  negotiation_component.value.start("random", personal_information.value.data, person_code.value);
   judgment.value = null;
 }
 
@@ -85,7 +93,7 @@ const start_questionnaire = () => {
   <Stepper :value="stepper_value" linear>
     <Card>
       <template #title>Identification game</template>
-      <template #subtitle>Can you identify what TKI-style you negotiate with?</template>
+      <template #subtitle>Find out if you can identify the TKI-style of your opponent!</template>
       <template #content>
         <StepList>
           <Step value="1">Personal Information</Step>
@@ -98,15 +106,15 @@ const start_questionnaire = () => {
   <Card v-show="show_start_card">
     <template #content>
       <p>For the research, please enter some information about yourself first:</p>
-      <Survey ref="survey"/>
-      <p>If this is your first negotiation, please check out the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> before you get started.</p>
+      <PersonalInformation ref="personal_information"/>
+      <p>If this is your first negotiation, please read the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> before you get started.</p>
     </template>
     <template #footer>
-      <Button label="Start Negotiation" :loading="loading" @click="start_negotiation" :disabled="survey == null ? true : (Object.values(survey.data).includes(null) || Object.values(survey.data).includes(''))"/>
+      <Button label="Start Negotiation" :loading="loading" @click="start_negotiation" :disabled="personal_information == null ? true : (Object.values(personal_information.data).includes(null) || Object.values(personal_information.data).includes(''))"/>
     </template>
   </Card>
   <div v-if="negotiation_complete">
-    <Card v-if="!judgment_send">
+    <Card v-if="!judgment_send" ref="judgment_card" id="judgment-card">
       <template #title>Judgment</template>
       <template #content>
         <div class="paragraph-group">
@@ -137,7 +145,7 @@ const start_questionnaire = () => {
   </div>
   <Negotiation ref="negotiation_component" mode="identification"
                @negotiation-start="negotiation_start" @negotiation-end="negotiation_end" @disclosure="handle_disclosure"/>
-  <Questionnaire v-if="show_questionnaire" mode="identification" :questions_ref="questionnaire_questions" :person_data="survey.data">
+  <Questionnaire v-if="show_questionnaire" mode="identification" :questions_ref="questionnaire_questions" :person_data="personal_information.data" :person_code="person_code">
     <template #questions>
       <p>How helpful do you feel this tool is when learning about different negotiation styles?</p>
       <Rating v-model="questionnaire_questions.rating_learning_about_styles"/>

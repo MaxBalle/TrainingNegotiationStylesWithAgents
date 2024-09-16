@@ -4,7 +4,7 @@ import {ref} from 'vue';
 import Card from "primevue/card";
 import Button from "primevue/button";
 
-const props = defineProps(["mode", "questions_ref", "person_data"]);
+const props = defineProps(["mode", "questions_ref", "person_data", "person_code"]);
 
 const url = "http://localhost:8001"
 
@@ -18,6 +18,7 @@ const send_questionnaire = () => {
     websocket.send(JSON.stringify({
       message_type: "questionnaire",
       mode: props.mode,
+      person_code: props.person_code,
       personal_information: props.person_data,
       questions: props.questions_ref
     }));

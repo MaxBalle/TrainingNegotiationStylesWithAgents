@@ -60,7 +60,7 @@ const visible = ref(false);
 
 const utilityInformationComponent = ref();
 
-const start = (model, survey_data) => {
+const start = (model, personal_information, person_code) => {
   state.value = "init";
   loading.value = true;
   websocket = new WebSocket(url);
@@ -70,7 +70,8 @@ const start = (model, survey_data) => {
       message_type: "init",
       mode: props.mode,
       model: model,
-      personal_information: survey_data
+      person_code: person_code,
+      personal_information: personal_information
     }));
   }
   websocket.onerror = (error) => {
