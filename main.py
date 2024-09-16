@@ -24,7 +24,7 @@ generation_count = 100 #Number of generations to simulate / last generation
 population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
-mutation_stddev = 0.15
+mutation_stddev = 0.1
 
 def create_model():
     model = Sequential()
