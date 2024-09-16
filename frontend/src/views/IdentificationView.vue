@@ -3,6 +3,7 @@ import {ref, nextTick} from 'vue';
 import Negotiation from "@/components/Negotiation.vue";
 import PersonalInformation from "@/components/PersonalInformation.vue";
 import Questionnaire from "@/components/Questionnaire.vue";
+import Likert from "@/components/Likert.vue";
 
 import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
@@ -11,8 +12,6 @@ import Card from "primevue/card";
 import Stepper from 'primevue/stepper';
 import StepList from 'primevue/steplist';
 import Step from 'primevue/step';
-
-import Rating from 'primevue/rating';
 
 
 defineEmits(['show-info-dialog']);
@@ -24,7 +23,6 @@ const personal_information = ref()
 const tki_options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
 const judgment = ref();
 const judgment_send = ref(false);
-const judgment_card = ref();
 const disclosure = ref();
 
 const negotiation_component = ref();
@@ -34,8 +32,8 @@ const negotiation_complete = ref(false);
 const stepper_value = ref("1");
 
 const questionnaire_questions = ref({
-  rating_learning_about_styles: null,
-  rating_identification_training: null,
+  learning_about_styles: null,
+  identification_training: null,
   realism: null
 });
 
@@ -58,9 +56,7 @@ const negotiation_end = () => {
   judgment_send.value = false;
   nextTick(() => {
     document.getElementById("judgment-card").scrollIntoView({ behavior: 'smooth', block: 'nearest'});
-    //judgment_card.value.scrollIntoView();
   })
-
 }
 
 const send_judgment = () => {
@@ -114,7 +110,7 @@ const start_questionnaire = () => {
     </template>
   </Card>
   <div v-if="negotiation_complete">
-    <Card v-if="!judgment_send" ref="judgment_card" id="judgment-card">
+    <Card v-if="!judgment_send" id="judgment-card">
       <template #title>Judgment</template>
       <template #content>
         <div class="paragraph-group">
@@ -146,13 +142,14 @@ const start_questionnaire = () => {
   <Negotiation ref="negotiation_component" mode="identification"
                @negotiation-start="negotiation_start" @negotiation-end="negotiation_end" @disclosure="handle_disclosure"/>
   <Questionnaire v-if="show_questionnaire" mode="identification" :questions_ref="questionnaire_questions" :person_data="personal_information.data" :person_code="person_code">
+    <template #subtitle>Please enter how strongly you agree with the following statements</template>
     <template #questions>
-      <p>How helpful do you feel this tool is when learning about different negotiation styles?</p>
-      <Rating v-model="questionnaire_questions.rating_learning_about_styles"/>
-      <p>Helpful to train the identification of the negotiation opponents style?</p>
-      <Rating v-model="questionnaire_questions.rating_identification_training"/>
-      <p>How realistic was the behavior of the AI models?</p>
-      <Rating v-model="questionnaire_questions.realism"/>
+      <p>This tool can be helpful when learning about different negotiation styles.</p>
+      <Likert @choice="(c) => questionnaire_questions.learning_about_styles = c"/>
+      <p>This tool is helpful to train the identification of the negotiation opponents styles.</p>
+      <Likert @choice="(c) => questionnaire_questions.identification_training = c"/>
+      <p>The AI models behaved realistic.</p>
+      <Likert @choice="(c) => questionnaire_questions.realism = c"/>
     </template>
     <template #thanks>
       <div class="paragraph-group">
@@ -164,9 +161,5 @@ const start_questionnaire = () => {
 </template>
 
 <style scoped>
-
-.p-rating {
-  margin-bottom: 1rem;
-}
 
 </style>

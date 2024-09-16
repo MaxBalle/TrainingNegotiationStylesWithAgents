@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import {nextTick, ref} from 'vue';
 import Negotiation from "@/components/Negotiation.vue";
 import Questionnaire from "@/components/Questionnaire.vue";
+import Likert from "@/components/Likert.vue";
 
 import Button from "primevue/button";
 import SelectButton from "primevue/selectbutton";
@@ -11,7 +12,6 @@ import ProgressSpinner from "primevue/progressspinner";
 import Step from "primevue/step";
 import StepList from "primevue/steplist";
 import Stepper from "primevue/stepper";
-import Rating from "primevue/rating";
 
 defineEmits(['show-info-dialog']);
 
@@ -20,7 +20,6 @@ const show_start_card = ref(true);
 const personal_information = ref();
 const judgment = ref();
 const judgment_visible = ref(true);
-const judgment_card = ref();
 const show_questionnaire = ref(false);
 
 const negotiation_component = ref();
@@ -51,7 +50,9 @@ const negotiation_start = () => {
 const negotiation_end = () => {
   judgment_visible.value = true;
   negotiation_complete.value = true;
-  judgment_card.value.scrollIntoView();
+  nextTick(() => {
+    document.getElementById("judgment-card").scrollIntoView({ behavior: 'smooth', block: 'nearest'});
+  })
 }
 
 const send_judgment = () => {
@@ -107,7 +108,7 @@ const start_questionnaire = () => {
     </template>
   </Card>
   <div v-if="negotiation_complete">
-    <Card v-if="judgment_visible" ref="judgment_card">
+    <Card v-if="judgment_visible" id="judgment-card">
       <template #title>Judgment</template>
       <template #content>
         <div class="paragraph-group">
@@ -141,11 +142,12 @@ const start_questionnaire = () => {
   <Negotiation ref="negotiation_component" mode="turing"
                @negotiation-start="negotiation_start" @negotiation-end="negotiation_end" @disclosure="handle_disclosure"/>
   <Questionnaire v-if="show_questionnaire" mode="turing" :questions_ref="questionnaire_questions" :person_data="personal_information.data" :person_code="person_code">
+    <template #subtitle>Please enter how strongly you agree with the following statements</template>
     <template #questions>
-      <p>How certain are you of your judgments on average?</p>
-      <Rating v-model="questionnaire_questions.certain_of_judgment"/>
-      <p>How much outside information influenced you judgments? (E.g. by observing other parties performing the turing test alongside you)</p>
-      <Rating v-model="questionnaire_questions.outside_influence"/>
+      <p>I am certain of the judgments I made.</p>
+      <Likert @choice="(c) => questionnaire_questions.certain_of_judgment = c"/>
+      <p>My judgment was influenced by outside information. (E.g. by observing other parties performing the turing test)</p>
+      <Likert @choice="(c) => questionnaire_questions.outside_influence = c"/>
     </template>
     <template #thanks>
       <div class="paragraph-group">
@@ -157,9 +159,5 @@ const start_questionnaire = () => {
 </template>
 
 <style scoped>
-
-.p-rating {
-  margin-bottom: 1rem;
-}
 
 </style>

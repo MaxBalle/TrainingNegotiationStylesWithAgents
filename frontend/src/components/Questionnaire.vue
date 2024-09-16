@@ -31,8 +31,10 @@ const send_questionnaire = () => {
 <template>
   <Card v-if="questioning">
     <template #title>Questionnaire</template>
+    <template #subtitle>
+      <slot name="subtitle"></slot>
+    </template>
     <template #content>
-      <p style="margin-bottom: 1rem">Please answer the following questions to complete the survey:</p>
       <slot name="questions"></slot>
     </template>
     <template #footer>
