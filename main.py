@@ -28,9 +28,11 @@ mutation_stddev = 0.15
 
 def create_model():
     model = Sequential()
-    #model.add(layers.Dense(50, name='In'))
-    model.add(layers.GRU(28, name='Recurrent Middle', stateful=True, activation='sigmoid'))
-    #model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
+    model.add(layers.Dense(50, name='In'))
+    model.add(layers.GRU(50, name='Broad Recurrent', stateful=True))
+    model.add(layers.Reshape((1,-1)))
+    model.add(layers.GRU(28, name='Narrow Recurrent', stateful=True))
+    model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
     model.build(input_shape=(1, 1, 50))
     return model
 
