@@ -19,7 +19,7 @@ const emit = defineEmits(['negotiation-start','negotiation-end','disclosure']);
 const state = ref('init');
 const loading = ref(false);
 
-const url = "http://localhost:8001"
+const url = "wss://trainingnegotiationstyleswithagents-ws.onrender.com"
 let websocket;
 
 const issue_names = ref(['Price', 'Open at', 'Open for', 'Tables', 'Team size'])
