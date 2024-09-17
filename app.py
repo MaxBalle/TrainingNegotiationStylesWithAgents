@@ -260,7 +260,7 @@ async def main_app():
     person_fields = ["person_code", "person_age_group", "person_gender", "person_education", "person_negotiation_experience"]
     save("identification", ["connection_code", *person_fields, "outcome", "ending_party", "length", "model_name", "judgment"])
     save("turing", ["connection_code", *person_fields, "outcome", "ending_party", "length", "opponent_type", "judgment"])
-    save("identification-questionnaire",[*person_fields, "learning_about_styles", "identification_training", "realism"])
+    save("identification-questionnaire",[*person_fields, "learning_about_styles", "identification_training", "realism", "theory_of_mind"])
     save("turing-questionnaire", [*person_fields, "certain_of_judgment", "outside_influence"])
 
     async with serve(handler, "", 8001, process_request=health_check):

@@ -34,7 +34,8 @@ const stepper_value = ref("1");
 const questionnaire_questions = ref({
   learning_about_styles: null,
   identification_training: null,
-  realism: null
+  realism: null,
+  theory_of_mind: null
 });
 
 const person_code = ref("pc" + Math.random().toString(16).slice(2));
@@ -150,6 +151,8 @@ const start_questionnaire = () => {
       <Likert @choice="(c) => questionnaire_questions.identification_training = c"/>
       <p>The AI models behaved realistic.</p>
       <Likert @choice="(c) => questionnaire_questions.realism = c"/>
+      <p>The AI model seem to work with a model of my beliefs and intentions.</p>
+      <Likert @choice="(c) => questionnaire_questions.theory_of_mind = c"/>
     </template>
     <template #thanks>
       <div class="paragraph-group">
