@@ -62,7 +62,7 @@ const send_judgment = () => {
 const restart_turing = () => {
   negotiation_complete.value = false;
   loading.value = true;
-  negotiation_component.value.start("random", personal_information.value.data);
+  negotiation_component.value.start("random", personal_information.value.data, person_code.value);
   judgment.value = null;
 }
 
