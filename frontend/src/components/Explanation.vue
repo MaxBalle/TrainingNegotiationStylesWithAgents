@@ -55,8 +55,8 @@ import Image from 'primevue/image';
       <AccordionContent>
         <p class="m-0" style="margin-bottom: 10px">
           The Thomas-Kilamnn Conflict Mode Instrument or TKI is a tool to look at the different approaches humans take with conflict situations.
-          They can described with two dimensions, assertiveness and cooperativeness. Assertiveness is how much one aims to satisfy the own concerns,
-          cooperativeness how much the satisfaction of the opponents concern matters.
+          They can be described with two dimensions, assertiveness and cooperativeness. Assertiveness is how much one aims to satisfy the own concerns,
+          cooperativeness is how much the satisfaction of the opponents concern matters.
         </p>
         <div id="tki-graphic">
           <Image src="/tki.png" alt="TKI Graphic" width="75%"/>

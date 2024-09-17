@@ -66,6 +66,8 @@ async def perform_model_negotiation(websocket, code, model_name, scenario: Scena
         offer = tf.constant([[[*initial_offer_one_hot, *offer_utilities_model]]])
         ret = model(offer)
         response = build_response_from_model_return(ret, scenario.issue_shape, allow_end = False)
+        delay = random.triangular(5, delay_max, 50)
+        await asyncio.sleep(delay)
         await websocket.send(json.dumps(response))
         length += 1
         if response["message_type"] == "end":
@@ -84,7 +86,7 @@ async def perform_model_negotiation(websocket, code, model_name, scenario: Scena
             ret = model(offer)
             response = build_response_from_model_return(ret, scenario.issue_shape)
             if delay_max > 0:
-                delay = random.uniform(delay_max / 2, delay_max)
+                delay = random.triangular(5, delay_max, 30)
                 await asyncio.sleep(delay)
             await websocket.send(json.dumps(response))
             length += 1
@@ -109,7 +111,7 @@ async def handle_model_negotiation(websocket, code, model_name):
 
 turing_wait = []
 turing_pairs = {}
-seconds = 60 #Timelimit for each offer
+seconds = 100 #Timelimit for each offer
 
 async def handle_turing(websocket, code):
     if turing_wait:
@@ -225,7 +227,7 @@ async def handler(websocket):
                 "message_type": "disclosure",
                 "opponent": model_name
             }))
-            save("identification", [code, *init_message["personal_information"].values(), outcome, ending_party, length, model_name, judgment])
+            save("identification", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, model_name, judgment])
         elif mode == "turing":
             outcome, ending_party, length, opponent_type, judgment = await handle_turing(websocket, code)
             print(f"{code} judged model as {judgment}, truth is {opponent_type}")
@@ -233,16 +235,19 @@ async def handler(websocket):
                 "message_type": "disclosure",
                 "opponent": opponent_type
             }))
-            save("turing", [code, *init_message["personal_information"].values(), outcome, ending_party, length, opponent_type, judgment])
+            save("turing", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, opponent_type, judgment])
         else:
             await websocket.send(json.dumps({
                 "message_type": "error",
                 "error": "No such mode"
             }))
+    elif init_message["message_type"] == "questionnaire":
+        mode = init_message["mode"]
+        save(f"{mode}-questionnaire", [init_message["person_code"],*init_message["personal_information"].values(), *init_message["questions"].values()])
     else:
         await websocket.send(json.dumps({
             "message_type": "error",
-            "error": "First message must be init"
+            "error": "First message must be init or questionnaire"
         }))
     print(f"Closed connection {code}")
 
@@ -252,8 +257,11 @@ def health_check(connection, request):
 
 async def main_app():
     #Headers
-    save("identification", ["connection_code", "person_name", "person_age", "person_gender", "person_education", "person_negotiation_experience", "outcome", "ending_party", "length", "model_name", "judgment"])
-    save("turing", ["connection_code", "person_name", "person_age", "person_gender", "person_education", "person_negotiation_experience", "outcome", "ending_party", "length", "opponent_type", "judgment"])
+    person_fields = ["person_code", "person_age_group", "person_gender", "person_education", "person_negotiation_experience"]
+    save("identification", ["connection_code", *person_fields, "outcome", "ending_party", "length", "model_name", "judgment"])
+    save("turing", ["connection_code", *person_fields, "outcome", "ending_party", "length", "opponent_type", "judgment"])
+    save("identification-questionnaire",[*person_fields, "learning_about_styles", "identification_training", "realism", "theory_of_mind"])
+    save("turing-questionnaire", [*person_fields, "certain_of_judgment", "outside_influence"])
 
     async with serve(handler, "", 8001, process_request=health_check):
         await asyncio.get_running_loop().create_future()
