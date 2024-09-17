@@ -119,7 +119,7 @@ if __name__ == "__main__":
     size = comm.Get_size()
     rank = comm.Get_rank()
 
-    print(f"Rank {rank}, Size {size}")
+    print(f"Rank {rank} of size {size}, environment varibles SLURM_NODEID={os.getenv('SLURM_NODEID','no')} SLURM_NODELIST={os.getenv('SLURM_NODELIST','no')} SLURMD_NODENAME={os.getenv('SLURMD_NODENAME','no')}")
 
     if rank == 0:
         start_time = time.time()
