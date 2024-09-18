@@ -66,8 +66,9 @@ async def perform_model_negotiation(websocket, code, model_name, scenario: Scena
         offer = tf.constant([[[*initial_offer_one_hot, *offer_utilities_model]]])
         ret = model(offer)
         response = build_response_from_model_return(ret, scenario.issue_shape, allow_end = False)
-        delay = random.triangular(5, delay_max, 50)
-        await asyncio.sleep(delay)
+        if delay_max > 0:
+            delay = random.triangular(5, delay_max, 50)
+            await asyncio.sleep(delay)
         await websocket.send(json.dumps(response))
         length += 1
         if response["message_type"] == "end":
