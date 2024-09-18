@@ -1,6 +1,8 @@
 <script setup>
 
 import Card from "primevue/card";
+import Divider from 'primevue/divider';
+
 
 defineEmits(['show-info-dialog']);
 
@@ -18,9 +20,10 @@ defineEmits(['show-info-dialog']);
           <p>The setting: You and your partner (opponent) want to open a café together but need to agree on the price range, size and hours before you start.</p>
           <p>To learn more about the negotiations used here and the TKI styles, you can always click <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> in the menubar.</p>
           <p>The models are based on recurrent neural networks and are trained using a simulation-based genetic algorithm.</p>
-          <p>Try out different models in the sandbox or participate in the survey by performing an identification or a Turing-Test!</p>
+          <Divider/>
+          <p>If you want to test out the different models you can choose Sandbox from the menu.</p>
+          <p>If you are here for the survey, please read the information <i class="pi pi-info-circle" style="cursor: pointer" @click="$emit('show-info-dialog')"/> carefully and then choose Identification or Turing from the menu.</p>
         </div>
-
       </template>
     </Card>
 

@@ -17,7 +17,11 @@ import Image from 'primevue/image';
       <AccordionContent>
         <div class="paragraph-group">
           <p class="m-0">
-            Negotiations are ... exchange of offers ... and end with one party accepting or rejecting the last offer.
+            Negotiations are joint effort using communication and decision-making to overcome a shared problem (Kelman 1996; Kersten/Lai 2007).
+            They often are structured as an exchange of offers and end with one party accepting or rejecting the last offer.
+          </p>
+          <p class="m-0">
+            Integrative and distributive ...
           </p>
           <p class="m-0">
             The negotiations used here are multi-issue negotiations, meaning there are multiple issues to solve.
@@ -46,6 +50,10 @@ import Image from 'primevue/image';
             The utility of one option is defined as the product of the importance of the issue and the preference for the option.
             As each offer combines one option for each issue, the total utility of this offer is the sum of the utilities of the chosen options.
             The best possible offer by your point of view has a total utility of 1 but probably is not as good from the perspective of your opponent!
+          </p>
+          <p class="m-0">
+            During the negotiation, when its your turn to write your offer, there are indicators next to each issue displaying your preference for the chosen option.
+            On the top of each offer (by you or your opponent) an indicator shows the total utility of that offer to you.
           </p>
         </div>
       </AccordionContent>

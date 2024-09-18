@@ -21,8 +21,8 @@ const show_start_card = ref(true);
 const show_questionnaire = ref(false);
 const personal_information = ref()
 const tki_options = ref(['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']);
-const judgment = ref();
-const judgment_send = ref(false);
+const judgement = ref();
+const judgement_send = ref(false);
 const disclosure = ref();
 
 const negotiation_component = ref();
@@ -54,27 +54,27 @@ const negotiation_start = () => {
 
 const negotiation_end = () => {
   negotiation_complete.value = true;
-  judgment_send.value = false;
+  judgement_send.value = false;
   nextTick(() => {
-    document.getElementById("judgment-card").scrollIntoView({ behavior: 'smooth', block: 'nearest'});
+    document.getElementById("judgement-card").scrollIntoView({ behavior: 'smooth', block: 'nearest'});
   })
 }
 
-const send_judgment = () => {
-  negotiation_component.value.send_judgment(judgment.value);
+const send_judgement = () => {
+  negotiation_component.value.send_judgement(judgement.value);
 }
 
 const restart_identification = () => {
   negotiation_complete.value = false;
   loading.value = true;
   negotiation_component.value.start("random", personal_information.value.data, person_code.value);
-  judgment.value = null;
+  judgement.value = null;
 }
 
 const handle_disclosure = (truth) => {
   negotiation_component.value.close();
   negotiation_component.value.visible = false;
-  judgment_send.value = true;
+  judgement_send.value = true;
   disclosure.value = truth;
 }
 
@@ -111,25 +111,25 @@ const start_questionnaire = () => {
     </template>
   </Card>
   <div v-if="negotiation_complete">
-    <Card v-if="!judgment_send" id="judgment-card">
-      <template #title>Judgment</template>
+    <Card v-if="!judgement_send" id="judgement-card">
+      <template #title>judgement</template>
       <template #content>
         <div class="paragraph-group">
           <p>What do you think was the negotiation style of your opponent?</p>
           <p>If you are uncertain, comparing the behaviour of the model to the descriptions in the <a @click="$emit('show-info-dialog')" style="cursor: pointer">information</a> might help.</p>
           <p>Please choose carefully, this is the most important step for the research!</p>
         </div>
-        <SelectButton v-model="judgment" :options="tki_options" aria-labelledby="basic" :allow-empty="false" style="margin-top: 1rem"/>
+        <SelectButton v-model="judgement" :options="tki_options" aria-labelledby="basic" :allow-empty="false" style="margin-top: 1rem"/>
       </template>
       <template #footer>
-        <Button label="Send" @click="send_judgment" :disabled="judgment == null"/>
+        <Button label="Send" @click="send_judgement" :disabled="judgement == null"/>
       </template>
     </Card>
     <Card v-else>
       <template #title>Conclusion</template>
       <template #content>
-        <p v-if="disclosure === judgment">You identified the opponent model correctly as {{disclosure}}!</p>
-        <p v-else>Your judgment of {{judgment}} was incorrect, you negotiated against the {{disclosure}} model.</p>
+        <p v-if="disclosure === judgement">You identified the opponent model correctly as {{disclosure}}!</p>
+        <p v-else>Your judgement of {{judgement}} was incorrect, you negotiated against the {{disclosure}} model.</p>
         <p style="margin-top: 1rem">Feel free to negotiate another round or complete the survey by answering some questions:</p>
       </template>
       <template #footer>
@@ -151,7 +151,7 @@ const start_questionnaire = () => {
       <Likert @choice="(c) => questionnaire_questions.identification_training = c"/>
       <p>The AI models behaved realistic.</p>
       <Likert @choice="(c) => questionnaire_questions.realism = c"/>
-      <p>The AI model seem to work with a model of my beliefs and intentions.</p>
+      <p>The AI models seem to work with a model of my beliefs and intentions.</p>
       <Likert @choice="(c) => questionnaire_questions.theory_of_mind = c"/>
     </template>
     <template #thanks>

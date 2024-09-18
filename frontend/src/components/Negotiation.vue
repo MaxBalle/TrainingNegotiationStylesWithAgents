@@ -174,10 +174,10 @@ const conclude = (author, outcome) => {
   emit('negotiation-end');
 }
 
-const send_judgment = (judgment) => {
+const send_judgement = (judgement) => {
   websocket.send(JSON.stringify({
-    message_type: "judgment",
-    judgment: judgment
+    message_type: "judgement",
+    judgement: judgement
   }))
 }
 
@@ -199,7 +199,7 @@ defineExpose({
   visible,
   websocket,
   close,
-  send_judgment
+  send_judgement
 });
 
 const float_to_percent_string = (val) => {return Math.round(val * 100) + '%'}
@@ -238,7 +238,7 @@ const float_to_percent_string = (val) => {return Math.round(val * 100) + '%'}
           </div>
           <div v-if="counter != null" style="display: flex; flex-direction: row; align-items: center; gap: 10px; margin-top: 10px">
             <label>Time left:</label>
-            <Knob v-model="counter" :max="timeout" :size="50" v-tooltip="'You have to send your offer in this time or i will end automatically'"/>
+            <Knob v-model="counter" :max="timeout" :size="50" valueColor="#dd3972" v-tooltip="'You have to send your offer in this time or i will end automatically'"/>
           </div>
         </template>
       </Card>
@@ -261,7 +261,7 @@ const float_to_percent_string = (val) => {return Math.round(val * 100) + '%'}
             <Button label="Send offer" @click="send_offer" :disabled="current_offer_choices.some((oc) => oc == null) || current_offer_choices.length !== issues.length"/>
             <div v-if="counter != null" style="display: flex; flex-direction: row; align-items: center; gap: 10px">
               <label>Time left:</label>
-              <Knob v-model="counter" :max="timeout" :size="50" v-tooltip="'You have to send your offer in this time or i will end automatically'"/>
+              <Knob v-model="counter" :max="timeout" :size="50" valueColor="#dd3972" v-tooltip="'You have to send your offer in this time or it will end automatically'"/>
             </div>
           </div>
         </template>
