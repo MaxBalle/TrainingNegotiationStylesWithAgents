@@ -78,6 +78,12 @@ const start_questionnaire = () => {
   stepper_value.value = "3"
 }
 
+const start_questionnaire = () => {
+  negotiation_complete.value = false;
+  show_questionnaire.value = true;
+  stepper_value.value = "3"
+}
+
 </script>
 
 <template>

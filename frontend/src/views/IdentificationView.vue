@@ -112,7 +112,7 @@ const start_questionnaire = () => {
   </Card>
   <div v-if="negotiation_complete">
     <Card v-if="!judgement_send" id="judgement-card">
-      <template #title>judgement</template>
+      <template #title>Judgement</template>
       <template #content>
         <div class="paragraph-group">
           <p>What do you think was the negotiation style of your opponent?</p>
