@@ -6,7 +6,7 @@ import Button from "primevue/button";
 
 const props = defineProps(["mode", "questions_ref", "person_data", "person_code"]);
 
-const url = "http://localhost:8001"
+const url = "wss://trainingnegotiationstyleswithagents-ws.onrender.com"
 
 const questioning = ref(true);
 
