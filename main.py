@@ -154,7 +154,8 @@ if __name__ == "__main__":
             total_stats = None
         # Parallel Negotiation / Fitness
         for negotiation_round in range(rounds):
-            print(f"Round {negotiation_round +1}")
+            if rank == 0:
+                print(f"Round {negotiation_round +1}")
             simulations = None
             if rank == 0:
                 all_simulations = generate_simulations(populations, scenario)
@@ -175,7 +176,7 @@ if __name__ == "__main__":
             for matrix in total_stats:
                 for value in matrix.values():
                     value = value / rounds
-                    csv_row.extend(value)
+                    csv_row.append(value)
         if rank == 0:
             new_generation_genomes = {}
             for population_name in populations:
