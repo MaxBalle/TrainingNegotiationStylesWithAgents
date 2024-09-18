@@ -17,11 +17,12 @@ import Image from 'primevue/image';
       <AccordionContent>
         <div class="paragraph-group">
           <p class="m-0">
-            Negotiations are joint effort using communication and decision-making to overcome a shared problem (Kelman 1996; Kersten/Lai 2007).
+            Negotiations are joint effort using communication and decision-making to overcome a shared problem.
             They often are structured as an exchange of offers and end with one party accepting or rejecting the last offer.
           </p>
           <p class="m-0">
-            Integrative and distributive ...
+            Negotiations are integrative when both parties work towards a win-win situation by creating value together. This can be described as expanding the pie while in distributive negotiations
+            the pie only gets divided and ones win is the others loss.
           </p>
           <p class="m-0">
             The negotiations used here are multi-issue negotiations, meaning there are multiple issues to solve.
