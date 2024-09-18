@@ -25,6 +25,7 @@ population_size = 100 #Has to be even and be equal to the sum of survivor_count 
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
 mutation_stddev = 0.03
+rounds = 2 #of negotiation per generation
 
 def create_model():
     model = Sequential()
@@ -150,25 +151,39 @@ if __name__ == "__main__":
             generation_start_time = time.time()
             print(f"\nGeneration {generation}")
             scenario: Scenario = build_negotiation_scenario(issues)
+            total_stats = None
         # Parallel Negotiation / Fitness
-        simulations = None
+        for negotiation_round in range(rounds):
+            print(f"Round {negotiation_round +1}")
+            simulations = None
+            if rank == 0:
+                all_simulations = generate_simulations(populations, scenario)
+                simulations = all_simulations
+            simulations = comm.bcast(simulations, root=0)
+            local_simulation_results = simulate_local_negotiations(simulations, rank, size)
+            simulation_results = comm.gather(local_simulation_results, root=0)
+            if rank == 0:
+                simulation_results = [item for sublist in simulation_results for item in sublist] #Flatten results
+                simulation_stats = process_results(populations, all_simulations, simulation_results)
+                if total_stats is None:
+                    total_stats = simulation_stats
+                else:
+                    for t_matrix, new_matrix in zip(total_stats, simulation_stats):
+                        for t_value, new_value in zip(t_matrix.values(), new_matrix.values()):
+                            t_value += new_value
         if rank == 0:
-            all_simulations = generate_simulations(populations, scenario)
-            simulations = all_simulations
-        simulations = comm.bcast(simulations, root=0)
-        local_simulation_results = simulate_local_negotiations(simulations, rank, size)
-        simulation_results = comm.gather(local_simulation_results, root=0)
+            for matrix in total_stats:
+                for value in matrix.values():
+                    value = value / rounds
+                    csv_row.extend(value)
         if rank == 0:
-            simulation_results = [item for sublist in simulation_results for item in sublist] #Flatten results
-            simulation_stats = process_results(populations, all_simulations, simulation_results)
-            for matrix in simulation_stats:
-                #print(f"Matrix: {matrix}")
-                csv_row.extend([value for value in matrix.values()])
             new_generation_genomes = {}
             for population_name in populations:
                 #Selection
+                for agent in populations[population_name]:
+                    agent.fitness = agent.fitness / rounds
                 populations[population_name].sort(key=lambda agent: agent.fitness)
-                total_fitness = sum([simulation_stats[0][(population_name, population_name_2)] for population_name_2 in populations])
+                total_fitness = sum([total_stats[0][(population_name, population_name_2)] for population_name_2 in populations])
                 #print(f"Total fitness {population_name}: {total_fitness}")
                 csv_row.append(total_fitness)
                 highest_fitness = populations[population_name][-1].fitness
