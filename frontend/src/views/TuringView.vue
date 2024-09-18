@@ -164,4 +164,8 @@ const start_questionnaire = () => {
 
 <style scoped>
 
+.p-steplist {
+  flex-wrap: wrap;
+}
+
 </style>

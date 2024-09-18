@@ -165,4 +165,12 @@ const start_questionnaire = () => {
 
 <style scoped>
 
+.p-steplist {
+  flex-wrap: wrap;
+}
+
+#judgement-card .p-selectbutton {
+  flex-wrap: wrap;
+}
+
 </style>

@@ -69,4 +69,8 @@ const choose_new_model = () => {
 
 <style scoped>
 
+.p-selectbutton {
+  flex-wrap: wrap;
+}
+
 </style>
