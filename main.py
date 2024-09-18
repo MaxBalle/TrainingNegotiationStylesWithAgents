@@ -169,8 +169,8 @@ if __name__ == "__main__":
                     total_stats = simulation_stats
                 else:
                     for t_matrix, new_matrix in zip(total_stats, simulation_stats):
-                        for t_value, new_value in zip(t_matrix.values(), new_matrix.values()):
-                            t_value += new_value
+                        for key in new_matrix:
+                            t_matrix[key] += new_matrix[key]
         if rank == 0:
             for matrix in total_stats:
                 for value in matrix.values():
