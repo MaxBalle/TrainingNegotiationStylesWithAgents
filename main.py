@@ -25,7 +25,7 @@ population_size = 100 #Has to be even and be equal to the sum of survivor_count 
 survivor_count = 10 #Number of survivors per generation
 recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
 mutation_stddev = 0.03
-rounds = 2 #of negotiation per generation
+rounds = 3 #of negotiation per generation
 
 def create_model():
     model = Sequential()
