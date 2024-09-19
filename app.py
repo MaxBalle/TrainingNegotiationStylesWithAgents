@@ -10,7 +10,7 @@ import http
 
 import asyncio
 from websockets.asyncio.server import serve
-from websockets import ConnectionClosedOK
+from websockets import ConnectionClosedOK, ConnectionClosedError
 
 from keras import models
 import tensorflow as tf
@@ -203,53 +203,52 @@ async def handler(websocket):
     print(f"New connection with code {code}")
     try:
         message_json = await websocket.recv()
-    except ConnectionClosedOK:
-        return
-    init_message = json.loads(message_json)
-    print(f"{code}: First message: {init_message}")
-    if init_message["message_type"] == "init":
-        mode = init_message["mode"]
-        if mode == "sandbox":
-            model_name = init_message["model"]
-            outcome, ending_party, length = await handle_model_negotiation(websocket, code, model_name)
-            print(f"{code}: {ending_party} ended after {length} messages with outcome={outcome}")
-        elif mode == "identification":
-            model_name = random.choice(model_options)
-            outcome, ending_party, length = await handle_model_negotiation(websocket, code, model_name)
-            print(f"{code}: {ending_party} ended after {length} messages with outcome={outcome}")
-            try:
+        init_message = json.loads(message_json)
+        print(f"{code}: First message: {init_message}")
+        if init_message["message_type"] == "init":
+            mode = init_message["mode"]
+            if mode == "sandbox":
+                model_name = init_message["model"]
+                outcome, ending_party, length = await handle_model_negotiation(websocket, code, model_name)
+                print(f"{code}: {ending_party} ended after {length} messages with outcome={outcome}")
+            elif mode == "identification":
+                model_name = random.choice(model_options)
+                outcome, ending_party, length = await handle_model_negotiation(websocket, code, model_name)
+                print(f"{code}: {ending_party} ended after {length} messages with outcome={outcome}")
                 judgement_message_json = await websocket.recv()
-            except ConnectionClosedOK:
-                return
-            judgement_message = json.loads(judgement_message_json)
-            judgement = judgement_message["judgement"]
-            print(f"{code} judged model as {judgement}, truth is {model_name}")
-            await websocket.send(json.dumps({
-                "message_type": "disclosure",
-                "opponent": model_name
-            }))
-            save("identification", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, model_name, judgement])
-        elif mode == "turing":
-            outcome, ending_party, length, opponent_type, judgement = await handle_turing(websocket, code)
-            print(f"{code} judged model as {judgement}, truth is {opponent_type}")
-            await websocket.send(json.dumps({
-                "message_type": "disclosure",
-                "opponent": opponent_type
-            }))
-            save("turing", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, opponent_type, judgement])
+                judgement_message = json.loads(judgement_message_json)
+                judgement = judgement_message["judgement"]
+                print(f"{code} judged model as {judgement}, truth is {model_name}")
+                await websocket.send(json.dumps({
+                    "message_type": "disclosure",
+                    "opponent": model_name
+                }))
+                save("identification", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, model_name, judgement])
+            elif mode == "turing":
+                outcome, ending_party, length, opponent_type, judgement = await handle_turing(websocket, code)
+                print(f"{code} judged model as {judgement}, truth is {opponent_type}")
+                await websocket.send(json.dumps({
+                    "message_type": "disclosure",
+                    "opponent": opponent_type
+                }))
+                save("turing", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, opponent_type, judgement])
+            else:
+                await websocket.send(json.dumps({
+                    "message_type": "error",
+                    "error": "No such mode"
+                }))
+        elif init_message["message_type"] == "questionnaire":
+            mode = init_message["mode"]
+            save(f"{mode}-questionnaire", [init_message["person_code"],*init_message["personal_information"].values(), *init_message["questions"].values()])
         else:
             await websocket.send(json.dumps({
                 "message_type": "error",
-                "error": "No such mode"
+                "error": "First message must be init or questionnaire"
             }))
-    elif init_message["message_type"] == "questionnaire":
-        mode = init_message["mode"]
-        save(f"{mode}-questionnaire", [init_message["person_code"],*init_message["personal_information"].values(), *init_message["questions"].values()])
-    else:
-        await websocket.send(json.dumps({
-            "message_type": "error",
-            "error": "First message must be init or questionnaire"
-        }))
+    except ConnectionClosedOK:
+        print(f"Connection {code} closed ok")
+    except ConnectionClosedError:
+        print(f"Connection {code} closed error")
     print(f"Closed connection {code}")
 
 def health_check(connection, request):
