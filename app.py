@@ -22,9 +22,15 @@ from negotiationGenerator.scenario import Scenario
 from negotiation import encode_as_one_hot
 
 logger = logging.getLogger('websockets')
-logger.setLevel(logging.DEBUG)
-logger.addHandler(logging.StreamHandler())
-logger.addHandler(logging.FileHandler('app.log', delay=False))
+consoleHandler = logging.StreamHandler()
+consoleHandler.setLevel(logging.INFO)
+logger.addHandler(consoleHandler)
+fileHandler = logging.FileHandler('app.log')
+fileHandler.setLevel(logging.INFO)
+logger.addHandler(fileHandler)
+fileDebugHandler = logging.FileHandler('appDebug.log')
+fileDebugHandler.setLevel(logging.DEBUG)
+logger.addHandler(fileDebugHandler)
 
 model_options = ['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']
 negotiation_shape = [5, 5, 5, 5, 5]
