@@ -1,5 +1,4 @@
 import os
-from fileinput import filename
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "1"
 
@@ -22,16 +21,16 @@ from negotiationGenerator.scenario import Scenario
 from negotiation import encode_as_one_hot
 
 logger = logging.getLogger('websockets')
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 consoleHandler = logging.StreamHandler()
+consoleHandler.setFormatter(formatter)
 consoleHandler.setLevel(logging.INFO)
 logger.addHandler(consoleHandler)
-fileHandler = logging.FileHandler('app.log')
+fileHandler = logging.FileHandler('csv/app.log') #Wrong directory but render allows for only one disk
+fileHandler.setFormatter(formatter)
 fileHandler.setLevel(logging.INFO)
 logger.addHandler(fileHandler)
-fileDebugHandler = logging.FileHandler('appDebug.log')
-fileDebugHandler.setLevel(logging.DEBUG)
-logger.addHandler(fileDebugHandler)
 
 model_options = ['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']
 negotiation_shape = [5, 5, 5, 5, 5]
