@@ -22,6 +22,7 @@ from negotiationGenerator.scenario import Scenario
 from negotiation import encode_as_one_hot
 
 logger = logging.getLogger('websockets')
+logger.setLevel(logging.DEBUG)
 consoleHandler = logging.StreamHandler()
 consoleHandler.setLevel(logging.INFO)
 logger.addHandler(consoleHandler)
