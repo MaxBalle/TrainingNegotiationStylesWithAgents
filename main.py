@@ -20,7 +20,7 @@ from mpi4py import MPI
 
 issues = [5, 5, 5, 5, 5]
 starting_generation = 1
-generation_count = 10 #Number of generations to simulate / last generation
+generation_count = 5 #Number of generations to simulate / last generation
 population_size = 500 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
 survivor_count = 50 #Number of survivors per generation
 recombination_split = [50, 150, 250] #Top x to group and reproduce (2 -> 2), also has to be even
@@ -50,11 +50,6 @@ def load_population(size, fitness_function, style) -> list[Agent]:
     for i in range(size):
         model = models.load_model(f"models/all/{style}_{i}.keras")
         population.append(Agent(model, fitness_function, style))
-        for j in range(4):
-            clone_model = models.load_model(f"models/all/{style}_{i}.keras")
-            clone = Agent(clone_model, fitness_function, style)
-            mutate(clone)
-            population.append(clone)
     return population
 
 #Returns two new agents that are children of the provided agents through recombination
