@@ -4,43 +4,58 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "1"
 from negotiationGenerator.scenario import Scenario
 from negotiationGenerator.discreteGenerator import build_negotiation_scenario
 from agent import Agent
-from negotiation import simulate_negotiations
+from negotiation import generate_simulations, simulate_local_negotiations, process_results
 import fitness
 
 import random
 import time
 import csv
+import gc
 
-from keras.src.models.cloning import clone_model
 import tensorflow as tf
-from keras import layers, Sequential
+from keras import layers, Sequential, backend, models
 import numpy as np
 
+from mpi4py import MPI
+
 issues = [5, 5, 5, 5, 5]
-max_generation = 1 #Number of generations to simulate / last generation
-population_size = 100 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
-survivor_count = 10 #Number of survivors per generation
-recombination_split = [10, 30, 50] #Top x to group and reproduce (2 -> 2), also has to be even
+starting_generation = 1
+generation_count = 5 #Number of generations to simulate / last generation
+population_size = 500 #Has to be even and be equal to the sum of survivor_count plus the sum of recombination_segments
+survivor_count = 50 #Number of survivors per generation
+recombination_split = [50, 150, 250] #Top x to group and reproduce (2 -> 2), also has to be even
 mutation_stddev = 0.03
+rounds = 3 #of negotiation per generation
+
+def create_model():
+    model = Sequential()
+    model.add(layers.Dense(50, name='In'))
+    model.add(layers.GRU(50, name='Broad Recurrent', stateful=True))
+    model.add(layers.Reshape((1,-1)))
+    model.add(layers.GRU(28, name='Narrow Recurrent', stateful=True))
+    model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
+    model.build(input_shape=(1, 1, 50))
+    return model
 
 #Initializes the populations with random weights
 def init_population(size: int, fitness_function, style) -> list[Agent]:
     population: list[Agent] = []
     for x in range(size):
-        model = Sequential()
-        model.add(layers.Dense(50, name='In'))
-        model.add(layers.GRU(50, name='Recurrent Middle', stateful=True))
-        model.add(layers.Dense(28, name='Out', activation='sigmoid')) #First three are continue, accept and decline, the rest is values for a counteroffer
-        model.build(input_shape=(1, 1, 50))
+        model = create_model()
+        population.append(Agent(model, fitness_function, style))
+    return population
+
+def load_population(size, fitness_function, style) -> list[Agent]:
+    population: list[Agent] = []
+    for i in range(size):
+        model = models.load_model(f"models/all/{style}_{i}.keras")
         population.append(Agent(model, fitness_function, style))
     return population
 
 #Returns two new agents that are children of the provided agents through recombination
-def reproduce(parent_1: Agent, parent_2: Agent) -> tuple[Agent, Agent]:
+def crossover(parent_1: Agent, parent_2: Agent) -> tuple:
     genome_parent_1 = parent_1.model.get_weights()
     genome_parent_2 = parent_2.model.get_weights()
-    child_1 = Agent(clone_model(parent_1.model), parent_1.fitness_function, parent_1.style)
-    child_2 = Agent(clone_model(parent_2.model), parent_2.fitness_function, parent_2.style)
     genome_child_1 = []
     genome_child_2 = []
     for arr_1, arr_2 in zip(genome_parent_1, genome_parent_2):
@@ -56,18 +71,25 @@ def reproduce(parent_1: Agent, parent_2: Agent) -> tuple[Agent, Agent]:
         else:
             genome_child_1.append(new_arr_2)
             genome_child_2.append(new_arr_1)
-    child_1.model.set_weights(genome_child_1)
-    child_2.model.set_weights(genome_child_2)
-    return child_1, child_2
+    return genome_child_1, genome_child_2
 
 #Adds gaussian noise to all weights
-def mutate(agent: Agent) -> Agent:
+def mutate(agent: Agent):
     for layer in agent.model.layers:
         for weight in layer.trainable_weights:
             weight.assign_add(tf.random.normal(tf.shape(weight), 0, mutation_stddev))
-    return agent
 
-def generate_csv_headers():
+def get_last_generation_from_csv() -> int:
+    try:
+        gen = 0
+        with open("training.csv", "r", newline="") as csv_file:
+            for row in csv.reader(csv_file, dialect="excel"):
+                gen = row[0]
+        return int(gen)
+    except FileNotFoundError:
+        return 0
+
+def write_csv_headers():
     headers = ["Generation"]
     for population_name in populations:
         for population_name_2 in populations:
@@ -84,63 +106,119 @@ def generate_csv_headers():
         headers.append(f"Total_fitness_{population_name}")
         headers.append(f"Highest_fitness_{population_name}")
     headers.append("Training_Time")
-    return headers
+    with open("training.csv", "w", newline="") as csv_file:
+        csv_writer = csv.writer(csv_file, dialect='excel')
+        csv_writer.writerow(headers)
+
+def write_to_scv(row):
+    with open("training.csv", "a", newline="") as csv_file:
+        csv_writer = csv.writer(csv_file, dialect='excel')
+        csv_writer.writerow(row)
 
 if __name__ == "__main__":
-    start_time = time.time()
-    print("Initializing populations")
-    populations = {
-        "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
-        "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
-        "compromising": init_population(population_size, fitness.compromising, "compromising"),
-        "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
-        "competing": init_population(population_size, fitness.competing, "competing")
-    }
-    csv_file = open("training.csv", "w", newline="")
-    csv_writer = csv.writer(csv_file, dialect='excel')
-    csv_writer.writerow(generate_csv_headers())
-    generation = 1
-    while generation <= max_generation:
-        csv_row = [generation]
-        generation_start_time = time.time()
-        print(f"\nGeneration {generation}")
-        scenario: Scenario = build_negotiation_scenario(issues)
-        #print(f"Scenario:\nPerspective A:{scenario.a.get_issues()}\nPerspective B:{scenario.b.get_issues()}")
-        #Negotiation / Fitness
-        simulation_stats = simulate_negotiations(populations, scenario)
-        for matrix in simulation_stats:
-            #print(f"Matrix: {matrix}")
-            csv_row.extend([value for value in matrix.values()])
+    comm = MPI.COMM_WORLD
+    size = comm.Get_size()
+    rank = comm.Get_rank()
+
+    print(f"Rank {rank} of size {size}, environment varibles SLURM_NODEID={os.getenv('SLURM_NODEID','no')} SLURM_NODELIST={os.getenv('SLURM_NODELIST','no')} SLURMD_NODENAME={os.getenv('SLURMD_NODENAME','no')}")
+
+    if rank == 0:
+        start_time = time.time()
+        last_generation = get_last_generation_from_csv()
+        if last_generation == 0:
+            print("Initializing populations")
+            populations = {
+                "accommodating": init_population(population_size, fitness.accommodating, "accommodating"),
+                "collaborating": init_population(population_size, fitness.collaborating, "collaborating"),
+                "compromising": init_population(population_size, fitness.compromising, "compromising"),
+                "avoiding": init_population(population_size, fitness.avoiding, "avoiding"),
+                "competing": init_population(population_size, fitness.competing, "competing")
+            }
+            write_csv_headers()
+        else:
+            print(f"Loading populations from generation {last_generation}")
+            starting_generation = last_generation + 1
+            populations = {
+                "accommodating": load_population(population_size, fitness.accommodating, "accommodating"),
+                "collaborating": load_population(population_size, fitness.collaborating, "collaborating"),
+                "compromising": load_population(population_size, fitness.compromising, "compromising"),
+                "avoiding": load_population(population_size, fitness.avoiding, "avoiding"),
+                "competing": load_population(population_size, fitness.competing, "competing")
+            }
+    for generation in range(starting_generation, starting_generation + generation_count):
+        if rank == 0:
+            csv_row = [generation]
+            generation_start_time = time.time()
+            print(f"\nGeneration {generation}")
+            scenario: Scenario = build_negotiation_scenario(issues)
+            total_stats = None
+        # Parallel Negotiation / Fitness
+        for negotiation_round in range(rounds):
+            if rank == 0:
+                print(f"Round {negotiation_round +1}")
+            simulations = None
+            if rank == 0:
+                all_simulations = generate_simulations(populations, scenario)
+                simulations = all_simulations
+            simulations = comm.bcast(simulations, root=0)
+            local_simulation_results = simulate_local_negotiations(simulations, rank, size)
+            simulation_results = comm.gather(local_simulation_results, root=0)
+            if rank == 0:
+                simulation_results = [item for sublist in simulation_results for item in sublist] #Flatten results
+                simulation_stats = process_results(populations, all_simulations, simulation_results)
+                if total_stats is None:
+                    total_stats = simulation_stats
+                else:
+                    for t_matrix, new_matrix in zip(total_stats, simulation_stats):
+                        for key in new_matrix:
+                            t_matrix[key] += new_matrix[key]
+        if rank == 0:
+            for matrix in total_stats:
+                for value in matrix.values():
+                    value = value / rounds
+                    csv_row.append(value)
+        if rank == 0:
+            new_generation_genomes = {}
+            for population_name in populations:
+                #Selection
+                for agent in populations[population_name]:
+                    agent.fitness = agent.fitness / rounds
+                populations[population_name].sort(key=lambda agent: agent.fitness)
+                total_fitness = sum([total_stats[0][(population_name, population_name_2)] for population_name_2 in populations])
+                #print(f"Total fitness {population_name}: {total_fitness}")
+                csv_row.append(total_fitness)
+                highest_fitness = populations[population_name][-1].fitness
+                #print(f"Highest fitness {population_name}: {highest_fitness}")
+                csv_row.append(highest_fitness)
+                new_generation_genomes[population_name] = [survivor.model.get_weights() for survivor in populations[population_name][-survivor_count:]] #Fittest survive into next generation
+                #Recombination
+                for group_size in recombination_split:
+                    pool = populations[population_name][-group_size:]
+                    random.shuffle(pool)
+                    for i in range(0, group_size, 2):
+                        new_generation_genomes[population_name].extend(crossover(pool[i], pool[i + 1]))
+                #Clear old population
+                for agent in populations[population_name]:
+                    del agent
+                populations[population_name] = []
+            backend.clear_session()
+            gc.collect()
+            for population_name in populations:
+                for genome in new_generation_genomes[population_name]:
+                    agent = Agent(create_model(), getattr(fitness, population_name), population_name)
+                    agent.model.set_weights(genome)
+                    populations[population_name].append(agent)
+                #Mutate non survivors
+                for agent in populations[population_name][survivor_count:]:
+                    mutate(agent)
+            generation_training_time = time.time() - generation_start_time
+            print(f"Generation training time: {generation_training_time}")
+            csv_row.append(generation_training_time)
+            write_to_scv(csv_row)
+        gc.collect()
+    if rank == 0:
+        print(f"\nTotal training time: {time.time() - start_time}")
+        #Save all models
         for population_name in populations:
-            #Selection
-            populations[population_name].sort(key=lambda agent: agent.fitness)
-            total_fitness = sum([simulation_stats[0][(population_name, population_name_2)] for population_name_2 in populations])
-            print(f"Total fitness {population_name}: {total_fitness}")
-            csv_row.append(total_fitness)
-            highest_fitness = populations[population_name][-1].fitness
-            print(f"Highest fitness {population_name}: {highest_fitness}")
-            csv_row.append(highest_fitness)
-            new_population = []
-            new_population.extend(populations[population_name][-survivor_count:]) #Fittest survive into next generation
-            for agent in new_population: #Reset fitness of survivors
-                agent.fitness = 0.0
-            #Recombination and mutation
-            for group_size in recombination_split:
-                pool = populations[population_name][-group_size:]
-                random.shuffle(pool)
-                children = []
-                for i in range(0, group_size, 2):
-                    children.extend(reproduce(pool[i], pool[i+1]))
-                for child in children:
-                    new_population.append(mutate(child))
-            populations[population_name] = new_population
-        generation_training_time = time.time() - generation_start_time
-        print(f"Generation training time: {generation_training_time}")
-        csv_row.append(generation_training_time)
-        csv_writer.writerow(csv_row)
-        generation += 1
-    print(f"\nTotal training time: {time.time() - start_time}")
-    csv_file.close()
-    #Save the best models
-    for population_name in populations:
-        populations[population_name][survivor_count - 1].model.save(f"models/{population_name}.keras")
+            for i in range(len(populations[population_name])):
+                populations[population_name][i].model.save(f"models/all/{population_name}_{i}.keras")

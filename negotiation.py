@@ -6,7 +6,7 @@ from negotiationGenerator.scenario import Scenario
 import tensorflow as tf
 
 import random
-from multiprocessing import Pool
+import itertools
 
 #This file contains the logic to simulate the negotiation between two agents
 
@@ -17,9 +17,9 @@ def encode_as_one_hot(li: list[float], shape: list[int], flat = True) -> list:
     one_hot = []
     start_index = 0
     for issue_length in shape:
-        max_index = 0
-        max_value = 0
-        for index in range(start_index, start_index + issue_length):
+        max_index = start_index
+        max_value = li[start_index]
+        for index in range(start_index + 1, start_index + issue_length):
             if li[index] > max_value:
                 max_index = index
                 max_value = li[index]
@@ -88,8 +88,10 @@ def negotiate(agent_a: Agent, agent_b: Agent, negotiation_scenario: Scenario) ->
                 # Build new offer by A to B
                 offer_one_hot = encode_as_one_hot(ret_a[0][3:].numpy(), negotiation_scenario.issue_shape)
                 offer = tf.constant([[[*offer_one_hot, *offer_utilities_a]]])
-    agent_a.model.layers[1].reset_states()
-    agent_b.model.layers[1].reset_states()
+    agent_a.model.get_layer('Broad Recurrent').reset_states()
+    agent_a.model.get_layer('Narrow Recurrent').reset_states()
+    agent_b.model.get_layer('Broad Recurrent').reset_states()
+    agent_b.model.get_layer('Narrow Recurrent').reset_states()
     #print(f"Negotiation between {agent_a} and {agent_b} came to the outcome {outcome} at t={time} with utility_a={result_utility_a} and utility_b={result_utility_b}")
     return outcome, result_utility_a, result_utility_b, time
 
@@ -104,7 +106,7 @@ def cross_negotiate(agent_1: Agent, agent_2: Agent, negotiation_scenario: Scenar
     total_time = outcome_1_2[3] + outcome_2_1[3]
     return fitness_1, fitness_2, accepts, rejects, total_time
 
-def simulate_negotiations(populations, scenario: Scenario):
+def generate_simulations(populations, scenario: Scenario):
     for population_name in populations:
         random.shuffle(populations[population_name])
     negotiations: list[tuple[Agent, Agent, Scenario]] = []
@@ -121,10 +123,18 @@ def simulate_negotiations(populations, scenario: Scenario):
                     negotiations.append((populations[population_name][i], populations[population_name_2][i], scenario))
             elif population_name_2 == population_name:
                 active = True
-    # Simulate negotiations
-    with Pool() as p:
-        negotiation_results = p.starmap(cross_negotiate, negotiations)
-    # Process results (Update fitness values of agent and generate stats)
+    return negotiations
+
+def simulate_local_negotiations(negotiations, rank, size):
+    chunk_size = len(negotiations) // size
+    start = rank * chunk_size
+    end = start + chunk_size if rank != size - 1 else len(negotiations)
+    local_negotiations = negotiations[start:end]
+    negotiation_results = [res for res in itertools.starmap(cross_negotiate, local_negotiations)]
+    return negotiation_results
+
+def process_results(populations, negotiations, negotiation_results):
+    # Update fitness values of agent and generate stats
     fitness_matrix = {}
     for population_name in populations:
         for population_name_2 in populations:
