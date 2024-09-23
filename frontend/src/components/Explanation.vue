@@ -83,19 +83,25 @@ import Image from 'primevue/image';
       <AccordionContent>
         <div class="paragraph-group">
           <p class="m-0">
-            Competing negotiators are ...
+            <b>Accommodating</b> negotiators want you to reach your goals, even if that means they have to sacrifice parts of their own
+            utility. They tend to be generous and flexible to accommodate your wishes.
           </p>
           <p class="m-0">
-            Collaborating negotiators are ...
+            <b>Collaborating</b> negotiators try to work with you in order to find the best solution for both parties. They want to explore
+            multiple possible options and learn about you to try and satisfy their and your goals.
           </p>
           <p class="m-0">
-            Compromising negotiators are ...
+            <b>Compromising</b> negotiators are moderate in both regards. They want to find a solution, but it does not have to be the
+            optimal one, just partially satisfactory to both. They work with you to some degree but do not want to go too deep into it.
+            It is common for them to strive for quick solutions by exchanging concessions.
           </p>
           <p class="m-0">
-            Avoiding negotiators are ...
+            <b>Avoiding</b> negotiators are do not want to negotiate at all, they want to avoid the conflict. They also care little about
+            your or even their own goals. Therefore they tend to flee the negotiations by concluding early.
           </p>
           <p class="m-0">
-            Accommodating negotiators are ...
+            <b>Competing</b> negotiators are assertive and uncooperative. They want to achieve as much as possible for themselves and
+            do not care about you reaching your goals at all. Competing negotiators want to win, not reach a fair outcome!
           </p>
         </div>
       </AccordionContent>
@@ -119,6 +125,11 @@ import Image from 'primevue/image';
   #tki-graphic span {
     filter: invert(100%);
   }
+}
+
+b {
+  font-weight: bolder;
+  color: var(--p-primary-color);
 }
 
 </style>
