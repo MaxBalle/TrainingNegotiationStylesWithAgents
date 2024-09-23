@@ -96,7 +96,7 @@ import Image from 'primevue/image';
             It is common for them to strive for quick solutions by exchanging concessions.
           </p>
           <p class="m-0">
-            <b>Avoiding</b> negotiators are do not want to negotiate at all, they want to avoid the conflict. They also care little about
+            <b>Avoiding</b> negotiators do not want to negotiate at all, they want to avoid the conflict. They also care little about
             your or even their own goals. Therefore they tend to flee the negotiations by concluding early.
           </p>
           <p class="m-0">
