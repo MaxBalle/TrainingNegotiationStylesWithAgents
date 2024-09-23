@@ -7,10 +7,11 @@ import random
 import secrets
 import csv
 import http
+import logging
 
 import asyncio
 from websockets.asyncio.server import serve
-from websockets import ConnectionClosedOK
+from websockets import ConnectionClosedOK, ConnectionClosedError
 
 from keras import models
 import tensorflow as tf
@@ -18,6 +19,18 @@ import tensorflow as tf
 from negotiationGenerator.discreteGenerator import build_negotiation_scenario
 from negotiationGenerator.scenario import Scenario
 from negotiation import encode_as_one_hot
+
+logger = logging.getLogger('websockets')
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+consoleHandler = logging.StreamHandler()
+consoleHandler.setFormatter(formatter)
+consoleHandler.setLevel(logging.INFO)
+logger.addHandler(consoleHandler)
+fileHandler = logging.FileHandler('csv/app.log') #Wrong directory but render allows for only one disk
+fileHandler.setFormatter(formatter)
+fileHandler.setLevel(logging.INFO)
+logger.addHandler(fileHandler)
 
 model_options = ['accommodating', 'collaborating', 'compromising', 'avoiding', 'competing']
 negotiation_shape = [5, 5, 5, 5, 5]
@@ -36,10 +49,10 @@ def build_response_from_model_return(ret, issue_shape, allow_end = True):
     if continue_negotiation:
         values = []
         ret_one_hot = encode_as_one_hot(ret[0][3:].numpy(), issue_shape, flat=False)
-        # print(ret_one_hot)
+        # logger.info(ret_one_hot)
         for issue in ret_one_hot:
             values.append(issue.index(1))
-        # print(f"Values {values}")
+        # logger.info(f"Values {values}")
         return {
             "message_type": "offer",
             "values": values
@@ -69,15 +82,16 @@ async def perform_model_negotiation(websocket, code, model_name, scenario: Scena
         if delay_max > 0:
             delay = random.triangular(5, delay_max, 50)
             await asyncio.sleep(delay)
+        logger.info(f"{code}: Model opening message: {response}")
         await websocket.send(json.dumps(response))
         length += 1
         if response["message_type"] == "end":
             return response["outcome"], "model"
     async for message_json in websocket:
         message = json.loads(message_json)
-        print(f"{code}: New message in model negotiation: {message}")
-        length += 1
+        logger.info(f"{code}: New message in model negotiation: {message}")
         if message["message_type"] == "offer":
+            length += 1
             offer_one_hot = []
             for choice in message["values"]:
                 choice_one_hot = [0, 0, 0, 0, 0]
@@ -89,11 +103,13 @@ async def perform_model_negotiation(websocket, code, model_name, scenario: Scena
             if delay_max > 0:
                 delay = random.triangular(5, delay_max, 30)
                 await asyncio.sleep(delay)
+            logger.info(f"{code}: Model response message: {response}")
             await websocket.send(json.dumps(response))
             length += 1
             if response["message_type"] == "end":
                 return response["outcome"], "model", length
         elif message["message_type"] == "end":
+            length += 1
             outcome = message["outcome"]
             return outcome, "self", length
     return "error", "", length
@@ -101,13 +117,15 @@ async def perform_model_negotiation(websocket, code, model_name, scenario: Scena
 async def handle_model_negotiation(websocket, code, model_name):
     scenario: Scenario = build_negotiation_scenario(negotiation_shape)
     model_role = random.choice("ab")
-    print(f"{code}: Negotiation against model {model_name} with model_role {model_role}")
-    await websocket.send(json.dumps({
+    logger.info(f"{code}: Negotiation against model {model_name} with model_role {model_role}")
+    init_message = {
         "message_type": "init",
         "issues": scenario.get_perspective("b" if model_role == "a" else "a").get_issues(),
         "timeout": None,
         "start": True
-    }))
+    }
+    logger.info(f"{code}: Model negotiation init message: {init_message}")
+    await websocket.send(json.dumps(init_message))
     return await perform_model_negotiation(websocket, code, model_name, scenario, model_role)
 
 turing_wait = []
@@ -117,26 +135,30 @@ seconds = 100 #Timelimit for each offer
 async def handle_turing(websocket, code):
     if turing_wait:
          pairing_code, role = turing_wait.pop()
-         print(f"{code} connected to waiting pairing {pairing_code}")
+         logger.info(f"{code} connected to waiting pairing {pairing_code}")
          turing_pairs[pairing_code][role] = websocket
          opponent_role = "b" if role == "a" else "a"
-         await websocket.send(json.dumps({
+         init_message_to_self = {
              "message_type": "init",
              "issues": turing_pairs[pairing_code]["scenario"].get_perspective(role).get_issues(),
              "timeout": seconds,
              "start": role == turing_pairs[pairing_code]["starting_role"]
-         }))
-         await turing_pairs[pairing_code][opponent_role].send(json.dumps({
+         }
+         logger.info(f"{code} init message to self: {init_message_to_self}")
+         await websocket.send(json.dumps(init_message_to_self))
+         init_message_to_opponent = {
              "message_type": "init",
              "issues": turing_pairs[pairing_code]["scenario"].get_perspective(opponent_role).get_issues(),
              "timeout": seconds,
              "start": opponent_role == turing_pairs[pairing_code]["starting_role"]
-         }))
+         }
+         logger.info(f"{code} init message to opponent: {init_message_to_opponent}")
+         await turing_pairs[pairing_code][opponent_role].send(json.dumps(init_message_to_opponent))
     else:
         pairing_code = secrets.token_urlsafe()
         role = random.choice("ab")
         opponent_role = "b" if role == "a" else "a"
-        print(f"{code} waits for connection with pairing code {pairing_code}")
+        logger.info(f"{code} waits for connection with pairing code {pairing_code}")
         turing_wait.append((pairing_code, opponent_role))
         turing_pairs[pairing_code] = {
             "scenario": build_negotiation_scenario(negotiation_shape),
@@ -153,13 +175,13 @@ async def handle_turing(websocket, code):
         return
     message = json.loads(message_json)
     if message["message_type"] == "init_ack":
-        print(f"{code} in pairing {pairing_code}: Init acknowledged")
+        logger.info(f"{code} in pairing {pairing_code}: Init acknowledged")
         if turing_pairs[pairing_code]["models_as_opponents"]:
             #Case separate against a model
             model_name = random.choice(model_options)
-            print(f"{code} in pairing {pairing_code} has role {role} and is model negotiation against {model_name}")
+            logger.info(f"{code} in pairing {pairing_code} has role {role} and is model negotiation against {model_name}")
             outcome, ending_party, length = await perform_model_negotiation(websocket, code, model_name, turing_pairs[pairing_code]["scenario"], opponent_role, model_starting=opponent_role == turing_pairs[pairing_code]["starting_role"], delay_max = seconds)
-            print(f"{code} in pairing {pairing_code} negotiation end: Concluded by {ending_party} with the outcome {outcome}")
+            logger.info(f"{code} in pairing {pairing_code} negotiation end: Concluded by {ending_party} with the outcome {outcome}")
             try:
                 judgement_message_json = await websocket.recv()
             except ConnectionClosedOK:
@@ -169,17 +191,18 @@ async def handle_turing(websocket, code):
             return outcome, ending_party, length, "AI", judgement
         else:
             # Case human vs. human
-            print(f"{code} in pairing {pairing_code} in human-human negotiation")
+            logger.info(f"{code} in pairing {pairing_code} in human-human negotiation as role {role}")
             async for message_json in websocket:
                 message = json.loads(message_json)
-                print(f"{code} in pairing {pairing_code}: New turing message {message}")
-                turing_pairs[pairing_code]["exchanged_offers"] += 1
+                logger.info(f"{code} in pairing {pairing_code}: New turing human-human message {message}")
                 if message["message_type"] == "offer":
+                    turing_pairs[pairing_code]["exchanged_offers"] += 1
                     await turing_pairs[pairing_code][opponent_role].send(json.dumps({
                         "message_type": "offer",
                         "values": message["values"]
                     }))
                 elif message["message_type"] == "end":
+                    turing_pairs[pairing_code]["exchanged_offers"] += 1
                     outcome = message["outcome"]
                     turing_pairs[pairing_code]["outcome"] = outcome
                     turing_pairs[pairing_code]["ending_party"] = role
@@ -187,11 +210,12 @@ async def handle_turing(websocket, code):
                         "message_type": "end",
                         "outcome": outcome
                     }))
-                    print(f"{code} in pairing {pairing_code}: {role} ended with {outcome}")
+                    logger.info(f"{code} in pairing {pairing_code}: Ended as {role} with {outcome}")
                 elif message["message_type"] == "judgement":
                     return turing_pairs[pairing_code]["outcome"], "self" if turing_pairs[pairing_code]["ending_party"] == role else "opponent", turing_pairs[pairing_code]["exchanged_offers"], "Person", message["judgement"]
             return "Error", "Error", turing_pairs[pairing_code]["exchanged_offers"], "Error", "Error"
     else:
+        logger.warning(f"{code} missing init ack!")
         await websocket.send(json.dumps({
             "message_type": "error",
             "error": "Missing init_ack"
@@ -200,57 +224,58 @@ async def handle_turing(websocket, code):
 
 async def handler(websocket):
     code = secrets.token_urlsafe()
-    print(f"New connection with code {code}")
+    logger.info(f"New connection with code {code}")
     try:
         message_json = await websocket.recv()
-    except ConnectionClosedOK:
-        return
-    init_message = json.loads(message_json)
-    print(f"{code}: First message: {init_message}")
-    if init_message["message_type"] == "init":
-        mode = init_message["mode"]
-        if mode == "sandbox":
-            model_name = init_message["model"]
-            outcome, ending_party, length = await handle_model_negotiation(websocket, code, model_name)
-            print(f"{code}: {ending_party} ended after {length} messages with outcome={outcome}")
-        elif mode == "identification":
-            model_name = random.choice(model_options)
-            outcome, ending_party, length = await handle_model_negotiation(websocket, code, model_name)
-            print(f"{code}: {ending_party} ended after {length} messages with outcome={outcome}")
-            try:
+        init_message = json.loads(message_json)
+        logger.info(f"{code}: First message: {init_message}")
+        if init_message["message_type"] == "init":
+            mode = init_message["mode"]
+            if mode == "sandbox":
+                model_name = init_message["model"]
+                outcome, ending_party, length = await handle_model_negotiation(websocket, code, model_name)
+                logger.info(f"{code}: {ending_party} ended after {length} messages with outcome={outcome}")
+            elif mode == "identification":
+                model_name = random.choice(model_options)
+                outcome, ending_party, length = await handle_model_negotiation(websocket, code, model_name)
+                logger.info(f"{code}: {ending_party} ended after {length} messages with outcome={outcome}")
                 judgement_message_json = await websocket.recv()
-            except ConnectionClosedOK:
-                return
-            judgement_message = json.loads(judgement_message_json)
-            judgement = judgement_message["judgement"]
-            print(f"{code} judged model as {judgement}, truth is {model_name}")
-            await websocket.send(json.dumps({
-                "message_type": "disclosure",
-                "opponent": model_name
-            }))
-            save("identification", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, model_name, judgement])
-        elif mode == "turing":
-            outcome, ending_party, length, opponent_type, judgement = await handle_turing(websocket, code)
-            print(f"{code} judged model as {judgement}, truth is {opponent_type}")
-            await websocket.send(json.dumps({
-                "message_type": "disclosure",
-                "opponent": opponent_type
-            }))
-            save("turing", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, opponent_type, judgement])
+                judgement_message = json.loads(judgement_message_json)
+                judgement = judgement_message["judgement"]
+                logger.info(f"{code} judged model as {judgement}, truth is {model_name}")
+                await websocket.send(json.dumps({
+                    "message_type": "disclosure",
+                    "opponent": model_name
+                }))
+                save("identification", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, model_name, judgement])
+            elif mode == "turing":
+                outcome, ending_party, length, opponent_type, judgement = await handle_turing(websocket, code)
+                logger.info(f"{code} judged model as {judgement}, truth is {opponent_type}")
+                await websocket.send(json.dumps({
+                    "message_type": "disclosure",
+                    "opponent": opponent_type
+                }))
+                save("turing", [code,init_message["person_code"], *init_message["personal_information"].values(), outcome, ending_party, length, opponent_type, judgement])
+            else:
+                logger.warning(f"{code} no such mode!")
+                await websocket.send(json.dumps({
+                    "message_type": "error",
+                    "error": "No such mode"
+                }))
+        elif init_message["message_type"] == "questionnaire":
+            mode = init_message["mode"]
+            save(f"{mode}-questionnaire", [init_message["person_code"],*init_message["personal_information"].values(), *init_message["questions"].values()])
         else:
+            logger.warning(f"{code} first message must be init or questionnaire!")
             await websocket.send(json.dumps({
                 "message_type": "error",
-                "error": "No such mode"
+                "error": "First message must be init or questionnaire"
             }))
-    elif init_message["message_type"] == "questionnaire":
-        mode = init_message["mode"]
-        save(f"{mode}-questionnaire", [init_message["person_code"],*init_message["personal_information"].values(), *init_message["questions"].values()])
-    else:
-        await websocket.send(json.dumps({
-            "message_type": "error",
-            "error": "First message must be init or questionnaire"
-        }))
-    print(f"Closed connection {code}")
+    except ConnectionClosedOK:
+        logger.info(f"Connection {code} closed ok")
+    except ConnectionClosedError:
+        logger.warning(f"Connection {code} closed error")
+    logger.info(f"Closed connection {code}")
 
 def health_check(connection, request):
     if request.path == "/healthz":
@@ -268,5 +293,5 @@ async def main_app():
         await asyncio.get_running_loop().create_future()
 
 if __name__ == '__main__':
-    print("Websocket active")
+    logger.info("Websocket start")
     asyncio.run(main_app())
