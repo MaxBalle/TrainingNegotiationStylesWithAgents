@@ -149,7 +149,7 @@ const start_questionnaire = () => {
       <Likert @choice="(c) => questionnaire_questions.learning_about_styles = c"/>
       <p>This tool is helpful to train the identification of the negotiation opponents styles.</p>
       <Likert @choice="(c) => questionnaire_questions.identification_training = c"/>
-      <p>The AI models behaved realistic.</p>
+      <p>The AI models behaved realistically.</p>
       <Likert @choice="(c) => questionnaire_questions.realism = c"/>
       <p>The AI models seem to work with a model of my beliefs and intentions.</p>
       <Likert @choice="(c) => questionnaire_questions.theory_of_mind = c"/>
