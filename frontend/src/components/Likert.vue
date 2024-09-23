@@ -4,7 +4,7 @@ import {ref} from "vue";
 
 const val = ref();
 
-const options = ref(["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"])
+const options = ref(["Strongly disagree","Disagree","Somewhat disagree","Neutral","Somewhat agree","Agree","Strongly agree"])
 
 import RadioButton from 'primevue/radiobutton';
 

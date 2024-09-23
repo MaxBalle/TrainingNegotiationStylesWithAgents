@@ -145,7 +145,7 @@ const start_questionnaire = () => {
   <Questionnaire v-if="show_questionnaire" mode="identification" :questions_ref="questionnaire_questions" :person_data="personal_information.data" :person_code="person_code">
     <template #subtitle>Please enter how strongly you agree with the following statements</template>
     <template #questions>
-      <p>This tool can be helpful when learning about different negotiation styles.</p>
+      <p>This tool is helpful when learning about different negotiation styles.</p>
       <Likert @choice="(c) => questionnaire_questions.learning_about_styles = c"/>
       <p>This tool is helpful to train the identification of the negotiation opponents styles.</p>
       <Likert @choice="(c) => questionnaire_questions.identification_training = c"/>
