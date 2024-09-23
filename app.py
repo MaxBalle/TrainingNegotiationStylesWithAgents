@@ -42,8 +42,7 @@ def save(filename, content):
 
 def build_response_from_model_return(ret, issue_shape, allow_end = True):
     if allow_end:
-        # continue_negotiation = ret[0][0].numpy() >= ret[0][1].numpy() and ret[0][0].numpy() >= ret[0][2].numpy() TODO re-enable once models are ready
-        continue_negotiation = random.random() < 0.8  # TODO remove
+        continue_negotiation = ret[0][0].numpy() >= ret[0][1].numpy() and ret[0][0].numpy() >= ret[0][2].numpy()
     else:
         continue_negotiation = True
     if continue_negotiation:
