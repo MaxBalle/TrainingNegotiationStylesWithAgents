@@ -1,0 +1,21 @@
+connection_code,person_code,person_age_group,person_gender,person_education,person_negotiation_experience,outcome,ending_party,length,opponent_type,judgement
+X2KtIwGz3V1CTt66Tan9Aoq5DP-bLc8qiH7udqQqXkY,pc915104ecb8b84,45-54,Female,Master or equivalent,No experience,accept,self,6,Person,Person
+DwL2BzaCEVOyO3-E1jtiDhCHAeFvEZzgBDqaSBMBiUU,pc8f72d57d15823,55-64,Male,Master or equivalent,Experienced,accept,opponent,6,Person,AI
+pLJZfY7kJD0RsQobdSfLUuUJf1onZSjthuyWJJwmWXw,pc915104ecb8b84,45-54,Female,Master or equivalent,No experience,accept,model,2,AI,AI
+IjHQ2ORGt08-B7izVplNX4VE8QUGkN-gJd6swtTPuJE,pc8f72d57d15823,55-64,Male,Master or equivalent,Experienced,accept,model,3,AI,Person
+gFGnFPZ6sk84g5bUGknVmNXtCuEBt-UJXswnfGkodkc,pc915104ecb8b84,45-54,Female,Master or equivalent,No experience,accept,opponent,6,Person,Person
+y7GW-v1wK--6ZotNU51Xo0bbVauPPUrRQKlVRhR70gE,pc8f72d57d15823,55-64,Male,Master or equivalent,Experienced,accept,self,6,Person,Person
+ZXB9ma_TwanDKkuUfaECxLe5ULip0JW6AYqbDIvIBdU,pca81d7dd83b9298,55-64,Female,Master or equivalent,No experience,accept,self,7,Person,AI
+8Ccgw9klxTROt0jQoFQY1FR7dv2A-IarSm4CaLMbwZE,pc0e9cd50d648d3,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,accept,opponent,7,Person,Person
+w4lRoPi-tSl1CpndzNkvjwVcSyaM2_oQSrO6gs3O-lE,pc18bff514fb1bf,18-24,Female,Bachelor or equivalent,No experience,reject,self,3,AI,AI
+qrfcRmuJbEOJ6cTP4PGC_AGy8gkpBEhBec2Z6G7jCnY,pc7f9b53e9af5a38,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,3,AI,Person
+b5-Y6y3XlTnGaYUzCZthln8Eanmf_fIXlVs7FiQqGRk,pc7f9b53e9af5a38,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,AI,AI
+VtV4fiY62eYfv4CxCLlxFLCVdTc9whkwa4nfFpXkplk,pc71d5000ce32d,18-24,Female,Bachelor or equivalent,No experience,accept,model,3,AI,AI
+eiDCWYe1smEgq8N-3JNm8HYavgJf65Fk-SAqsGkCTug,pc7118091e3a34e8,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,accept,self,4,Person,AI
+pzODi6PXio--Mf9mKTXgaRsk_WycIbg5igUf3b3lAIo,pc738b9a54463d98,18-24,Male,Upper secondary education (e.g. Abitur),Some experience,accept,opponent,8,Person,AI
+J1UlHCdoOY5zNpbcnX6Zek_0cfYq7Mb9YpsVzznrzoA,pc7118091e3a34e8,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,accept,self,8,Person,Person
+IHDXmoHuEll0_PQQod45yPO2A9DzO5mbn3i2go7vxj8,pc59e0813d39cda8,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,self,2,Person,AI
+jbapk03jPub8h9eVi_9k8mqv73WmNlOmm51IMbo2mwk,pc36ecdcdf8eb5d,18-24,Female,Bachelor or equivalent,Some experience,accept,model,2,AI,AI
+pEraJBxSsyv3a1Sa4Tr5I8kQRmnCfeT-xhCSmcnU1Z4,pc187de3d9461dd,25-34,Male,Upper secondary education (e.g. Abitur),No experience,reject,self,10,AI,AI
+a8qDdokR5IyKlpGwobIvrc0J9lCFQuDlWxJkWRXFf40,pc36ecdcdf8eb5d,18-24,Female,Bachelor or equivalent,Some experience,accept,model,2,AI,AI
+4EcjcJQI_8ueoHQkZVplY2ZBuDZef_U9RHbDj_bd-zQ,pc187de3d9461dd,25-34,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,5,AI,AI

@@ -1,0 +1,54 @@
+connection_code,person_code,person_age_group,person_gender,person_education,person_negotiation_experience,outcome,ending_party,length,model_name,judgement
+VZXkk-yEUYd_kLLWqFAh6cQYwPW_8blOsmqDLerQgII,pc9deec4d610ff2,45-54,Female,Master or equivalent,No experience,accept,self,5,accommodating,accommodating
+FSWLSv49-GxSt4Lp3DBfoCVZ9kfrX_zMNSTnDT6tHhw,pc9deec4d610ff2,45-54,Female,Master or equivalent,No experience,accept,model,2,compromising,avoiding
+92YHXXE7Q9e2AbkK5h6nO9H_LHRoYNV0uzs37Oy7IBI,pc9deec4d610ff2,45-54,Female,Master or equivalent,No experience,accept,model,2,avoiding,avoiding
+nOvYXbStXVmp4zcC8zzmJufHhliOUAF6myxg1FcXboA,pc9deec4d610ff2,45-54,Female,Master or equivalent,No experience,accept,model,2,compromising,avoiding
+9PK-bA7PUtYHuoVc0hm9XBvflK_UO9BE0yq7ByzEFrU,pc22f10b5049c9,55-64,Male,Master or equivalent,Highly experienced,reject,self,7,competing,competing
+T8MKd1xwKeWYgFgU47AYcziREO5uMoas_TcVoPTPp-Y,pc22f10b5049c9,55-64,Male,Master or equivalent,Highly experienced,accept,model,2,avoiding,avoiding
+gil6N7nKDDbjMEA2KmyLIKGBEgBfh5dnTe4C0mBXz8U,pc22f10b5049c9,55-64,Male,Master or equivalent,Highly experienced,accept,model,2,collaborating,avoiding
+fzxcBftPS5w2N-K4hKqQ2Ep0kQQwb5hjlnGYQACJZaY,pc22f10b5049c9,55-64,Male,Master or equivalent,Highly experienced,accept,model,2,collaborating,accommodating
+4U_aY_prwWJBk2s8FdUHw2wNfo_kPxHw85T2_Cdmzro,pcd671c1407f07d8,55-64,Female,Master or equivalent,No experience,accept,model,2,compromising,accommodating
+gJq1AepHW1oIFhgdBELDWHuo-XcPHwt8QFdMJjKEk9w,pc40a8247effa3f,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,accept,self,9,competing,compromising
+PIiQN7AKvJqzecGoplk-OSdgcCvMVPLodDXsSRlQVsM,pc35af290495b87,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,collaborating,accommodating
+y8QM-AQtTqX5QBd_VmLlAJH-VR_DUjm1pMfX85fEpMY,pcc2da12e949996,18-24,Female,Upper secondary education (e.g. Abitur),No experience,reject,self,3,accommodating,competing
+I_TIirV1Cwprot5_5Xfn4BqlnRh8QRJ2Wa4f_DXESxQ,pc4483e664b8de1,18-24,Male,Bachelor or equivalent,Some experience,accept,model,4,accommodating,accommodating
+jB7nYkWjNEEzIp2sxtccG7NMt0yXTPJ7JlZ_NgBC5jY,pc10892200eb494,18-24,Male,Upper secondary education (e.g. Abitur),Some experience,accept,model,2,avoiding,accommodating
+wNCNCBIop8dZ0JTes3hqHtk_nAvg1WuhpjVqb9IAmOY,pc9780b0c8dd9a9,18-24,Male,Upper secondary education (e.g. Abitur),Some experience,accept,model,2,avoiding,avoiding
+SlUHMhBj52npiD_hhy6xSKHMtF1-yY2_LKQgEfvYaCI,pcdcb0c4aa03e5c,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,4,competing,collaborating
+kKbvcENih_FMsuZBolAS7xemmhxh93HkQ0QVZg_Q6IU,pcd378a2f5f375f,18-24,Male,Upper secondary education (e.g. Abitur),No experience,reject,self,5,competing,competing
+SkJFB-DqA0edybkqb3PZkiMvDeA5avwGxr0JI-wAcGw,pcd378a2f5f375f,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,4,compromising,collaborating
+XTs8h5EO6fI8Jr2IHuGrNH2W1-OlCG63FECVtpEfsvY,pcd378a2f5f375f,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,2,compromising,avoiding
+PPxuFiJ08pBt-xe1nvJwO9TVMuZVAlvBnVmui_-Q2Qg,pcd378a2f5f375f,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,2,compromising,avoiding
+Hvw3bpvVSDcsa55tsA9pYatsnGC9WtPNZENwjh279X4,pcd378a2f5f375f,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,2,collaborating,avoiding
+GVi-zCPEblZIRTTeDC4J15xtIvwz1nWGPaY8tDpiVx4,pcaaa3ead23b14,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,compromising,avoiding
+lONW5J8Dbx_Oc2GbxiSBnwwmlCNO5h_cm1QyfXZ4ZCQ,pcaaa3ead23b14,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,compromising,collaborating
+Vo2k4Sw52GAhnY1RwCzLCexxTbkJ_0VMCiTQKvcvIFc,pcaaa3ead23b14,18-24,Female,Upper secondary education (e.g. Abitur),No experience,reject,self,7,accommodating,competing
+wYQdOEvH8GiMqtOLmoHEkAzcTv1SkxEaY9WH94YUQwQ,pcaaa3ead23b14,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,avoiding,compromising
+RbvZjmuttPMP7CbSTTf-dWsJglFft0FfjmpwMgkiO9s,pc228a64de41c13,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,avoiding,accommodating
+p8wKWFGmkHdqvjAk7g-yeLLSP2ukIse9khKRXEWnlRo,pc228a64de41c13,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,6,accommodating,collaborating
+jL7K97YXXsdIrC_itj5dVrXLfVVo9VwH3mPVlE8FIIw,pc228a64de41c13,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,collaborating,accommodating
+c8q_5l28xMUNjjrAOy7gHE4F1Q2v39Eu01RJyjHEQiU,pc228a64de41c13,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,compromising,avoiding
+_V1v6Ct3AiKVlxKeDa0IIk9CbYT1f1SDQ6-FYezImjE,pce4149215b3e46,18-24,Female,Bachelor or equivalent,Some experience,accept,model,2,avoiding,compromising
+2f2mjFr36x4QJVs04hAYYCb3bZNdQDSyQVg0Bv4Ned0,pc197def8abcd61,25-34,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,4,competing,compromising
+mNitVw70nd6j4R5_o86nvWdmsPKoKZ8A80ZIoNJVOhE,pcb559ec9061df7,25-34,Male,Upper secondary education (e.g. Abitur),Highly experienced,accept,model,16,accommodating,competing
+lOf-CKlczzyVjrAiGqVmXtk8hwpyCMzwrf6dnrS9Vbw,pc1cdbfff306912,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,accept,self,9,competing,competing
+uH_rOi4OYgxzgf-RZsDGpmfg7iM99k1Prw_pIMJS4D8,pce5ae995297528,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,avoiding,accommodating
+3vvVvTWHwob8VmQr0tKhWZPdZyBv_8SgSnI9qVqM6A4,pce5ae995297528,18-24,Female,Upper secondary education (e.g. Abitur),No experience,reject,self,9,competing,competing
+ArNGAKX7acaQqWm8nxVJTgmT25Lu3Xu2xW6o7zihBf4,pce5ae995297528,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,collaborating,avoiding
+lCx5bkLL9eKteTKDp9cxjY5_ZB5ovggI9ajQgBxklZA,pce5ae995297528,18-24,Female,Upper secondary education (e.g. Abitur),No experience,accept,model,2,avoiding,accommodating
+kCFAEMJRqIKyb5q3qAe-1JKBNef65zsw-CAwNbF0C_4,pce5ae995297528,18-24,Female,Upper secondary education (e.g. Abitur),No experience,reject,self,9,competing,competing
+bdeQsMaXYMlMYMxTf_diAzuxANyRnHk49_tUoSr51wQ,pc1ae9c9b13f088,25-34,Male,Bachelor or equivalent,Some experience,accept,self,7,competing,compromising
+RQ421c_UPSRCWkwjFkZXpv5LgkbPYu34A_h5RuNVFsQ,pcc2d39f12cf0af8,18-24,Male,Upper secondary education (e.g. Abitur),Some experience,accept,model,2,avoiding,avoiding
+_0QlKgLIxSz-OFj0zj0Y83j5IZj8AIKlvpSo9KrHk3w,pcc2d39f12cf0af8,18-24,Male,Upper secondary education (e.g. Abitur),Some experience,reject,self,9,competing,competing
+i7oIZxrKg-qnwKkU6Wee6aFo9c70UCq2z5JirH8UKyM,pc6dcf61c91dfb9,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,accept,model,2,compromising,accommodating
+Q0ZGrsTzRELwGRm2PbD9tmfbFo8g90yWGRhYNuXshtU,pc3d48b1d0b695b8,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,accept,model,2,avoiding,avoiding
+E9nZzoLALWfJ1mfxL2v0dHA7MS68NqahHt54fnmJUsk,pcdb2ec88fff18f,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,2,compromising,accommodating
+5po4tUcRBln4GDrEm9UpFdVAymO92eIS1zu_tWxK8vU,pcdb2ec88fff18f,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,2,avoiding,compromising
+7IhE-E6vNL27LGMZE-fz5eRqr8jK4AVb5xg3cK6AsW8,pc608c8823d38ce,18-24,Male,Upper secondary education (e.g. Abitur),Experienced,accept,model,2,compromising,avoiding
+i2DqiNIZq98o9IkI8aeQBK5B6oNSKZPFkzCRvMSSwjU,pc608c8823d38ce,18-24,Male,Upper secondary education (e.g. Abitur),Experienced,reject,self,5,accommodating,competing
+XNdCgONRKf8b4S3QTJXMbciGs8fxuaxfD6O_JlTncZU,pc608c8823d38ce,18-24,Male,Upper secondary education (e.g. Abitur),Experienced,accept,self,3,accommodating,collaborating
+3wxZFFHJNL6z3rJIisRNR46IgcL8Nz4x9j3Zm0sE5X0,pcd34578cca82aa8,18-24,Male,Upper secondary education (e.g. Abitur),Some experience,accept,model,2,accommodating,compromising
+euZsMc44VYIuHceoRW0289hCQ_ozR-3llo7-3YEZX6Q,pca8ac2e4adcfe38,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,2,compromising,collaborating
+XLhd8BNelOpBWAxaLXVVYEbYnRYxJnx7zZOw_6zNI7U,pc9cbe91978f547,18-24,Male,Upper secondary education (e.g. Abitur),No experience,reject,self,7,accommodating,accommodating
+06fmBGQa3VJfqxbA3Jf1566WdJNsgnsF8SrRGMbrk9Q,pc9cbe91978f547,18-24,Male,Upper secondary education (e.g. Abitur),No experience,accept,model,2,accommodating,collaborating
+Xli83mN-HPRif4c5dqgINlccg115YSUuxbTGRCzFhwM,pc9cbe91978f547,18-24,Male,Upper secondary education (e.g. Abitur),No experience,reject,self,9,competing,accommodating

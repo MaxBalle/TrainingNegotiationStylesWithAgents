@@ -1,0 +1,11 @@
+person_code,person_age_group,person_gender,person_education,person_negotiation_experience,certain_of_judgement,outside_influence
+pc8f72d57d15823,55-64,Male,Master or equivalent,Experienced,Agree,Strongly disagree
+pc915104ecb8b84,45-54,Female,Master or equivalent,No experience,Somewhat agree,Disagree
+pca81d7dd83b9298,55-64,Female,Master or equivalent,No experience,Strongly agree,Disagree
+pc0e9cd50d648d3,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,Somewhat agree,Disagree
+pc71d5000ce32d,18-24,Female,Bachelor or equivalent,No experience,Neutral,Somewhat agree
+pc7118091e3a34e8,18-24,Female,Upper secondary education (e.g. Abitur),Some experience,Agree,Somewhat disagree
+pc738b9a54463d98,18-24,Male,Upper secondary education (e.g. Abitur),Some experience,Somewhat agree,Disagree
+pc59e0813d39cda8,18-24,Male,Upper secondary education (e.g. Abitur),No experience,Somewhat agree,Strongly disagree
+pc187de3d9461dd,25-34,Male,Upper secondary education (e.g. Abitur),No experience,Agree,Agree
+pc36ecdcdf8eb5d,18-24,Female,Bachelor or equivalent,Some experience,Strongly agree,Agree
